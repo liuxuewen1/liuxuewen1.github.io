@@ -1,11 +1,11 @@
-//¸ù¾ÝbulletID£¬ÕÒµ½TankObj¶ÔÏó
+//æ ¹æ®bulletIDï¼Œæ‰¾åˆ°TankObjå¯¹è±¡
 function getTankObjByBulletID(bulletID){
 	for(var tank in TankObj){
-		if(!TankObj.hasOwnProperty(tank)) return;
+		if(!TankObj.hasOwnProperty(tank)) continue;
 		var to=TankObj[tank];
 		for(var bID in to){
 			//alert(bID+":"+to[bID]);
-			if(!to.hasOwnProperty(bID)) return;
+			if(!to.hasOwnProperty(bID)) continue;
 			if(to[bID]==bulletID) {
 				return to;
 			}
@@ -14,17 +14,17 @@ function getTankObjByBulletID(bulletID){
 	return false;
 }
 
-//¸ù¾ÝtankID£¬ÕÒµ½TankObj¶ÔÏó
+//æ ¹æ®tankIDï¼Œæ‰¾åˆ°TankObjå¯¹è±¡
 function getTankObjByTankID(tankID){
 	for(var tank in TankObj){
-		if(!TankObj.hasOwnProperty(tank)) return;
+		if(!TankObj.hasOwnProperty(tank)) continue;
 		if(tank==tankID) return TankObj[tank];
 	}
 	return false;
 }
 
 
-//¼ì²âÊÇ·ñÅö×²
+//æ£€æµ‹æ˜¯å¦ç¢°æ’ž
 function isHit(curObj, speed, attr)
 {
 	var curHalfWidth=parseInt(parseInt(getAttr(curObj,"width"))/2),
@@ -66,7 +66,7 @@ function isHit(curObj, speed, attr)
 		}
 	}
 	
-	//Ôö¼Ó¶¯Ì¬Íø¸ñ
+	//å¢žåŠ åŠ¨æ€ç½‘æ ¼
 	var moveGrid=createMoveGrid();
 	
 	var g=[oGrid, moveGrid];
@@ -80,7 +80,7 @@ function isHit(curObj, speed, attr)
 	return { result:true };		
 }
 
-//Ôö¼Ó¶¯Ì¬Íø¸ñ
+//å¢žåŠ åŠ¨æ€ç½‘æ ¼
 function createMoveGrid(curIsTank){
 	
 	var moveGrid=new Object();	
@@ -101,7 +101,7 @@ function createMoveGrid(curIsTank){
 	return moveGrid;
 }
 	
-//»ñÈ¡ÔªËØÊôÐÔÖµ
+//èŽ·å–å…ƒç´ å±žæ€§å€¼
 function getAttr(obj, attr){
 	if(obj.currentStyle){
 		return obj.currentStyle[attr];
@@ -111,26 +111,27 @@ function getAttr(obj, attr){
 	}
 }
 
-//²éÕÒÔªËØ
+//æŸ¥æ‰¾å…ƒç´ 
 function getEleById(id){
 	return document.getElementById(id);
 }
 
-//Éú³Émµ½nµÄËæ»úÊý
+//ç”Ÿæˆmåˆ°nçš„éšæœºæ•°
 function getRandom(m,n){
 	return Math.floor(Math.random()*(n-m+1)+m);
 }
 
-//´´½¨Div
-function createDiv(iClass,iLeft,iTop){
+//åˆ›å»ºDiv suffixIDï¼šIDçš„åŽç¼€
+function createDiv(iClass,iLeft,iTop,suffixID){
 	var oDiv=document.createElement("div");
 	oDiv.className=iClass;
 	oDiv.style.left=iLeft+"px";
 	oDiv.style.top=iTop+"px";
-	oDiv.id="div_"+iLeft+"_"+iTop;
+	var autoID="div_"+iLeft+"_"+iTop;
+	oDiv.id=suffixID?autoID+'_'+suffixID:autoID;
 	return oDiv;
 }	
-//¸ù¾ÝClass²éÕÒÔªËØ£¬·µ»ØÔªËØ¼¯ºÏ
+//æ ¹æ®ClassæŸ¥æ‰¾å…ƒç´ ï¼Œè¿”å›žå…ƒç´ é›†åˆ
 function getByClass(oParent, iClass){
 	if(oParent.getElementsByClassName){
 		return oParent.getElementsByClassName(iClass);
@@ -156,3 +157,35 @@ function findSame(arr, n){
 	
 	return false;
 }
+
+//åŒ€é€Ÿè¿åŠ¨
+function move(obj,oAttr,fn){
+	clearInterval(obj.timer);
+	
+	obj.timer=setInterval(function(){
+		var speed=6;	
+		var isOver=true;
+		for(var attr in oAttr){		
+			var target=oAttr[attr];
+			var nowVal=parseInt(getStyle(obj,attr));
+			target>nowVal?speed=6:speed=-6;  		
+			if(Math.abs(target-nowVal)<=Math.abs(speed)){
+				obj.style[attr]=target+"px";
+				continue;
+			}
+			else{
+				isOver=false;
+				obj.style[attr]=nowVal+speed+"px";
+			}
+		}
+		if(isOver){
+			fn && fn();
+			clearInterval(obj.timer);			
+		}
+	},30);
+}
+
+function getStyle(obj,attr){
+	return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj,false)[attr];
+}
+	

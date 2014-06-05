@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>1990 Tank ��ս</title>
+<title>无标题文档</title>
 <style>
 *{margin:0; padding:0;}
-#box{ width:416px; height:416px; position:relative; background:black; margin-left:10px;}
+#box{ width:416px; height:416px; position:relative; background:black; margin-left:10px; overflow:hidden;}
 #box div{ width:16px; height:16px; position:absolute; background:url(images/tankAll.gif) no-repeat 0 -96px;}
 #box #moveBox { width:416px; height:416px; position:relative; background:none;}
 #box .wall{ background-position:0 -96px;}
@@ -14,12 +14,22 @@
 #box .home{ width:32px; height:32px; background-position:-256px 0;}
 #box .tank,#box .copyTank{ width:32px; height:32px; background-position:-256px -32px;}
 #box .bullet{ width:6px; height:6px; background-position:-80px -96px;}
+
+#box #divImg{width:416px; height:416px; position:absolute; left:0; top:0; vertical-align:middle; overflow:hidden; z-index:999; background:#000;}
+#box #divImg img{ left:60px; top:416px; position:relative; }
+#box #divImg span{ font-size:22px; color:#FFCC99; font-weight:bold; position:relative; left:0px; top:486px; letter-spacing:6px;}
+#box #divImg span:hover{cursor:pointer;}
 </style>
 </head>
 
 <body>
 <div id="box">
 	<div id="moveBox"></div>
+	<div id="divImg">
+		<img src="images/tank.png" id='imgTank'/>
+		<span>Start</span>
+	</div>
+	
 </div>
 </body>
 <script src="Constant.js" type="text/javascript"></script>
@@ -30,19 +40,70 @@
 <script src="Tank.js" type="text/javascript"></script>
 <script src="MyTank.js" type="text/javascript"></script>
 <script src="Enemy.js" type="text/javascript"></script>
-<script src="Bullet.js" type="text/javascript"></script>
-<script>	
-	window.onload=function(){
+<!--<script src="Bullet.js" type="text/javascript"></script>-->
+<script>
+var Global={
+	
+}
+window.onload=function(){
+	var oDiv=document.getElementById('divImg');
+	var oImg=document.getElementById('imgTank');
+	var oStart=oDiv.children[1];
+	
+	var map=new Map();
+	map.nowLevel=1;
+	map.init();
+	
+	oStart.onclick=function(){
+		var height=parseInt(getStyle(oDiv,'height'));
+		move(oDiv,{height:0},function(){
+			beginFn();
+		});
+	}
+	
+	move(oImg,{top:100});	
+	move(oStart,{top:170});	
+	
+	function beginFn(){
+		/*
 		var map=new Map();
-		map.nowLevel=1;
-		map.init();
+		map.nowLevel=2;
+		map.init();*/
 		
 		var myTank=new MyTank();
 		myTank.createMyTank();
+		Global.myTank=myTank;	
 				
 		var enemyTank=new Enemy();
 		enemyTank.createEnemy();
+		Global.enemyTank=enemyTank;	
+		
+		document.onkeydown=function(ev){
+			var oEvent=ev||event;
+			switch(oEvent.keyCode){
+				case 87://W
+					myTank.oTank.dir!=1 && myTank.oTank.setDir(1);
+					myTank.oTank.move();
+					break;
+				case 83://S
+					myTank.oTank.dir!=2 && myTank.oTank.setDir(2);
+					myTank.oTank.move();
+					break;
+				case 65://A
+					myTank.oTank.dir!=3 && myTank.oTank.setDir(3);
+					myTank.oTank.move();
+					break;
+				case 68://D
+					myTank.oTank.dir!=4 && myTank.oTank.setDir(4);
+					myTank.oTank.move();
+					break;
+				case 32://空格键，发射子弹
+					myTank.oTank.shoot(MYTANK);
+					break;
+			}
+		}
 		
 	}
+}
 </script>
 </html>

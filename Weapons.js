@@ -1,40 +1,72 @@
 /*
-*ÎäÆ÷¹¤³§ÀàWeaponsFactory ×ÓÀà°üÀ¨Ì¹¿ËÀà¡¢×Óµ¯Àà
+*æ­¦å™¨å·¥å‚ç±»WeaponsFactory å­ç±»åŒ…æ‹¬å¦å…‹ç±»ã€å­å¼¹ç±»
 */
 
-var WeaponsFactory=function(){
-	
+var WeaponsFactory=function(count){
+	this.count=count||1;
+	this.nowCount=0;	//å½“å‰å­˜åœ¨çš„æ•°é‡
+	this.totalCount=0;	//æ€»æ•°é‡
+	this.oTank=null;
 }
 
-//Éú³ÉÌ¹¿Ë
+//ç”Ÿæˆå¦å…‹
 WeaponsFactory.prototype.createTank=function(BaseObj){
-	var tank=new Tank();
-	tank.dir=BaseObj.dir;
-	tank.basePos=BaseObj.basePos;
+	if(this.nowCount>=this.count) return;
 	
-	tank.tankDiv=createDiv("copyTank",BaseObj.left,BaseObj.top);
+	var basePos=null;
+	var left=0;
+	if(BaseObj.category===ENEMY){
+		switch(getRandom(1,3)){
+			case 1:basePos={x:0, y:-32};
+				break;
+			case 2:basePos={x:-128, y:-32};
+				break;
+			case 3:basePos={x:0, y:-64};
+				break;	
+		}
+		left=(this.totalCount%4)*8*BASE;
+	}else{
+		basePos={x:0, y:0};
+		left=1*8*BASE;
+	}
+	this.nowCount++;
+	this.totalCount++;
+	
+	var tank=new Tank();
+	tank.basePos=basePos;
+	
+	tank.tankDiv=createDiv("copyTank",left,BaseObj.top,this.totalCount);
 	tank.tankDiv.category=BaseObj.category;
 	oMoveBox.appendChild(tank.tankDiv);
+	this.oTank=tank;
 	var oThis=this;
+	
 	tank.tankTimer=setInterval(function(){
-		tank.tankDiv.style.backgroundPosition=-256+(tank.index++)*(-32)+"px -32px";//Ì¹¿ËÉú³ÉĞ§¹û
-		//Ğ§¹ûÍê³Éºó£¬ÏÔÊ¾ÕæÕıÌ¹¿Ë
+		tank.tankDiv.style.backgroundPosition=-256+(tank.index++)*(-32)+"px -32px";//å¦å…‹ç”Ÿæˆæ•ˆæœ
+		//æ•ˆæœå®Œæˆåï¼Œæ˜¾ç¤ºçœŸæ­£å¦å…‹
 		if(tank.index!=7) return;
-		
-		tank.setTankPosition();	//ÉèÖÃÌ¹¿Ë·½ÏòµÄÍ¼Æ¬±³¾°
+		clearInterval(tank.tankTimer);
+		tank.setDir(BaseObj.dir);	//è®¾ç½®å¦å…‹æ–¹å‘çš„å›¾ç‰‡èƒŒæ™¯
 		tank.tankDiv.className=TANK;
 		TankObj[tank.tankDiv.id]={ oTank:tank, tankID:tank.tankDiv.id};	
 		
-		//Ò»Ãëºó·¢Éä×Óµ¯
-		tank.shootTimer=setTimeout(function(){
-			if(tank) tank.shoot(MYTANK);
-		},1000);
+		//å¦‚æœæ˜¯æ•Œæœºï¼Œåˆ™åŠ å®šæ—¶ä»»åŠ¡
+		if(BaseObj.category===ENEMY){
+			//ä¸€ç§’åå‘å°„å­å¼¹
+			tank.shootTimer=setTimeout(function(){
+				if(tank) {tank.shoot(ENEMY);}
+				
+			},1000);
+				
+			tank.tankMoveTimer=setInterval(function(){ 
+				if(!tank) { clearInterval(tank.tankMoveTimer); return;}
+				tank.move();
+			},30);//å®šæ—¶ç§»åŠ¨
 			
-		clearInterval(tank.tankTimer);
-		tank.tankMoveTimer=setInterval(function(){ 
-			if(!tank) { clearInterval(tank.tankMoveTimer); return;}
-			tank.move();
-		},30);//¶¨Ê±ÒÆ¶¯
+			if(oThis.nowCount<=oThis.count){
+				oThis.createTank(BaseObj);
+			}
+		}
 		
 	},200)
 }
