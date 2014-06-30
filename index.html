@@ -63,7 +63,6 @@ window.onload=function(){
 		}
 		window.open(soUrl);	
 		oUl.style.display='none';
-		oUl.innerHTML='';
 	}
 	
 	var oldValue='';
@@ -130,7 +129,6 @@ window.onload=function(){
 		};
 		oLi.onclick=function(ev){
 			var oEvent=ev||event;
-			oKey.value=this.innerHTML;
 			searchFn(this.innerHTML);
 			//取消冒泡，否则会触发document的点击事件
 			oEvent.cancelBubble=true;
