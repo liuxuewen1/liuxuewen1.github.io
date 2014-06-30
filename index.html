@@ -12,6 +12,7 @@
 #search div a.active{color:#FF3333; text-decoration:underline; font-size:16px; font-weight:bold;}
 #search #txtKey{ width:280px; height:24px; line-height:24px; padding:4px; border:1px solid #999; vertical-align:middle;}
 #search #btnSearch{ width:60px; height:34px; border:1px solid #666; border-left:0; background:#f5f5f5;vertical-align:middle;}
+#search #btnSearch{ cursor:pointer;}
 #search ul{ list-style:none; width:288px; border:1px solid #000;border-top:0; display:none;}
 #search ul li{ height:24px; line-height:24px; color:#000; padding:4px;}
 #search ul li.in{ background:#DCDCDC; cursor:pointer;}
@@ -113,6 +114,11 @@ window.onload=function(){
 		oldValue=oKey.value;
 			
 	}
+	oKey.onclick=function(ev){
+		var oEvent=ev||event;
+		aLi.length>0 && (oUl.style.display='block');
+		oEvent.cancelBubble=true;
+	}
 	
 	//创建li
 	function createLi(value,i){
@@ -180,7 +186,6 @@ window.onload=function(){
 	
 	document.onclick=function(){
 		oUl.style.display='none';
-		oUl.innerHTML='';
 	}
 }
 </script>
