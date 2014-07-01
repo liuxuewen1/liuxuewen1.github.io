@@ -15,13 +15,33 @@ function jsonp(obj){
 	//为接口中的函数名参数赋值
 	obj.cbName && (obj.data[obj.cbName]=obj.jsonpCallback);
 	//将函数封装到全局中
-	window[obj.jsonpCallback]=function(json){
+	if(obj.jsonpCallback.indexOf('.')!=-1){
+		//在Google、Sogou中 是类似于这种定死的函数名 window.sogou.sug 需要特殊处理
+		  var fnName = obj.jsonpCallback.split('.');
+		  var globalFn = 'window';
+		  for (var k = 0; k < fnName.length; k++) {
+			if (fnName[k] == 'window') continue;
+			if (k == fnName.length - 1) {
+			  globalFn += '["' + fnName[k] + '"]=function(json){ __callback(json); };';
+			} else {
+			  globalFn += '["' + fnName[k] + '"]';
+		      new Function(globalFn + '={};') ();			  
+			}
+		  }
+		  new Function(globalFn)();
+	}else{
+		window[obj.jsonpCallback]=function(json){
+			__callback(json);
+		};
+	}
+	window.__callback=function(json){
 		clearTimeout(timer);
 		//成功，则回调函数
 		obj.succFn && obj.succFn(json);
 		//删除script
 		oHead.removeChild(oS);
 	};
+	
 	//将传过来的json格式参数解析成 a=1&b=2形式
 	var arr=[];
 	for(var key in obj.data){
@@ -35,4 +55,19 @@ function jsonp(obj){
 		obj.timeoutFn && obj.timeoutFn();
 		window[obj.jsonpCallback]=null;
 	},obj.timeout*1000);
+}
+
+function setWindowFn(fn) {
+  var fnName = fn.split('.');
+  var globalFn = 'window';
+  for (var k = 0; k < fnName.length; k++) {
+    if (fnName[k] == 'window') continue;
+    if (k == fnName.length - 1) {
+      globalFn += '["' + fnName[k] + '"]=function(json){ _callback(json); };';
+    } else {
+      window[fnName[k]] = { };
+      globalFn += '["' + fnName[k] + '"]';
+    }
+  }
+  var gF = new Function(globalFn)();
 }
