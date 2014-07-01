@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Google、百度、360搜索大全</title>
+<title>搜索王-Google、百度、360、搜狗</title>
 <style>
 *{margin:0; padding:0; font-size:14px; font-family:arial;}
 #search{ margin:40px auto; width:460px;}
@@ -29,9 +29,10 @@ window.onload=function(){
 	var company='google';	//默认 Google
 	
 	var obj={
-				google:{url:'http://74.125.110.2/complete/search',key:'q',cbName:'callback',soUrl:'http://74.125.110.2/webhp#newwindow=1',soKey:'q'},
+				google:{url:'http://74.125.110.2/complete/search',key:'q',cbName:'',soUrl:'http://74.125.110.2/webhp#newwindow=1',soKey:'q'},
 				baidu:{url:'http://suggestion.baidu.com/su',key:'wd',cbName:'cb',soUrl:'http://www.baidu.com/s',soKey:'wd'},
-			 	so360:{url:'http://sug.so.360.cn/suggest',key:'word',cbName:'callback',soUrl:'http://www.so.com/s',soKey:'q'}
+			 	so360:{url:'http://sug.so.360.cn/suggest',key:'word',cbName:'callback',soUrl:'http://www.so.com/s',soKey:'q'},
+				sogou:{url:'http://w.sugg.sogou.com/sugg/ajaj_json.jsp',key:'key',cbName:'',soUrl:'http://www.sogou.com/web',soKey:'query'}
 	};
 	for(var i=0,len=aSo.length;i<len;i++){
 		//切换搜索类型
@@ -47,8 +48,8 @@ window.onload=function(){
 		company=aSo[i].getAttribute('company');
 		oUl.style.display='none';
 		oUl.innerHTML='';
-		oKey.value='';
 		oKey.focus();
+		searchToJsonp();
 	}
 	
 	oBtn.onclick=function(){
@@ -76,6 +77,23 @@ window.onload=function(){
 			searchFn(oKey.value);
 		}
 		
+		searchToJsonp();
+		
+		iNow=-1;
+		oldValue=oKey.value;			
+	}
+	oKey.onclick=function(ev){
+		var oEvent=ev||event;
+		aLi.length>0 && (oUl.style.display='block');
+		oEvent.cancelBubble=true;
+	}
+	function searchToJsonp(){
+		var reg=/^\s+|\s+$/g;
+		//首尾去空格	
+		if(!oKey.value.replace(reg,'')){
+			return;
+		}
+		
 		var json={
 			url:obj[company].url,	//360接口: http://sug.so.360.cn/suggest
 			data:{encodein:'utf-8',client:'hp',hl:'zh-CN'},	//encodein：给so360准备的，否则在搜索中文情况下不能出数据；chient、hl：是给google用的
@@ -86,7 +104,7 @@ window.onload=function(){
 				
 				json.s.length<=0 && (oUl.style.display='none');
 				for(var i=0,len=json.s.length;i<len;i++){
-					createLi(json.s[i],i);
+					createLi(decodeURIComponent(json.s[i]),i);
 				}
 			},
 			timeout:3,
@@ -95,28 +113,32 @@ window.onload=function(){
 			}
 		};
 		json.data[obj[company].key]=encodeURIComponent(oKey.value);
-		//google搜索拿到的结果是数组，所以单独处理
+		//google、搜狗搜索拿到的结果是数组，所以单独处理
 		if(company=='google'){
+			json.jsonpCallback='window.google.ac.h';
 			json.succFn=function(arr){
 				oUl.style.display='block';
 				oUl.innerHTML='';
 				
 				arr[1].length<=0 && (oUl.style.display='none');
 				for(var i=0,len=arr[1].length;i<len;i++){
-					createLi(arr[1][i][0],i);
+					createLi(decodeURIComponent(arr[1][i][0]),i);
+				}
+			}
+		}else if(company=='sogou'){
+			json.jsonpCallback='window.sogou.sug';
+			json.succFn=function(arr){
+				oUl.style.display='block';
+				oUl.innerHTML='';
+				
+				arr[1].length<=0 && (oUl.style.display='none');
+				for(var i=0,len=arr[1].length;i<len;i++){
+					createLi(decodeURIComponent(arr[1][i]),i);
 				}
 			}
 		}
 		jsonp(json);	//调用jsonp获取li数据
 		
-		iNow=-1;
-		oldValue=oKey.value;
-			
-	}
-	oKey.onclick=function(ev){
-		var oEvent=ev||event;
-		aLi.length>0 && (oUl.style.display='block');
-		oEvent.cancelBubble=true;
 	}
 	
 	//创建li
@@ -195,6 +217,7 @@ window.onload=function(){
 		<a href="javascript:;" company='google' class="active">Google</a>
 		<a href="javascript:;" company='baidu'>百度搜</a>
 		<a href="javascript:;" company='so360'>360搜</a>
+		<a href="javascript:;" company='sogou'>搜狗</a>
 		<input type="text" id="txtKey"  /><input type="button" value="搜&nbsp;索" id="btnSearch" />
 	</div>
 	<ul>
