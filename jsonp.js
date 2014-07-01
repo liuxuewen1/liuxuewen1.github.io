@@ -39,7 +39,7 @@ function jsonp(obj){
 		//成功，则回调函数
 		obj.succFn && obj.succFn(json);
 		//删除script
-		oHead.removeChild(oS);
+		if(oS.parentNode) oHead.removeChild(oS);
 	};
 	
 	//将传过来的json格式参数解析成 a=1&b=2形式
@@ -55,19 +55,4 @@ function jsonp(obj){
 		obj.timeoutFn && obj.timeoutFn();
 		window[obj.jsonpCallback]=null;
 	},obj.timeout*1000);
-}
-
-function setWindowFn(fn) {
-  var fnName = fn.split('.');
-  var globalFn = 'window';
-  for (var k = 0; k < fnName.length; k++) {
-    if (fnName[k] == 'window') continue;
-    if (k == fnName.length - 1) {
-      globalFn += '["' + fnName[k] + '"]=function(json){ _callback(json); };';
-    } else {
-      window[fnName[k]] = { };
-      globalFn += '["' + fnName[k] + '"]';
-    }
-  }
-  var gF = new Function(globalFn)();
 }

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>搜索王-Google、百度、360、搜狗</title>
+<title>搜索大全-Google、百度、360、搜狗</title>
 <style>
 *{margin:0; padding:0; font-size:14px; font-family:arial;}
 #search{ margin:40px auto; width:460px;}
@@ -94,6 +94,10 @@ window.onload=function(){
 			return;
 		}
 		
+		if(oKey.value.length>100){
+			oKey.value=oKey.value.substring(0,100);
+		}
+		
 		var json={
 			url:obj[company].url,	//360接口: http://sug.so.360.cn/suggest
 			data:{encodein:'utf-8',client:'hp',hl:'zh-CN'},	//encodein：给so360准备的，否则在搜索中文情况下不能出数据；chient、hl：是给google用的
@@ -109,7 +113,7 @@ window.onload=function(){
 			},
 			timeout:3,
 			timeoutFn:function(){
-				alert('网络超时');
+				//alert('网络超时');
 			}
 		};
 		json.data[obj[company].key]=encodeURIComponent(oKey.value);
