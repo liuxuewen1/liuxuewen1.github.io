@@ -91,6 +91,8 @@ window.onload=function(){
 		var reg=/^\s+|\s+$/g;
 		//首尾去空格	
 		if(!oKey.value.replace(reg,'')){
+			oUl.style.display='none';
+			oUl.innerHTML='';
 			return;
 		}
 		
