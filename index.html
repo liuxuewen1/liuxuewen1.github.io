@@ -32,7 +32,8 @@ window.onload=function(){
 				google:{url:'http://74.125.110.2/complete/search',key:'q',cbName:'',soUrl:'http://74.125.110.2/webhp#newwindow=1',soKey:'q'},
 				baidu:{url:'http://suggestion.baidu.com/su',key:'wd',cbName:'cb',soUrl:'http://www.baidu.com/s',soKey:'wd'},
 			 	so360:{url:'http://sug.so.360.cn/suggest',key:'word',cbName:'callback',soUrl:'http://www.so.com/s',soKey:'q'},
-				sogou:{url:'http://w.sugg.sogou.com/sugg/ajaj_json.jsp',key:'key',cbName:'',soUrl:'http://www.sogou.com/web',soKey:'query'}
+				sogou:{url:'http://w.sugg.sogou.com/sugg/ajaj_json.jsp',key:'key',cbName:'',soUrl:'http://www.sogou.com/web',soKey:'query'},
+				xunlei:{url:'http://xl7ac.kankan.xunlei.com/ac.php',key:'k',cbName:'',soUrl:'http://search.kankan.com/search.php',soKey:'keyword'}
 	};
 	for(var i=0,len=aSo.length;i<len;i++){
 		//切换搜索类型
@@ -102,9 +103,10 @@ window.onload=function(){
 		
 		var json={
 			url:obj[company].url,	//360接口: http://sug.so.360.cn/suggest
-			data:{encodein:'utf-8',client:'hp',hl:'zh-CN'},	//encodein：给so360准备的，否则在搜索中文情况下不能出数据；chient、hl：是给google用的
+			data:{encodein:'utf-8',client:'hp',hl:'zh-CN',from:'web',cs:'utf-8'},	//encodein：给so360准备的，否则在搜索中文情况下不能出数据；chient、hl：是给google用的; from:web xuelei
 			cbName:obj[company].cbName,						//360接口: callback
-			succFn:function(json){
+			succFn:function(args){
+				var json=args[0];
 				oUl.style.display='block';
 				oUl.innerHTML='';
 				
@@ -140,6 +142,18 @@ window.onload=function(){
 				arr[1].length<=0 && (oUl.style.display='none');
 				for(var i=0,len=arr[1].length;i<len;i++){
 					createLi(decodeURIComponent(arr[1][i]),i);
+				}
+			}
+		}else if(company=='xunlei'){
+			json.jsonpCallback='compResp';
+			json.succFn=function(args){
+				var arr=args[1];
+				oUl.style.display='block';
+				oUl.innerHTML='';
+				
+				arr.length<=0 && (oUl.style.display='none');
+				for(var i=0,len=arr.length;i<len;i++){
+					createLi(decodeURIComponent(arr[i]),i);
 				}
 			}
 		}
@@ -224,6 +238,7 @@ window.onload=function(){
 		<a href="javascript:;" company='baidu'>百度搜</a>
 		<a href="javascript:;" company='so360'>360搜</a>
 		<a href="javascript:;" company='sogou'>搜狗</a>
+		<a href="javascript:;" company='xunlei'>迅雷影视</a>
 		<input type="text" id="txtKey"  /><input type="button" value="搜&nbsp;索" id="btnSearch" />
 	</div>
 	<ul>

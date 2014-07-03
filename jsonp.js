@@ -30,14 +30,14 @@ function jsonp(obj){
 		  }
 		  new Function(globalFn)();
 	}else{
-		window[obj.jsonpCallback]=function(json){
-			__callback(json);
+		window[obj.jsonpCallback]=function(){
+			__callback(arguments);
 		};
 	}
-	window.__callback=function(json){
+	window.__callback=function(args){
 		clearTimeout(timer);
 		//成功，则回调函数
-		obj.succFn && obj.succFn(json);
+		obj.succFn && obj.succFn(args);
 		//删除script
 		if(oS.parentNode) oHead.removeChild(oS);
 	};
