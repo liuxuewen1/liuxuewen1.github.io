@@ -18,6 +18,9 @@
 #search ul li.in{ background:#DCDCDC; cursor:pointer;}
 </style>
 <script src="jsonp.js"></script>
+<script id='lxwtest'>
+["a",["A","Android","AKB48","AC\u7c73\u5170","AV\u5973\u512a","Avex trax","Australia","Animax","AC\u5c3c\u5c14\u68ee","AT-X"]]
+</script>
 <script>
 window.onload=function(){
 	var oSearch=document.getElementById('search');
@@ -33,7 +36,8 @@ window.onload=function(){
 				baidu:{url:'http://suggestion.baidu.com/su',key:'wd',cbName:'cb',soUrl:'http://www.baidu.com/s',soKey:'wd'},
 			 	so360:{url:'http://sug.so.360.cn/suggest',key:'word',cbName:'callback',soUrl:'http://www.so.com/s',soKey:'q'},
 				sogou:{url:'http://w.sugg.sogou.com/sugg/ajaj_json.jsp',key:'key',cbName:'',soUrl:'http://www.sogou.com/web',soKey:'query'},
-				xunlei:{url:'http://xl7ac.kankan.xunlei.com/ac.php',key:'k',cbName:'',soUrl:'http://search.kankan.com/search.php',soKey:'keyword'}
+				xunlei:{url:'http://xl7ac.kankan.xunlei.com/ac.php',key:'k',cbName:'',soUrl:'http://search.kankan.com/search.php',soKey:'keyword'},
+				wiki:{url:'http://zh.wikipedia.org/w/api.php',key:'search',cbName:'',soUrl:'http://zh.wikipedia.org/wiki/',soKey:''}
 	};
 	for(var i=0,len=aSo.length;i<len;i++){
 		//切换搜索类型
@@ -60,6 +64,8 @@ window.onload=function(){
 	function searchFn(value){
 		if(company=='google'){
 			var soUrl=obj[company].soUrl+'&'+obj[company].soKey+'='+encodeURIComponent(value);
+		}else if(company=='wiki'){
+			var soUrl=obj[company].soUrl+encodeURIComponent(value);
 		}else{
 			var soUrl=obj[company].soUrl+'?'+obj[company].soKey+'='+encodeURIComponent(value);
 		}
@@ -103,7 +109,7 @@ window.onload=function(){
 		
 		var json={
 			url:obj[company].url,	//360接口: http://sug.so.360.cn/suggest
-			data:{encodein:'utf-8',client:'hp',hl:'zh-CN',from:'web',cs:'utf-8'},	//encodein：给so360准备的，否则在搜索中文情况下不能出数据；chient、hl：是给google用的; from:web xuelei
+			data:{ },	//encodein：给so360准备的，否则在搜索中文情况下不能出数据；chient、hl：是给google用的; from:web xuelei
 			cbName:obj[company].cbName,						//360接口: callback
 			succFn:function(args){
 				var json=args[0];
@@ -123,6 +129,8 @@ window.onload=function(){
 		json.data[obj[company].key]=encodeURIComponent(oKey.value);
 		//google、搜狗搜索拿到的结果是数组，所以单独处理
 		if(company=='google'){
+			json.data['client']='hp';
+			json.data['hl']='zh-CN';
 			json.jsonpCallback='window.google.ac.h';
 			json.succFn=function(arr){
 				oUl.style.display='block';
@@ -145,6 +153,8 @@ window.onload=function(){
 				}
 			}
 		}else if(company=='xunlei'){
+			json.data['from']='web';
+			json.data['cs']='utf-8';
 			json.jsonpCallback='compResp';
 			json.succFn=function(args){
 				var arr=args[1];
@@ -154,6 +164,20 @@ window.onload=function(){
 				arr.length<=0 && (oUl.style.display='none');
 				for(var i=0,len=arr.length;i<len;i++){
 					createLi(decodeURIComponent(arr[i]),i);
+				}
+			}
+		}else if(company=='360'){
+			json.data['encodein']='utf-8';
+		}else if(company=='wiki'){
+			json.jsonpCallback='wiki';
+			json.data['action']='opensearch';
+			json.succFn=function(arr){
+				oUl.style.display='block';
+				oUl.innerHTML='';
+				console.log(arr);
+				arr[1].length<=0 && (oUl.style.display='none');
+				for(var i=0,len=arr[1].length;i<len;i++){
+					createLi(decodeURIComponent(arr[1][i]),i);
 				}
 			}
 		}
@@ -239,6 +263,7 @@ window.onload=function(){
 		<a href="javascript:;" company='so360'>360搜</a>
 		<a href="javascript:;" company='sogou'>搜狗</a>
 		<a href="javascript:;" company='xunlei'>迅雷影视</a>
+		<a href="javascript:;" company='wiki'>维基百科</a>
 		<input type="text" id="txtKey"  /><input type="button" value="搜&nbsp;索" id="btnSearch" />
 	</div>
 	<ul>
