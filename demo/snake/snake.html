@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 	*{ margin:0; padding:0;}
 	.sClass{ width:18px; height:18px; position:absolute; top:0; left:0; background:green; border:1px solid blue;}
@@ -12,7 +12,7 @@
 	
 	.fClass{ width:18px; height:18px; position:absolute; top:0; left:0; background:yellow; border:1px solid blue;}
 </style>
-<title>Ì°³ÔÉß-ByÁõÑ§ÎÄ</title>
+<title>è´ªåƒè›‡-Byåˆ˜å­¦æ–‡</title>
 <script>
 
 window.onload = function () {
@@ -28,7 +28,7 @@ window.onload = function () {
 		speed : oSpeed.value,
 		fClass : "fClass",
 		sClass : "sClass",
-		afterEatFn : function (score){ oScore.value = score + "·Ö";},
+		afterEatFn : function (score){ oScore.value = score + "åˆ†";},
 		afterHitFn : function (score){ hit(score); }
 	});
 	sk.start();
@@ -37,11 +37,11 @@ window.onload = function () {
 	oBtnPause.onclick = function () {
 		if(isPause){	
 			sk.start();
-			this.value='ÔİÍ£';		
+			this.value='æš‚åœ';		
 			isPause=false;
 		}else{
 			sk.stop();
-			this.value='¼ÌĞø';	
+			this.value='ç»§ç»­';	
 			isPause=true;			
 		}
 	};
@@ -49,13 +49,13 @@ window.onload = function () {
 	 function hit(score){
 	 		var msg ="";
 			if (score <= 500) {
-				msg = "ß×...²Å" + score + "·Ö°¡£¡¼ÓÓÍ°É£¬É§Äê...¹ş¹ş";
+				msg = "å’¦...æ‰" + score + "åˆ†å•Šï¼åŠ æ²¹å§ï¼Œéªšå¹´...å“ˆå“ˆ";
 			}
 			else if (score >= 1000) {
-				msg = "ÍÛÈû..." + score + "·ÖÅ¶£¡Õæ¸øÁ¦°¡£¡±ØĞëÔŞÒ»¸ö(^__^) ";
+				msg = "å“‡å¡..." + score + "åˆ†å“¦ï¼çœŸç»™åŠ›å•Šï¼å¿…é¡»èµä¸€ä¸ª(^__^) ";
 			}
 			else {
-				msg = "°¡à¸£¬" + score + "·Ö...Ò»°ã°ã¿©...¹»µÍµ÷...°¡¹ş¹ş¹ş";
+				msg = "å•Šå–”ï¼Œ" + score + "åˆ†...ä¸€èˆ¬èˆ¬å’¯...å¤Ÿä½è°ƒ...å•Šå“ˆå“ˆå“ˆ";
 			}
 			alert(msg);
 			oScore.value ="";
@@ -66,13 +66,13 @@ window.onload = function () {
 </head>
 
 <body>
-<p style="margin:30px auto auto 200px;">Íæ¼ÒÌáÊ¾£º°´·½Ïò¼üºó¿ªÊ¼£¬¼üÅÌ¡ü&nbsp;¡ı&nbsp;¡û&nbsp;¡ú&nbsp;¿ØÖÆ·½Ïò</p>
+<p style="margin:30px auto auto 200px;">ç©å®¶æç¤ºï¼šæŒ‰æ–¹å‘é”®åå¼€å§‹ï¼Œé”®ç›˜â†‘&nbsp;â†“&nbsp;â†&nbsp;â†’&nbsp;æ§åˆ¶æ–¹å‘</p>
 <div style="margin:10px auto auto 200px;">
-	<input id="btnPause" type="button" value="ÔİÍ£" class="btn"/>
+	<input id="btnPause" type="button" value="æš‚åœ" class="btn"/>
 	<select id="selSpeed">
-		<option value="100">¸ß¼¶</option>
-		<option value="200" selected="selected">ÖĞ¼¶</option>
-		<option value="300">³õ¼¶</option>
+		<option value="100">é«˜çº§</option>
+		<option value="200" selected="selected">ä¸­çº§</option>
+		<option value="300">åˆçº§</option>
 	</select>
 	<input type="text" id="txtScore" readonly="readonly"/>
 

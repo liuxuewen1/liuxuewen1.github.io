@@ -1,6 +1,6 @@
 // JavaScript Document
 
-////////·É»úÀà//////////////////
+////////é£æœºç±»//////////////////
 function Flyer(){
 	this.flyer = document.createElement("div");
 	this.flyer.id = "flyer";
@@ -44,7 +44,7 @@ Flyer.prototype.shoot = function(){
 }
 
  
-////////×Óµ¯Àà//////////////////
+////////å­å¼¹ç±»//////////////////
 function Bullet(){
 	this.bullet = document.createElement("div");
 	this.bullet.className = "bulletClass";
@@ -100,7 +100,7 @@ Bullet.prototype.dieEnemy = function(oEnomy){
 	setTimeout(function(){ oBox.removeChild(_this.bullet); },30);
 }
 
-////////µĞ»úÀà//////////////////
+////////æ•Œæœºç±»//////////////////
 function Enemy(){
 	this.enemy = document.createElement("div");
 	this.enemy.className = "enemyClass";
@@ -121,7 +121,7 @@ Enemy.prototype.isDestory = function(){
 	//console.log(eLeft+","+fLeft+","+(eTop+ eHeight)+","+fTop+","+eLeft+","+(fLeft + fWidth)+","+eTop+","+(fTop + fHeight));
 	if(!(eLeft<= fLeft || eTop+ eHeight <= fTop || eLeft>= fLeft + fWidth || eTop>= fTop + fHeight)){
 		//return false;
-		alert("Äã±»×²ÁË£¡");
+		alert("ä½ è¢«æ’äº†ï¼");
 	}
 	//return true;
 	flyer = null;
