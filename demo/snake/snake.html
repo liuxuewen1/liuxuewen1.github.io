@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<style type="text/css">
+	*{ margin:0; padding:0;}
+	.sClass{ width:18px; height:18px; position:absolute; top:0; left:0; background:green; border:1px solid blue;}
+	#box{ width:400px; height:400px; position:relative;}
+	.btn{width:58px; height:32px; border:1px solid #999; cursor:pointer; font-size:14px; font-weight:bold;}
+	#selSpeed{ width:65px; height:28px; border:2px solid #ccc; font-size:16px; vertical-align:middle; text-align:center}
+	#txtScore{ width:196px; height:30px; border:1px solid #666; font-size:20px; color:red; font-weight:bold; padding:0 4px; line-height:30px;}
+	
+	.fClass{ width:18px; height:18px; position:absolute; top:0; left:0; background:yellow; border:1px solid blue;}
+</style>
+<title>贪吃蛇-By刘学文</title>
+<script>
+
+window.onload = function () {
+	var oScore = document.getElementById("txtScore");
+	var oSpeed = document.getElementById("selSpeed");
+	var oBtnPause = document.getElementById("btnPause");
+
+	var oBox=document.getElementById("box");
+	var sk = new Snake({
+		width : 20,
+		height : 20,
+		area : oBox,
+		speed : oSpeed.value,
+		fClass : "fClass",
+		sClass : "sClass",
+		afterEatFn : function (score){ oScore.value = score + "分";},
+		afterHitFn : function (score){ hit(score); }
+	});
+	sk.start();
+	
+	var isPause=false;
+	oBtnPause.onclick = function () {
+		if(isPause){	
+			sk.start();
+			this.value='暂停';		
+			isPause=false;
+		}else{
+			sk.stop();
+			this.value='继续';	
+			isPause=true;			
+		}
+	};
+	
+	 function hit(score){
+	 		var msg ="";
+			if (score <= 500) {
+				msg = "咦...才" + score + "分啊！加油吧，骚年...哈哈";
+			}
+			else if (score >= 1000) {
+				msg = "哇塞..." + score + "分哦！真给力啊！必须赞一个(^__^) ";
+			}
+			else {
+				msg = "啊喔，" + score + "分...一般般咯...够低调...啊哈哈哈";
+			}
+			alert(msg);
+			oScore.value ="";
+		}
+		
+}
+</script>
+</head>
+
+<body>
+<p style="margin:30px auto auto 200px;">玩家提示：按方向键后开始，键盘↑&nbsp;↓&nbsp;←&nbsp;→&nbsp;控制方向</p>
+<div style="margin:10px auto auto 200px;">
+	<input id="btnPause" type="button" value="暂停" class="btn"/>
+	<select id="selSpeed">
+		<option value="100">高级</option>
+		<option value="200" selected="selected">中级</option>
+		<option value="300">初级</option>
+	</select>
+	<input type="text" id="txtScore" readonly="readonly"/>
+
+</div>
+<div style="width:400px; height:400px; border:2px solid #999; margin:20px auto auto 200px;">
+	<div id="box">
+	
+	</div>	
+</div>	
+</body>
+</html>
+
+<script type="text/javascript" src="snakeJS.js"></script>

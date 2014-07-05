@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style>
+	#box { width:300px; height:400px; position:relative; margin:50px auto; background:black;}
+	.flyerClass { width:20px; height:20px; position:absolute; padding:1px; background:url(flyer.png) no-repeat scroll 1px 1px;}
+	.bulletClass { width:20px; height:15px; position:absolute; background:url(bullet.png) no-repeat scroll center center;}
+	.enemyClass { width:20px; height:20px; padding:1px; background:url(enemy.png) no-repeat scroll 1px 1px; position:absolute;}
+	#startBtn { 
+	border-color: #000000 #000000 #000000 #008000;
+    border-style: solid;
+    border-width: 20px;
+    cursor: pointer;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+	display:block;
+	left:150px;
+	top:180px;
+    width: 0;}
+</style> 
+<script src="shoot.js"></script> 
+ 
+<script>
+	var oBox = null;
+	var enemyTimer = null;
+	window.onload = function(){
+		oBox = document.getElementById("box");
+		var oBtn = document.getElementById("startBtn");
+		
+		oBtn.onclick = function(){
+			oBtn.style.display = "none";
+			var flyer = new Flyer();
+			
+			enemyTimer = setInterval(function(){
+							var enemy = new Enemy();	
+							enemy.attack();
+						 }, 1000);
+			
+			document.onkeydown = function(ev){
+				var oEvent = ev || event;
+				if(oEvent.keyCode == 37 || oEvent.keyCode == 38|| oEvent.keyCode == 39|| oEvent.keyCode == 40){
+					flyer.move(oEvent.keyCode);
+				}
+				if(oEvent.keyCode == 32){
+					flyer.shoot();
+				}
+			}
+			
+		}
+	}
+</script>
+</head>
+
+<body> 
+<div id="box">
+	<div id="startBtn" onclick="play('the_show.mp3')"></div>
+</div>
+</body>
+</html>

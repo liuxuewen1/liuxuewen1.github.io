@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的作品</title>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet"  />
+<style>
+body{ background-color:#ccc;}
+p{ text-indent:2em;}
+#content {
+  background-color: #FFF;
+  border-radius: 5px;
+}
+#content .main {
+  padding: 20px;
+}
+#content .sidebar {
+  padding: 10px;
+}
+#content p {
+  line-height: 30px;
+}
+hr{border:1px dotted #000}
+</style>
+<script>
+
+//2014-6-20 原生态Ajax写法
+function ajax(obj){
+	//参数默认值设置
+	obj=obj || {};
+	if(!obj.url){
+		alert('URL必填，请求失败');
+		return;
+	}
+	obj.type=obj.type || 'GET';
+	obj.data=obj.data || {};
+	obj.timeout=obj.timeout || 3;
+
+	//1、建立oAjax对象
+	//XMLHttpRequest兼容IE7、IE7+、FF、Chrome等各种浏览器
+	if(window.XMLHttpRequest){
+		var oAjax=new XMLHttpRequest();
+	}else{
+		//兼容IE5、IE6
+		var oAjax=new ActiveXObject('Microsoft.XMLHTTP');
+	}
+	
+	//2、打开连接、发送请求
+	switch(obj.type.toLowerCase()){
+		case 'get':
+			oAjax.open('GET',obj.url+'?'+jsonToURL(obj.data),true);
+			oAjax.send();
+			break;
+		case 'post':
+			oAjax.open('POST',obj.url,true);
+			//post时需要设置请求头
+			oAjax.setRequestHeader('content-type','application/x-www-form-urlencoded');
+			oAjax.send(jsonToURL(obj.data));
+			break;
+	}
+	
+	//如果有正在加载函数 执行
+	obj.loadingFn && obj.loadingFn();
+	
+	//3、监听事件：是否成功返回回来数据
+	oAjax.onreadystatechange=function(){
+		//readyState：0-准备状态；1-ajax准备完毕；2-接收完毕；3-正在解析；4-数据接受完成
+		if(oAjax.readyState!=4) return;
+		
+		//请求完成，如果有完成函数 执行
+		obj.completeFn && obj.completeFn();
+		
+		//status：2开头表示成功；304表示文件未修改-成功
+		if(oAjax.status>=200 && oAjax.status<300 || oAjax.status==304){
+			//成功，清除超时定时器
+			clearTimeout(timer);
+			
+			//responseText：请求到的数据（常用）
+			//responseXML：请求到的xml数据（很少用），然后在succFn中跟使用DOM一样解析XML使用，稍麻烦
+			obj.succFn && obj.succFn(oAjax.responseText);
+		}else{
+			//失败，清除超时定时器
+			clearTimeout(timer);
+			
+			obj.failFn && obj.failFn(oAjax.status);
+		}
+		
+	}
+	
+	//设置超时时间
+	var timer=setTimeout(function(){
+		oAjax.onreadystatechange=null;
+		alert('请求超时');
+	},obj.timeout*1000);
+}
+
+function jsonToURL(json){
+	json=json || {};
+	json.t=Math.random();
+	var arr=[];
+	for(var key in json){
+		arr.push(key+'='+json[key]);
+	}
+	return arr.join('&');
+}
+</script>
+<script>
+function $(id){
+	return document.getElementById(id);
+}
+window.onload=function(){
+	var oContent=$('content');
+	var oItem=$('item');
+	
+	//增加一个隐藏侧边栏
+	/*var oCopyItem=document.createElement('div');
+	oCopyItem.className=oItem.className;
+	oCopyItem.id='copyItem';
+	oCopyItem.innerHTML=oItem.innerHTML;
+	oCopyItem.style.display='none';*/
+	//oContent.appendChild(oCopyItem);
+	
+	var pos=getPos(oItem);
+	//oItem.innerHTML+=oItem.innerHTML;
+	//var oItem1=oItem.children[0];
+	//var oItem2=oItem.children[1];	
+	/*oItem2.style.display='none';
+
+	window.onscroll=function(){
+		var scrollTop=document.body.scrollTop || document.documentElement.scrollTop;
+		if(scrollTop>pos.top){
+			oItem2.style.display='block';
+			oItem1.style.position='fixed';
+			oItem1.style.left=pos.left+'px';
+			oItem1.style.top=0;
+		}else{
+			oItem1.style.position='';
+			oItem2.style.display='none';
+		}
+	}*/
+	/*$('ceil').onclick=function(){
+		ajax({
+			url:'demo/event.html',
+			succFn:function(data){
+				alert(data);
+			},
+			failFn:function(status){
+				alert(1);
+			}
+		});
+	};*/
+	
+};
+function aaa(){
+	
+}
+function getPos(obj){
+	var l=0,t=0;
+	while(obj){
+		l+=obj.offsetLeft;
+		t+=obj.offsetTop;
+		obj=obj.offsetParent;
+	}
+	return {left:l,top:t};
+}
+</script>
+</head>
+
+<body>
+<div class="container">
+	<h1>TWITTER BOOTSTRAP TUTORIAL</h1>	
+	<div class='navbar navbar-inverse'>
+	  <div class='nav-collapse navbar-inner' style="height: auto;">
+		<ul class="nav">
+		  <li class="active"><a href="#">Home</a></li>
+		  <li><a href="#">Page One</a></li>
+		  <li><a href="#">Page Two</a></li>
+		</ul>
+	  </div>
+	</div>
+	<div class="row-fluid" id="content">
+      <div class="span3 sidebar" id="item">
+	  	<div>
+			<h3>项目实例</h3>
+			<ul class="nav nav-tabs nav-stacked">
+			  <li><a href="#demo1">贪吃蛇</a></li>
+			  <li><a href="#demo2">探究domReady事件</a></li>
+			  <li><a href="#demo3">事件绑定和解绑详解</a></li>
+			  <li><a href="#demo4">模拟淘宝吸顶条</a></li>
+			</ul>
+		</div>
+      </div>
+      <div class="span8 main">
+	  	<a name="demo1"></a>
+        <h4>贪吃蛇</h4>
+        <p>原理1：贪吃蛇对象，具有的基本属性和方法，开始、暂停、改变方向、移动、是否碰撞死亡、吃食物等；食物对象，有一个生成食物方法</p>
+		<p>原理2：根据低中高级来设置定时器的时间，开始和暂停是控制启动、清除定时器来实现；根据方向来掌控移动的方向，前面的蛇身div的left、top赋值给后面的蛇身，第一个蛇头根据方向移动div宽度的距离；判断是否撞墙死亡，判断下一步的距离是否跟同方向墙体left、top有碰撞；判断是否有食物也是根食物div检测碰撞；</p>
+		<p>实例连接：<a href="demo/snake/snake.html" target="demo">贪吃蛇</a>&nbsp;&nbsp;
+		<hr/>
+		
+	  	<a name="demo2"></a>
+        <h4>domReady加载顺序</h4>
+		<p>探究关于window.onload、dom加载完成、img加载完成的先后顺序</p>
+        <p>原理1：dom加载完成：Firefox、Chrome、IE9+中支持dom事件DOMContentLoaded来判断；IE8-只能用&lt;script&gt;标签并且需要将该脚本设置成defer（延迟执行：即在dom加载完全后执行里面的脚本），怎么判断script加载完成：通过onreadystatechange事件判断，当oS.readyState=='complete'时（有时可能捕获不到，再加oS.readyState=='loaded'）表示script执行完成，也就是dom加载完成。</p>
+		<p>原理2：所有的DOM事件需要通过事件绑定才能生效，在Firefox、Chrome、IE9+高级浏览器支持 addEventListener ，用这个方法绑定DOMContentLoaded事件</p>
+		<p>原理3：img加载完成也有一个onload事件可以捕获</p>
+		<p>测试顺序结果：dom加载完成、img加载完成、window.onload捕获</p>
+		<p>可以将dom加载完成封装在domReady函数中，所以在不影响dom加载的情况下，将代码写在domReady(fn)中是最快的</p>
+		<p>实例连接：<a href="demo/domReady.html" target="demo">探究domReady加载顺序</a></p>
+		<hr/>
+		
+	  	<a name="demo3"></a>
+        <h4>事件绑定、解绑详解</h4>
+		<p>探究关于window.onload、dom加载完成、img加载完成的先后顺序</p>
+        <p>原理1：事件绑定：Firefox、Chrome、IE9+支持 obj.addEventListener(sEv,fn,是否捕获)，是否捕获：true，表示捕获（即从父级捕获相同的事件到自己的事件），false，表示不捕获（即事件冒泡，从自己冒泡到父级元素）；IE8及以下版本：支持obj.attachEvent('on'+sEv,fn)。这两个方法attachEvent事件名前面带on，如'onscroll'、'onload'，而addEventListener事件名不带on，只能写成'scroll'、'load'</p>
+		<p>原理2：注意事件冒泡的顺序和事件捕获的顺序截然相反，而且由于只有addEventListener支持捕获，如果想写成兼容的方法，捕获这个参数没有意义，所以一般为false</p>
+		<p>原理3：事件解绑：跟事件绑定类似，Firefox、Chrome、IE9+支持 </p>
+		<p>注：obj.removeEventListener(sEv,fn,是否捕获)；IE8及以下版本支持：obj.detachEvent('on'+sEv,fn)。需要注意的是，解绑的函数必须跟绑定函数是同一个，否则不生效</p>
+		<p>实例连接：<a href="demo/event.html" target="demo">事件绑定、解绑详解</a></p>
+		<hr/>
+		
+	  	<a name="demo4"></a>
+        <h4>模拟淘宝吸顶条</h4>
+        <p>原理1：设置滚动事件onscroll，判断如果滚动距离大于吸顶条的绝对top时，将吸顶条的position设为fixed（如想兼容IE6，需要运动来做但有点抖动，所以淘宝、腾讯都不考虑IE6不兼容fixed的问题，我这也不做处理）</p>
+		<p>原理2：获取吸顶条的绝对top，需要通过循环取得吸顶条所有父级最后到body的top，才是他的绝对定位距离，offsetParent 元素定位上的父级</p>
+		<p>原理3：吸顶条需要做2个，另一个隐藏，只有在吸顶条设置为fixed时才出来，否则吸顶条会飘起来，导致后面的元素向上顶</p>
+		<p>实例连接：<a href="demo/ceiling.html" target="demo">模拟淘宝吸顶条</a>&nbsp;&nbsp;
+		<a href="javascript:;" id='ceil'>源码</a></p>
+		<hr/>
+      </div>
+    </div>
+</div>
+</body>
+</html>
