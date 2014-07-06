@@ -29,20 +29,6 @@ function jsonp(obj){
 			}
 		  }
 		  new Function(globalFn)();
-	}else if(obj.jsonpCallback=='wiki'){
-		if(document.addEventListener){
-			oS.onload=function(){
-				//__callback(eval('('+oS.innerHTML+')'));
-				alert(oS.src);
-			};
-		}else{
-			oS.onreadystatechange=function(){alert(oS.readyState);
-				if(oS.readyState=='complete' || oS.readyState=='loaded'){
-					//__callback(eval('('+oS.innerHTML+')'));
-					alert(oS.innerHTML);
-				}
-			};
-		}	 
 	}else{
 		window[obj.jsonpCallback]=function(){
 			__callback(arguments);
@@ -69,7 +55,5 @@ function jsonp(obj){
 		obj.timeoutFn && obj.timeoutFn();
 		window[obj.jsonpCallback]=null;
 	},obj.timeout*1000);
-	
-	
 	
 }
