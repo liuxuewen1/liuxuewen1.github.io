@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>我的作品</title>
-<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet"  />
+<link href="bootstrap.min.css" rel="stylesheet"  />
 <style>
 body{ background-color:#ccc;}
 p{ text-indent:2em;}
@@ -113,18 +113,23 @@ window.onload=function(){
 	var oItem=$('item');
 	
 	//增加一个隐藏侧边栏
-	/*var oCopyItem=document.createElement('div');
+	var oCopyItem=document.createElement('div');
 	oCopyItem.className=oItem.className;
 	oCopyItem.id='copyItem';
 	oCopyItem.innerHTML=oItem.innerHTML;
-	oCopyItem.style.display='none';*/
-	//oContent.appendChild(oCopyItem);
+	oCopyItem.style.display='none';
+	oContent.appendChild(oCopyItem);
 	
 	var pos=getPos(oItem);
-	//oItem.innerHTML+=oItem.innerHTML;
-	//var oItem1=oItem.children[0];
-	//var oItem2=oItem.children[1];	
-	/*oItem2.style.display='none';
+	oItem.innerHTML+=oItem.innerHTML;
+	var oItem1=oItem.children[0];
+	var oItem2=oItem.children[1];	
+	oItem1.style.width='240px';
+	oItem2.style.display='none';
+	
+	window.onresize=function(){
+		pos=getPos(oItem);
+	};
 
 	window.onscroll=function(){
 		var scrollTop=document.body.scrollTop || document.documentElement.scrollTop;
@@ -137,23 +142,44 @@ window.onload=function(){
 			oItem1.style.position='';
 			oItem2.style.display='none';
 		}
-	}*/
-	/*$('ceil').onclick=function(){
+	}
+	
+	var oItem1Ul=oItem.children[0].children[1];
+	var oMain=$('main');
+	document.onclick=function(){
 		ajax({
-			url:'demo/event.html',
+			url:'desc.txt',
 			succFn:function(data){
-				alert(data);
+				var reg=/^(\r|\n)|(\r|\n)$/g;
+				var arr=data.split('|');
+				for(var i=0;i<arr.length;i++){
+					var arr_Items=arr[i].replace(reg,'').split('\n'); 
+					//alert(arr_Items);
+					var iFirst=0;
+					for(var k=0;k<arr_Items.length;k++){
+						if(arr_Items[k].replace(reg,'')!=''){
+							iFirst=k;
+							break;
+						}
+					}
+					oItem1Ul.appendChild(createDemo(i,arr_Items[iFirst])); 
+				}
+				
 			},
 			failFn:function(status){
 				alert(1);
 			}
 		});
-	};*/
+	};
+	
+	function createDemo(n,html){
+		var oLi=document.createElement('li');
+		oLi.innerHTML='<a href="#demo'+n+'">'+html+'</a></li>';
+		return oLi;
+	}
 	
 };
-function aaa(){
-	
-}
+
 function getPos(obj){
 	var l=0,t=0;
 	while(obj){
@@ -178,19 +204,19 @@ function getPos(obj){
 		</ul>
 	  </div>
 	</div>
-	<div class="row-fluid" id="content">
+	<div class="row" id="content">
       <div class="span3 sidebar" id="item">
-	  	<div>
+	  	<div style="background:#fff;">
 			<h3>项目实例</h3>
 			<ul class="nav nav-tabs nav-stacked">
-			  <li><a href="#demo1">贪吃蛇</a></li>
+			  <!--<li><a href="#demo1">贪吃蛇</a></li>
 			  <li><a href="#demo2">探究domReady事件</a></li>
 			  <li><a href="#demo3">事件绑定和解绑详解</a></li>
-			  <li><a href="#demo4">模拟淘宝吸顶条</a></li>
+			  <li><a href="#demo4">模拟淘宝吸顶条</a></li>-->
 			</ul>
 		</div>
       </div>
-      <div class="span8 main">
+      <div class="span8 main" id="main">
 	  	<a name="demo1"></a>
         <h4>贪吃蛇</h4>
         <p>原理1：贪吃蛇对象，具有的基本属性和方法，开始、暂停、改变方向、移动、是否碰撞死亡、吃食物等；食物对象，有一个生成食物方法</p>
