@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我的作品</title>
+<title>Demo</title>
 <link href="bootstrap.min.css" rel="stylesheet"  />
 <style>
 body{ background-color:#ccc;}
@@ -146,31 +146,47 @@ window.onload=function(){
 	
 	var oItem1Ul=oItem.children[0].children[1];
 	var oMain=$('main');
-	document.onclick=function(){
+	function allDesc(){
 		ajax({
 			url:'desc.txt',
 			succFn:function(data){
 				var reg=/^(\r|\n)|(\r|\n)$/g;
+				data=data.replace(/</gm,'&lt;').replace(/>/gm,'&gt;');
 				var arr=data.split('|');
+				var html='';
 				for(var i=0;i<arr.length;i++){
-					var arr_Items=arr[i].replace(reg,'').split('\n'); 
-					//alert(arr_Items);
+					var arr_Items=arr[i].replace(reg,'').split('\n');
 					var iFirst=0;
+					//左侧边栏
 					for(var k=0;k<arr_Items.length;k++){
 						if(arr_Items[k].replace(reg,'')!=''){
 							iFirst=k;
 							break;
 						}
 					}
-					oItem1Ul.appendChild(createDemo(i,arr_Items[iFirst])); 
+					var title=arr_Items[iFirst+1];
+					oItem1Ul.appendChild(createDemo(i,title)); 
+					
+					//右侧内容
+					html+='<a name="demo'+i+'"></a>';
+					html+='<h4>'+title+'</h4>';
+					for(var p=iFirst+2;p<arr_Items.length;p++){
+						if(arr_Items[p]!=''){
+							html+='<p>'+arr_Items[p]+'</p>';
+						}
+					}
+					html+='<p>实例链接：<a target="demo" href="'+arr_Items[iFirst]+'">'+title+'</a></p>';
+					html+='<hr/>';
 				}
+				oMain.innerHTML+=html;
 				
 			},
 			failFn:function(status){
-				alert(1);
+				alert('加载数据失败：'+status);
 			}
 		});
-	};
+	}
+	allDesc();
 	
 	function createDemo(n,html){
 		var oLi=document.createElement('li');
@@ -194,13 +210,15 @@ function getPos(obj){
 
 <body>
 <div class="container">
-	<h1>TWITTER BOOTSTRAP TUTORIAL</h1>	
+	<h1>前端Demo-By刘学文</h1>	
 	<div class='navbar navbar-inverse'>
 	  <div class='nav-collapse navbar-inner' style="height: auto;">
 		<ul class="nav">
 		  <li class="active"><a href="#">Home</a></li>
-		  <li><a href="#">Page One</a></li>
-		  <li><a href="#">Page Two</a></li>
+		  <li><a href="#demo1">作品</a></li>
+		  <li><a href="#aboutme">关于我</a></li>
+		  <li><a href="#linkme">联系我</a></li>
+		  <li><a href="#aboutpage">关于本页</a></li>
 		</ul>
 	  </div>
 	</div>
@@ -217,42 +235,7 @@ function getPos(obj){
 		</div>
       </div>
       <div class="span8 main" id="main">
-	  	<a name="demo1"></a>
-        <h4>贪吃蛇</h4>
-        <p>原理1：贪吃蛇对象，具有的基本属性和方法，开始、暂停、改变方向、移动、是否碰撞死亡、吃食物等；食物对象，有一个生成食物方法</p>
-		<p>原理2：根据低中高级来设置定时器的时间，开始和暂停是控制启动、清除定时器来实现；根据方向来掌控移动的方向，前面的蛇身div的left、top赋值给后面的蛇身，第一个蛇头根据方向移动div宽度的距离；判断是否撞墙死亡，判断下一步的距离是否跟同方向墙体left、top有碰撞；判断是否有食物也是根食物div检测碰撞；</p>
-		<p>实例连接：<a href="demo/snake/snake.html" target="demo">贪吃蛇</a>&nbsp;&nbsp;
-		<hr/>
-		
-	  	<a name="demo2"></a>
-        <h4>domReady加载顺序</h4>
-		<p>探究关于window.onload、dom加载完成、img加载完成的先后顺序</p>
-        <p>原理1：dom加载完成：Firefox、Chrome、IE9+中支持dom事件DOMContentLoaded来判断；IE8-只能用&lt;script&gt;标签并且需要将该脚本设置成defer（延迟执行：即在dom加载完全后执行里面的脚本），怎么判断script加载完成：通过onreadystatechange事件判断，当oS.readyState=='complete'时（有时可能捕获不到，再加oS.readyState=='loaded'）表示script执行完成，也就是dom加载完成。</p>
-		<p>原理2：所有的DOM事件需要通过事件绑定才能生效，在Firefox、Chrome、IE9+高级浏览器支持 addEventListener ，用这个方法绑定DOMContentLoaded事件</p>
-		<p>原理3：img加载完成也有一个onload事件可以捕获</p>
-		<p>测试顺序结果：dom加载完成、img加载完成、window.onload捕获</p>
-		<p>可以将dom加载完成封装在domReady函数中，所以在不影响dom加载的情况下，将代码写在domReady(fn)中是最快的</p>
-		<p>实例连接：<a href="demo/domReady.html" target="demo">探究domReady加载顺序</a></p>
-		<hr/>
-		
-	  	<a name="demo3"></a>
-        <h4>事件绑定、解绑详解</h4>
-		<p>探究关于window.onload、dom加载完成、img加载完成的先后顺序</p>
-        <p>原理1：事件绑定：Firefox、Chrome、IE9+支持 obj.addEventListener(sEv,fn,是否捕获)，是否捕获：true，表示捕获（即从父级捕获相同的事件到自己的事件），false，表示不捕获（即事件冒泡，从自己冒泡到父级元素）；IE8及以下版本：支持obj.attachEvent('on'+sEv,fn)。这两个方法attachEvent事件名前面带on，如'onscroll'、'onload'，而addEventListener事件名不带on，只能写成'scroll'、'load'</p>
-		<p>原理2：注意事件冒泡的顺序和事件捕获的顺序截然相反，而且由于只有addEventListener支持捕获，如果想写成兼容的方法，捕获这个参数没有意义，所以一般为false</p>
-		<p>原理3：事件解绑：跟事件绑定类似，Firefox、Chrome、IE9+支持 </p>
-		<p>注：obj.removeEventListener(sEv,fn,是否捕获)；IE8及以下版本支持：obj.detachEvent('on'+sEv,fn)。需要注意的是，解绑的函数必须跟绑定函数是同一个，否则不生效</p>
-		<p>实例连接：<a href="demo/event.html" target="demo">事件绑定、解绑详解</a></p>
-		<hr/>
-		
-	  	<a name="demo4"></a>
-        <h4>模拟淘宝吸顶条</h4>
-        <p>原理1：设置滚动事件onscroll，判断如果滚动距离大于吸顶条的绝对top时，将吸顶条的position设为fixed（如想兼容IE6，需要运动来做但有点抖动，所以淘宝、腾讯都不考虑IE6不兼容fixed的问题，我这也不做处理）</p>
-		<p>原理2：获取吸顶条的绝对top，需要通过循环取得吸顶条所有父级最后到body的top，才是他的绝对定位距离，offsetParent 元素定位上的父级</p>
-		<p>原理3：吸顶条需要做2个，另一个隐藏，只有在吸顶条设置为fixed时才出来，否则吸顶条会飘起来，导致后面的元素向上顶</p>
-		<p>实例连接：<a href="demo/ceiling.html" target="demo">模拟淘宝吸顶条</a>&nbsp;&nbsp;
-		<a href="javascript:;" id='ceil'>源码</a></p>
-		<hr/>
+	  	
       </div>
     </div>
 </div>
