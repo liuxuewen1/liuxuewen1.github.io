@@ -6,6 +6,7 @@ Ajax最大优势是异步、无刷新加载数据，增加用户体验性
 步骤3：设置监听事件onreadystatechange，如果oAjax.readyState属性为4 表示数据接收完成，判断oAjax.status返回的状态码：如果是200开头则成功，或者是304（表示文件未修改）也是成功，其他状态码表示失败
 步骤4：成功，调用成功的回调函数 并把获取的数据返回出去，如果是XML，返回值属性是oAjax.responseXML，其他为oAjax.responseText
 之上，ajax请求完毕。当然，可以设置真正加载的函数、请求完成后的函数、以及超时处理函数
+PS：该页面的左侧边栏和右侧内容栏都是通过ajax加载出来的，所有项目描述都放在desc.txt文件，相当于一个小型数据库
 
 |
 
@@ -55,6 +56,18 @@ demo/chat/chatroom.html
 原理3：上传表情、解析表情用到正则表达式做转换
 原理4：获取聊天内容和人员信息用到jsonp从接口取数据，再转换
 综上，聊天室是各种效果和交互的一种综合运用，这个demo的设计做的丑了点
+
+|
+
+demo/tetris/Tetris.html
+俄罗斯方块
+原理1：
+
+|
+
+demo/30s/Dodge.html
+能忍30s吗
+原理1：
 
 |
 
@@ -201,13 +214,11 @@ this容易出问题的几处地方：
 |
 
 demo/mouseover_mouseout_bug.html
-onmouseover和onmouseout的bug
+onmouseover/out的bug
 关于onmouseover的bug：父元素设置onmouseover，当在父元素内移动到子元素时，也会被认为是移入。
 解决：根据oEvent判断从哪个元素移过来，如果是子元素，则不触发onmouseover事件。判断从哪个元素移过来oEvent.fromElement：兼容IE系、Chrome；oEvent.relatedTarget：兼容Firefox
 关于onmouseout的bug：父元素设置onmouseout，当在父元素内移动到子元素时，也会被认为是移出。
 解决：根据oEvent判断移动到哪个元素，如果是子元素，则不触发onmouseout事件。判断移动到哪个元素：oEvent.toElement：兼容IE系、Chrome；oEvent.relatedTarget：兼容Firefox
 注：找到目标元素后，判断该元素是否是父元素的子元素是找该元素的所有父级元素parentNode，如果有跟当前父元素相同，则是子元素
-
-|
-
+ 
 

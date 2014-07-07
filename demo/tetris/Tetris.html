@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0;}
+#div { width:220px; height:300px; border:2px solid black; margin:100px auto;}
+#div1 { width:220px; height:300px; position:relative; overflow:hidden;}
+.moveDiv,.block,#block1,.copyMoveDiv{ width:18px; height:18px; border:1px solid blue; background:green; position:absolute;} 
+#divCopy { width:120px; height:160px; border:1px solid black; position:absolute; left:380px; top:130px;}
+</style>
+<script>
+	window.onload = function(){
+		/*var oBtn1 = document.getElementById("btn1");
+		oBtn1.onclick = function(){
+			clearTimeout(obj.timer);
+		}*/
+		var oBtn = document.getElementById("btnStart");
+		oBtn.onclick = function(){
+			tetrisCopy();
+			tetris();
+		}
+		document.onkeydown = function(ev){
+			var oEvent = ev || event;
+			if(oEvent.keyCode != 37 && oEvent.keyCode != 38 && oEvent.keyCode != 39 && oEvent.keyCode != 40){
+				return false ;
+			}
+			obj.deform(oEvent.keyCode);
+			document.onkeyup = function(){
+				if(obj.speed != 300){
+					obj.speed = 300;
+					obj.start();
+				}
+			}
+			return false ;
+		};		
+		
+	}
+var obj = null;
+function tetris(){
+	switch(boxType){
+		case 1:
+			obj = new ZBlock(blockType);
+			break;
+		case 2:
+			obj = new Quart(blockType);
+			break;
+		case 3:
+			obj = new Strip(blockType);
+			break;
+		case 4:obj = new Square();
+			break;
+	}
+	obj.createBlock();
+	obj.init();
+	obj.start();
+	tetrisCopy();
+};
+
+function clearBlock(){
+	var divCopy = document.getElementById("divCopy");
+	var copyBlock = getElementsByClass(divCopy, "copyMoveDiv");
+	for(var i in copyBlock){
+		divCopy.removeChild(copyBlock[i]);
+	}
+}
+var obj1 = null;
+var blockType = null;
+var divCount = null;
+var boxType = null;
+function tetrisCopy(){
+	//清空之前的展示方块
+	clearBlock();
+	
+	boxType = randomNum(1,4);
+	//var boxType = 2;
+	switch(boxType){
+		case 1:blockType = randomNum(1,4);
+			obj1 = new ZBlock(blockType);
+			break;
+		case 2:blockType = randomNum(1,4);
+			obj1 = new Quart(blockType);
+			break;
+		case 3:blockType = randomNum(1,2);
+			obj1 = new Strip(blockType);
+			break;
+		case 4:obj1 = new Square();
+			break;
+	}
+	obj1.createShowBlock();
+	obj1.init();
+	
+	createCopyDiv(obj1.aEle);
+	
+	divCount = obj1.divCount;
+	obj1 = null;
+};
+
+function createCopyDiv(aEle){
+	var div1 = document.getElementById("div1");
+	var divCopy = document.getElementById("divCopy");
+	for (var i = 0; i < aEle.length; i++) {
+		var newDiv = document.createElement("div");
+		newDiv.className = "copyMoveDiv";
+		newDiv.style.left = aEle[i].offsetLeft - 50 +"px";
+		newDiv.style.top = aEle[i].offsetTop + 100 +"px";
+		divCopy.appendChild(newDiv);
+		div1.removeChild(aEle[i]);
+	}
+}
+</script>
+</head>
+
+<body>
+ 点击Start 开始游戏,方向键 上下左右控制方向
+ <br/>
+<input id="btnStart" value="start" type="button" />
+<!--<input id="btn1" value="检测" type="button" />-->
+ <input type="text" id="txtScore" value="0" /> 
+ <div id="divCopy">
+ </div>
+<div id="div">
+	<div id="div1">
+	<div style="top: 280px; left: 0px;" id="div_0_280" class="block"></div>
+	<div style="top: 280px; left: 20px;" id="div_20_280" class="block"></div>
+	<div style="top: 280px; left: 40px;" id="div_40_280" class="block"></div>
+	<div style="top: 280px; left: 60px;" id="div_60_280" class="block"></div>
+	<div style="top: 260px; left: 60px;" id="div_60_260" class="block"></div>
+	<div style="top: 280px; left: 100px;" id="div_100_280" class="block"></div>
+	<div style="top: 280px; left: 120px;" id="div_120_280" class="block"></div> 
+	<div style="top: 280px; left: 140px;" id="div_140_280" class="block"></div> 
+	<div style="top: 280px; left: 160px;" id="div_160_280" class="block"></div>
+	<div style="top: 280px; left: 180px;" id="div_180_280" class="block"></div>
+	</div>
+</div>
+</body>
+</html>
+<script src="tetris.js"></script>

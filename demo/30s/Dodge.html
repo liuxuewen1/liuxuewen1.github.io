@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0;}
+#box{ width:300px; height:400px; position:relative; background:black; margin:20px auto;}
+.bullet{ width:10px; height:10px; background:url("bullet.gif") no-repeat center center; position:absolute;}
+.flyer{ width:20px; height:20px; background:url("flyer.png") no-repeat center center; position:absolute; top:200px; left:120px}
+.start{ border-width:20px; border-color:#000 #000 #000 green; border-style:solid; position:absolute; top:140px; left:120px; cursor:pointer;}
+</style>
+<script src="dodge.js"></script>
+<script>
+	var oTimer = null;
+	var aTimer = [];
+	window.onload = function(){
+		var oBox = document.getElementById("box");
+		var oStart = document.getElementById("btnStart");
+		
+		oStart.onclick = function(){
+			 oStart.style.display = "none";
+			 
+			 oTimer = setInterval(function(){
+				 var bullet = new Bullet(oBox);
+				 bullet.createBullet();
+				 aTimer.push(bullet.timer);
+			 }, 500);
+			 
+			 var flyer = new Flyer();
+			 document.onkeydown = function(ev){
+				var oEvent = ev || event;
+				flyer.move(oEvent.keyCode);
+			 }
+			  
+		}
+		
+		 /*var bullet = new Bullet(oBox);
+		 bullet.createBullet();*/
+		 
+	}
+</script>
+</head>
+
+<body>
+<div id="box">
+<div class="start" id="btnStart"></div>
+<div class="flyer" id="flyer"></div>
+</div>
+</body>
+</html>
