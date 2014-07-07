@@ -21,6 +21,8 @@ p{ text-indent:2em;}
   line-height: 30px;
 }
 hr{border:1px dotted #000}
+#main .openClose{ float:right; font-size:12px; color:#666666;}
+#main a:hover{ cursor:pointer;}
 </style>
 <script>
 
@@ -113,7 +115,7 @@ window.onload=function(){
 	var oItem=$('item');
 	
 	//增加一个隐藏侧边栏
-	var oCopyItem=document.createElement('div');
+	/*var oCopyItem=document.createElement('div');
 	oCopyItem.className=oItem.className;
 	oCopyItem.id='copyItem';
 	oCopyItem.innerHTML=oItem.innerHTML;
@@ -142,7 +144,7 @@ window.onload=function(){
 			oItem1.style.position='';
 			oItem2.style.display='none';
 		}
-	}
+	}*/
 	
 	var oItem1Ul=oItem.children[0].children[1];
 	var oMain=$('main');
@@ -169,17 +171,19 @@ window.onload=function(){
 					
 					//右侧内容
 					html+='<a name="demo'+i+'"></a>';
-					html+='<h4>'+title+'</h4>';
+					html+='<h4>'+title+'<a class="openClose">展开</a></h4>';
+					html+='<div style="display:none;">';
 					for(var p=iFirst+2;p<arr_Items.length;p++){
 						if(arr_Items[p]!=''){
 							html+='<p>'+arr_Items[p]+'</p>';
 						}
 					}
 					html+='<p>实例链接：<a target="demo" href="'+arr_Items[iFirst]+'">'+title+'</a></p>';
+					html+='</div>';
 					html+='<hr/>';
 				}
 				oMain.innerHTML+=html;
-				
+				bindOC();
 			},
 			failFn:function(status){
 				alert('加载数据失败：'+status);
@@ -188,6 +192,26 @@ window.onload=function(){
 	}
 	allDesc();
 	
+	function bindOC(){
+		var aOpenClose=getByClass(oMain,'openClose');
+		for(var i=0;i<aOpenClose.length;i++){
+			var obj=aOpenClose[i];
+			(function(i){
+				var oNext=obj.parentNode.nextElementSibling || obj.parentNode.nextSibling ;
+				obj.onclick=function(){
+					if(oNext.style.display=='none'){
+						oNext.style.display='block';
+						this.innerHTML='收起';
+					}else{
+						oNext.style.display='none';
+						this.innerHTML='展开';
+					}
+				}
+			})(i);
+			
+		}
+	}
+	
 	function createDemo(n,html){
 		var oLi=document.createElement('li');
 		oLi.innerHTML='<a href="#demo'+n+'">'+html+'</a></li>';
@@ -195,6 +219,22 @@ window.onload=function(){
 	}
 	
 };
+
+function getByClass(obj,iClass){
+	if(obj.getElementsByClassName){
+		return obj.getElementsByClassName(iClass);
+	}else{
+		var arr=[];
+		var aEle=obj.getElementsByTagName('*');
+		var reg=new RegExp('\\b'+iClass+'\\b');
+		for(var i=0;i<aEle.length;i++){
+			if(reg.test(aEle[i].className)){
+				arr.push(aEle[i]);
+			}
+		}
+		return arr;
+	}
+}
 
 function getPos(obj){
 	var l=0,t=0;
@@ -237,6 +277,31 @@ function getPos(obj){
       <div class="span8 main" id="main">
 	  	
       </div>
+		<div class="span12 main">
+			<a name="aboutme"></a>
+			<h3>关于我</h3>
+			<div>
+				<p>2007~2011年就读于沈阳理工大学，计算机科学与技术专业，学士学位。</p>
+				<p>2011年到2012年2月份，在北京沃达思创公司工作，从事.net开发，期间以物流系统为主，制作和维护递家物流主页。</p>
+				<p>2012年3月至今，就职于易车网，从事.net开发，以易车呼叫中心系统、易车内部办公系统为主。</p>
+				<p>工作以来，使用过的技术包括: 熟练掌握asp.net、oracle、sql server、jQuery、html、css，擅长原生js页面效果、Ajax、jsonp跨域，了解php、MySql，平时使用Git维护源码</p>
+				<p>为什么转前端？1.js这种弱类型语言开源、灵活、优美  2.微软.NET平台过于封闭、死板</p>
+				<p>对自己定位: 前后台js交互工程师</p>
+				<p>未来学习方向: node.js、html5、移动端、python</p>
+				<p>自我评价: 为人友善、易于相处、喜欢创新、团队至上</p>
+ 
+			</div>
+		</div>
+		<div class="span12 main">
+		<a name="aboutpage"></a>
+		<h3>关于本页</h3>
+		<div>
+			<p>页面使用Bootstrap框架，简单套用</p>
+			<p>页面内容放在desc.txt中，通过ajax获取下来，通过正则等进行匹配过滤加载到页面上</p>
+			<p>Demo主要展示自己用原生js制作的效果、交互、小游戏等。代码保证IE7及以上、FF、Chrome兼容、大部分IE6兼容</p>
+			<p>项目展开主要描述项目实现原理、项目思路、注意事项等</p>
+			<p>整个项目托管在github上</p> 
+		</div>
     </div>
 </div>
 </body>
