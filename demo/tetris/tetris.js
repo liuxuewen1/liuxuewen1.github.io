@@ -1,4 +1,4 @@
-// ¶íÂŞË¹·½¿é
+// ä¿„ç½—æ–¯æ–¹å—
 // by :liu xuewen
 
 function extend(Child,Parent){
@@ -8,7 +8,7 @@ function extend(Child,Parent){
 	return new F();
 }
 
-//»ù´¡Àà£¬Éú³É·½¿é
+//åŸºç¡€ç±»ï¼Œç”Ÿæˆæ–¹å—
 function Block(divCount, typeCount) {
 	this.div1 = document.getElementById("div1");
 	this.count = divCount;
@@ -44,7 +44,7 @@ Block.prototype.deform = function(kCode){
 		case 37:
 		case 39:this.moveBlock(kCode);
 			break;
-		case 38://ÅĞ¶Ï±äĞÎµÄÊ±ºò£¬ÊÇ·ñ»áÓĞdiv³ö½ç£¬Èç¹ûÓĞÔò²»ÔÊĞí±äĞÎ
+		case 38://åˆ¤æ–­å˜å½¢çš„æ—¶å€™ï¼Œæ˜¯å¦ä¼šæœ‰divå‡ºç•Œï¼Œå¦‚æœæœ‰åˆ™ä¸å…è®¸å˜å½¢
 			if(obj.changeDirection) { obj.changeDirection(); }
 			break;
 		case 40:
@@ -65,7 +65,7 @@ Block.prototype.moveBlock = function(kCode){
 	}
 }
 
-//ÊÇ·ñ¿ÉÒÔÏò×óÓÒÁ½²àÒÆ¶¯
+//æ˜¯å¦å¯ä»¥å‘å·¦å³ä¸¤ä¾§ç§»åŠ¨
 Block.prototype.isMoveToLeftRight = function(kCode){
 	var moveWidth = kCode == 37? -this.aEle[0].offsetWidth : this.aEle[0].offsetWidth;
 	var limitLen = kCode == 37? 0 : this.div1.offsetWidth - this.aEle[0].offsetWidth;
@@ -74,7 +74,7 @@ Block.prototype.isMoveToLeftRight = function(kCode){
 		if(thisEle.offsetLeft == limitLen){
 			return true;
 		}
-		//ÅĞ¶ÏÈç¹ûÔªËØÔÙ×ßÒ»²½ÒÔºó×ó±ß»òÓÒÃæÊÇ·ñÒÑÓĞÔªËØ£¬Èç¹ûÓĞÔòÍ£Ö¹
+		//åˆ¤æ–­å¦‚æœå…ƒç´ å†èµ°ä¸€æ­¥ä»¥åå·¦è¾¹æˆ–å³é¢æ˜¯å¦å·²æœ‰å…ƒç´ ï¼Œå¦‚æœæœ‰åˆ™åœæ­¢
 		var div =document.getElementById("div_"+( thisEle.offsetLeft + moveWidth)+"_"+ thisEle.offsetTop );
 		if(div && div.className!="moveDiv"){
 			return true;
@@ -99,7 +99,7 @@ Block.prototype.setTimeoutFn = function(){
 		}
 		this.isScore(checkRows);
 		tetris();
-		//ĞÂ½¨ÓÒ±ßÍ¼Ïñ
+		//æ–°å»ºå³è¾¹å›¾åƒ
 	}
 	else{
 		fnDown(this.aEle, 0, 20);
@@ -108,14 +108,14 @@ Block.prototype.setTimeoutFn = function(){
 	};
 }
 
-//ÊÇ·ñ¿ÉÒÔÏòÏÂÒÆ¶¯
+//æ˜¯å¦å¯ä»¥å‘ä¸‹ç§»åŠ¨
 Block.prototype.isMoveToDown = function(){
 	for(var p=0;p<this.aEle.length; p++){
-		//ÅĞ¶ÏÊÇ·ñ´¥µØ
+		//åˆ¤æ–­æ˜¯å¦è§¦åœ°
 		if(this.aEle[p].offsetTop == (this.div1.clientHeight - this.aEle[p].offsetHeight)){
 			return true;		
 		}
-		//ÅĞ¶ÏÈç¹ûÔÙ×ßÒ»²½ÒÔºóÏÂÃæÊÇ·ñÓĞÔªËØ£¬Èç¹ûÓĞÔòÇå³ı¶¨Ê±Æ÷Í£Ö¹
+		//åˆ¤æ–­å¦‚æœå†èµ°ä¸€æ­¥ä»¥åä¸‹é¢æ˜¯å¦æœ‰å…ƒç´ ï¼Œå¦‚æœæœ‰åˆ™æ¸…é™¤å®šæ—¶å™¨åœæ­¢
 		var div =document.getElementById("div_"+this.aEle[p].offsetLeft+"_"+(this.aEle[p].offsetTop + this.aEle[p].offsetHeight));
 		if(div){
 			return true;
@@ -124,7 +124,7 @@ Block.prototype.isMoveToDown = function(){
 	return false;
 }
 
-//ÊÇ·ñµÃ·Ö
+//æ˜¯å¦å¾—åˆ†
 Block.prototype.isScore = function(rows){
 	for (var i=0; i<rows.length; i++){
 		var aDiv = this.isDieByRow(rows[i]);
@@ -159,7 +159,7 @@ Block.prototype.dieDivs = function(aDiv){
 		var height = aDiv[m].offsetHeight;
 		var l = id.split('_'); 
 		this.div1.removeChild(aDiv[m]);
-		//ÉÏÃæÈç¹ûÓĞÔªËØ£¬Ôò¶¼ÏòÏÂ×ßÒ»²½
+		//ä¸Šé¢å¦‚æœæœ‰å…ƒç´ ï¼Œåˆ™éƒ½å‘ä¸‹èµ°ä¸€æ­¥
 		for(var n= l[2]; n>0; n -= height){
 			var lowerDiv = document.getElementById("div_"+l[1]+"_"+n);
 			if(lowerDiv){ 
@@ -171,7 +171,7 @@ Block.prototype.dieDivs = function(aDiv){
 	}
 }
 
-//³¤·½ĞÎ·½¿é¶ÔÏó
+//é•¿æ–¹å½¢æ–¹å—å¯¹è±¡
 function Strip(type) {
 	Block.call(this, 4);
 	this.type = type;
@@ -193,14 +193,14 @@ Strip.prototype.init = function () {
 };
 Strip.prototype.changeDirection = function () {
 	switch (this.type) {
-		case 1://ºá
+		case 1://æ¨ª
 			if(this.oBlock.offsetLeft < 40 || this.oBlock.offsetLeft >= (this.div1.offsetWidth - 20)){
 				return false;
 			}
 			this.oBlock.style.left = this.oBlock.offsetLeft + 20 + "px";
 			changeElement(this.aEle, -20, 0, 2);
 			break;
-		case 2://Êú 
+		case 2://ç«– 
 			this.oBlock.style.left = this.oBlock.offsetLeft - 20 + "px";
 			changeElement(this.aEle, 0, -20, 2);
 			break;
@@ -209,7 +209,7 @@ Strip.prototype.changeDirection = function () {
 	 
 };
 
-//Õı·½ĞÎ·½¿é¶ÔÏó
+//æ­£æ–¹å½¢æ–¹å—å¯¹è±¡
 function Square(){
 	Block.call(this,4);
 }
@@ -222,7 +222,7 @@ Square.prototype.init = function(){
 	changeElement(this.aEle,-20,0,4);
 };
 		
-//Ò»´øÈı·½¿é¶ÔÏó
+//ä¸€å¸¦ä¸‰æ–¹å—å¯¹è±¡
 function Quart(type) {
 	Block.call(this, 4);
 	this.oQuart2 = null;
@@ -234,7 +234,7 @@ Quart.prototype.init = function () {
 	this.oBlock.style.left = (this.div1.offsetWidth - this.oBlock.offsetWidth) / 2 + "px";
 	var mLeft = this.oBlock.offsetLeft;
 	var mTop = null;
-	//È·¶¨Ê×´Î¼ÓÔØµÚÒ»¸ö¿é³öÏÖµÄÎ»ÖÃ
+	//ç¡®å®šé¦–æ¬¡åŠ è½½ç¬¬ä¸€ä¸ªå—å‡ºç°çš„ä½ç½®
 	switch (this.type) {
 		case 1:
 		case 2:
@@ -247,7 +247,7 @@ Quart.prototype.init = function () {
 			mTop = this.oBlock.offsetTop;
 			break;
 	}
-	//È·¶¨Ê×´Î¼ÓÔØµÚÒ»¸ö¿éºóÃæµÄ¼¸¸ö¿é³öÏÖµÄÎ»ÖÃ
+	//ç¡®å®šé¦–æ¬¡åŠ è½½ç¬¬ä¸€ä¸ªå—åé¢çš„å‡ ä¸ªå—å‡ºç°çš„ä½ç½®
 	switch (this.type) {
 		case 1:
 			this.oQuart2.style.left = mLeft + 20 + "px";
@@ -273,7 +273,7 @@ Quart.prototype.init = function () {
 	this.type += 1;
 	this.type = this.type == 5 ? 1 : this.type;
 };
-//Ò»´øÈı·½¿é±äĞÎ
+//ä¸€å¸¦ä¸‰æ–¹å—å˜å½¢
 Quart.prototype.changeDirection = function () {
 	var mLeft = this.oBlock.offsetLeft;
 	var mTop = this.oBlock.offsetTop;
@@ -315,7 +315,7 @@ Quart.prototype.changeDirection = function () {
 	this.type = this.type == 5 ? 1 : this.type;
 };
 
-//Z×ÖÀàĞÍ·½¿é¶ÔÏó
+//Zå­—ç±»å‹æ–¹å—å¯¹è±¡
 function ZBlock(type) {
 	Block.call(this, 4);
 	this.type = type;
@@ -424,7 +424,7 @@ function fnDown(arr, leftSize, topSize) {
 	}
 }
  
-//Ëæ»úÊı
+//éšæœºæ•°
 function randomNum(minNum,maxNum){
 	var count = maxNum - minNum + 1;
 	return Math.floor(Math.random()* count + 1 );
