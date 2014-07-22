@@ -221,4 +221,10 @@ onmouseover/out的bug
 解决：根据oEvent判断移动到哪个元素，如果是子元素，则不触发onmouseout事件。判断移动到哪个元素：oEvent.toElement：兼容IE系、Chrome；oEvent.relatedTarget：兼容Firefox
 注：找到目标元素后，判断该元素是否是父元素的子元素是找该元素的所有父级元素parentNode，如果有跟当前父元素相同，则是子元素
  
+|
 
+demo/apple_menu/menu.html
+模拟苹果菜单
+原理1：需要计算鼠标到每个菜单图片的距离，每个图片算出绝对left、top，跟鼠标所在位置oEvent.clientX、oEvent.clientY计算，得到鼠标与图片中心点构成的直角三角形，可以求出两条直角边大小，然后求出斜边即鼠标到图片中心点距离dis。
+原理2：设置一个定值基数base，在鼠标到图片的距离到base时，图片开始计算大小比例bili：dis/base，距离某个图片越小比值越大成反比关系，所以比例bili应该为1-dis/base；然后将图片的最大值*bili，即计算出来图片大小。
+原理3：当鼠标远离设定的基数时，应该给图片一个最小值，否则图片最后就没了。设置当比例bili小于0.5时，bili=0.5，这样可以保证图片最小大小。

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>固定左右两侧对联</title>
+<style>
+*{margin:0;padding:0}
+div{ width:58px; height:0px; background:red; position:fixed; font-size:48px; font-weight:bold; overflow:hidden;}
+#top{ width:0px; height:58px; top:0;}
+#left{ left:0; }
+#right{ right:0; }
+</style>
+<script>
+window.onload=function(){
+	var oLeft=document.getElementById("left"),
+		oRight=document.getElementById("right"),
+		oTop=document.getElementById("top");
+	
+	var gDown=1,gUp=-2;//gDown：向下加速度；gUp：向上加速度；如果gUp=gDown，将做匀速上下运动（不能定义border）
+	var endTarget=450;
+		
+	oLeft.speed=oRight.speed=0;
+	oLeft.timer=setInterval(function(){
+		oLeft.speed+=gDown;
+		moveDown(oLeft);
+	},30);
+	oRight.timer=setInterval(function(){
+		oRight.speed+=gDown;
+		moveDown(oRight);
+	},30);
+	
+	var wTarget=228;
+	oTop.timer=setInterval(function(){
+		move(oTop, "width", wTarget);
+	},30);
+	
+	setTop();
+		
+	function setTop(){
+		var scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+		
+		//左右对联
+		var height=endTarget;
+		oLeft.style.top=oRight.style.top=(document.documentElement.clientHeight-height)/2+scrollTop+"px";
+		
+		//横批
+		var width=wTarget;
+		oTop.style.left=(document.documentElement.clientWidth-width)/2+"px";
+		oTop.style.top=scrollTop+"px";
+	}
+	
+	if(window.navigator.userAgent.indexOf("MSIE 6.0")>-1){	
+		oLeft.style.position=oRight.style.position=oTop.style.position="absolute";		
+		window.onscroll=setTop;
+	}
+	//改变窗口设置高度
+	window.onresize=setTop;
+	
+	<!--运动：展开对联-->
+	
+	//普通运动（横批）
+	function move(obj, attr, target){
+		var speed=nowValue=0;
+		switch(attr){
+			case "height":nowValue=obj.offsetHeight;
+				break;
+			case "width":nowValue=obj.offsetWidth;
+				break;
+		} 
+		speed=target-nowValue;
+		speed=speed>0?Math.floor(speed/20):Math.ceil(speed/20);
+		
+		if(speed==0) {
+			obj.style[attr]=target+"px";
+			clearInterval(obj.timer);
+			return;
+		}
+		obj.style[attr]=nowValue+speed+"px";
+	}
+	
+	//向下运动（下落）
+	function moveDown(obj){
+		var oHeight=obj.offsetHeight;
+		//如果 运动到指定位置，则向上弹起
+		if(oHeight>=endTarget){
+			clearInterval(obj.timer);
+			obj.timer=setInterval(function(){
+				obj.speed+=gUp;
+				moveUp(obj);
+			},30);
+		}
+		else{
+			obj.style.height=oHeight+obj.speed+"px";
+		}
+	}
+	
+	//向上运动（弹起）
+	function moveUp(obj){
+		var oHeight=obj.offsetHeight;
+		//如果 此时速度大于0，则向上弹起
+		if(obj.speed>0){
+			obj.style.height=oHeight-obj.speed+"px";
+			return;
+		}
+		//此时 速度<=0 
+		
+		//如果高度小于指定高度，则再次下落
+		if(oHeight<endTarget){
+			clearInterval(obj.timer);
+			obj.timer=setInterval(function(){
+				obj.speed+=gDown;
+				moveDown(obj);
+			},30);
+		}
+		else{
+			//如果 高度>=指定高度，则停止运动
+			obj.speed=0;
+			obj.style.height=endTarget+"px";
+			clearInterval(obj.timer);
+		}
+	}
+}
+</script>
+</head>
+
+<body style="height:2000px;">
+<div id="top">刘学文贺</div>
+<div id="left">恭喜发财马年大吉</div>
+<div id="right">身体健康万事如意</div>
+</body>
+</html>
