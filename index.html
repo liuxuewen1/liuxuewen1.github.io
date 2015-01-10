@@ -1,274 +1,444 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>搜索大全-Google、百度、360、搜狗</title>
-<style>
-*{margin:0; padding:0; font-size:14px; font-family:arial;}
-#search{ margin:40px auto; width:460px;}
-#search div{}
-#search div a{ width:60px; height:24px; line-height:30px; margin:10px; text-decoration:none; color:#666;}
-#search div a:hover{cursor:pointer;}
-#search div a.active{color:#FF3333; text-decoration:underline; font-size:16px; font-weight:bold;}
-#search #txtKey{ width:380px; height:24px; line-height:24px; padding:4px; border:1px solid #999; vertical-align:middle;}
-#search #btnSearch{ width:60px; height:34px; border:1px solid #666; border-left:0; background:#f5f5f5;vertical-align:middle;}
-#search #btnSearch{ cursor:pointer;}
-#search ul{ list-style:none; width:388px; border:1px solid #000;border-top:0; display:none;}
-#search ul li{ height:24px; line-height:24px; color:#000; padding:4px;}
-#search ul li.in{ background:#DCDCDC; cursor:pointer;}
-</style>
-<script src="jsonp.js"></script>
-<script id='lxwtest'>
-["a",["A","Android","AKB48","AC\u7c73\u5170","AV\u5973\u512a","Avex trax","Australia","Animax","AC\u5c3c\u5c14\u68ee","AT-X"]]
-</script>
-<script>
-window.onload=function(){
-	var oSearch=document.getElementById('search');
-	var aSo=oSearch.children[0].getElementsByTagName('a');
-	var oKey=document.getElementById('txtKey');
-	var oBtn=document.getElementById('btnSearch');
-	var oUl=oSearch.children[1];
-	var aLi=oUl.children;
-	var company='google';	//默认 Google
-	
-	var obj={
-				google:{url:'http://74.125.110.2/complete/search',key:'q',cbName:'',soUrl:'http://74.125.110.2/webhp#newwindow=1',soKey:'q'},
-				baidu:{url:'http://suggestion.baidu.com/su',key:'wd',cbName:'cb',soUrl:'http://www.baidu.com/s',soKey:'wd'},
-			 	so360:{url:'http://sug.so.360.cn/suggest',key:'word',cbName:'callback',soUrl:'http://www.so.com/s',soKey:'q'},
-				sogou:{url:'http://w.sugg.sogou.com/sugg/ajaj_json.jsp',key:'key',cbName:'',soUrl:'http://www.sogou.com/web',soKey:'query'},
-				xunlei:{url:'http://xl7ac.kankan.xunlei.com/ac.php',key:'k',cbName:'',soUrl:'http://search.kankan.com/search.php',soKey:'keyword'},
-				wiki:{url:'http://zh.wikipedia.org/w/api.php',key:'search',cbName:'',soUrl:'http://zh.wikipedia.org/wiki/',soKey:''}
-	};
-	for(var i=0,len=aSo.length;i<len;i++){
-		//切换搜索类型
-		aSo[i].onclick=(function(i){
-			return function(){ switchSo(i); }
-		})(i);
-	}
-	function switchSo(i){
-		for(var k=0;k<aSo.length;k++){
-			aSo[k].className='';
-		}
-		aSo[i].className='active';
-		company=aSo[i].getAttribute('company');
-		oUl.style.display='none';
-		oUl.innerHTML='';
-		oKey.focus();
-		searchToJsonp();
-	}
-	
-	oBtn.onclick=function(){
-		searchFn(oKey.value);
-	}
-	//搜索
-	function searchFn(value){
-		if(company=='google'){
-			var soUrl=obj[company].soUrl+'&'+obj[company].soKey+'='+encodeURIComponent(value);
-		}else if(company=='wiki'){
-			var soUrl=obj[company].soUrl+encodeURIComponent(value);
-		}else{
-			var soUrl=obj[company].soUrl+'?'+obj[company].soKey+'='+encodeURIComponent(value);
-		}
-		window.open(soUrl);	
-		oUl.style.display='none';
-	}
-	
-	var oldValue='';
-	oKey.onkeyup=function(ev){
-		var oEvent=ev||event;
-		if(oEvent.keyCode==40 || oEvent.keyCode==38){
-			return;
-		}
-		
-		if(oEvent.keyCode==13){			
-			searchFn(oKey.value);
-		}
-		
-		searchToJsonp();
-		
-		iNow=-1;
-		oldValue=oKey.value;			
-	}
-	oKey.onclick=function(ev){
-		var oEvent=ev||event;
-		aLi.length>0 && (oUl.style.display='block');
-		oEvent.cancelBubble=true;
-	}
-	function searchToJsonp(){
-		var reg=/^\s+|\s+$/g;
-		//首尾去空格	
-		if(!oKey.value.replace(reg,'')){
-			oUl.style.display='none';
-			oUl.innerHTML='';
-			return;
-		}
-		
-		if(oKey.value.length>100){
-			oKey.value=oKey.value.substring(0,100);
-		}
-		
-		var json={
-			url:obj[company].url,	//360接口: http://sug.so.360.cn/suggest
-			data:{ },	//encodein：给so360准备的，否则在搜索中文情况下不能出数据；chient、hl：是给google用的; from:web xuelei
-			cbName:obj[company].cbName,						//360接口: callback
-			succFn:function(args){
-				var json=args[0];
-				oUl.style.display='block';
-				oUl.innerHTML='';
-				
-				json.s.length<=0 && (oUl.style.display='none');
-				for(var i=0,len=json.s.length;i<len;i++){
-					createLi(decodeURIComponent(json.s[i]),i);
-				}
-			},
-			timeout:3,
-			timeoutFn:function(){
-				//alert('网络超时');
-			}
-		};
-		json.data[obj[company].key]=encodeURIComponent(oKey.value);
-		//google、搜狗搜索拿到的结果是数组，所以单独处理
-		if(company=='google'){
-			json.data['client']='hp';
-			json.data['hl']='zh-CN';
-			json.jsonpCallback='window.google.ac.h';
-			json.succFn=function(arr){
-				oUl.style.display='block';
-				oUl.innerHTML='';
-				
-				arr[1].length<=0 && (oUl.style.display='none');
-				for(var i=0,len=arr[1].length;i<len;i++){
-					createLi(decodeURIComponent(arr[1][i][0]),i);
-				}
-			}
-		}else if(company=='sogou'){
-			json.jsonpCallback='window.sogou.sug';
-			json.succFn=function(arr){
-				oUl.style.display='block';
-				oUl.innerHTML='';
-				
-				arr[1].length<=0 && (oUl.style.display='none');
-				for(var i=0,len=arr[1].length;i<len;i++){
-					createLi(decodeURIComponent(arr[1][i]),i);
-				}
-			}
-		}else if(company=='xunlei'){
-			json.data['from']='web';
-			json.data['cs']='utf-8';
-			json.jsonpCallback='compResp';
-			json.succFn=function(args){
-				var arr=args[1];
-				oUl.style.display='block';
-				oUl.innerHTML='';
-				
-				arr.length<=0 && (oUl.style.display='none');
-				for(var i=0,len=arr.length;i<len;i++){
-					createLi(decodeURIComponent(arr[i]),i);
-				}
-			}
-		}else if(company=='so360'){
-			json.data['encodein']='utf-8';
-		}else if(company=='wiki'){
-			json.jsonpCallback='wiki';
-			json.data['action']='opensearch';
-			json.succFn=function(arr){
-				oUl.style.display='block';
-				oUl.innerHTML='';
-				console.log(arr);
-				arr[1].length<=0 && (oUl.style.display='none');
-				for(var i=0,len=arr[1].length;i<len;i++){
-					createLi(decodeURIComponent(arr[1][i]),i);
-				}
-			}
-		}
-		jsonp(json);	//调用jsonp获取li数据
-		
-	}
-	
-	//创建li
-	function createLi(value,i){
-		var oLi=document.createElement('li');
-		oLi.innerHTML=value;
-		oUl.appendChild(oLi);
-		oLi.onmouseover=function(){ 
-			liMouse(i); 
-		};
-		oLi.onclick=function(ev){
-			var oEvent=ev||event;
-			searchFn(this.innerHTML);
-			//取消冒泡，否则会触发document的点击事件
-			oEvent.cancelBubble=true;
-		}
-	}
-	
-	//控制键盘上下方向移动选中项
-	var iNow=-1;
-	oKey.onkeydown=function(ev){
-		var oEvent=ev||event;
-		switch(oEvent.keyCode){
-			case 40:
-				clearLiClass();
-				iNow++;
-				if(iNow==aLi.length){
-					iNow=-1;
-					oKey.value=oldValue;
-				}else{
-					aLi[iNow].className='in';
-					oKey.value=aLi[iNow].innerHTML;
-				}
-				break;
-			case 38:
-				clearLiClass();
-				iNow--;
-				if(iNow==-1){
-					oKey.value=oldValue;
-				}else{
-					iNow==-2 && (iNow=aLi.length-1);
-					aLi[iNow].className='in';
-					oKey.value=aLi[iNow].innerHTML;
-				}
-				break;
-		}
-		
-	}
-	
-	//li鼠标放上效果
-	function liMouse(i){ 
-		clearLiClass();
-		iNow=i;
-		aLi[iNow].className='in';
-	}
-	//移除ul删除效果
-	oUl.onmouseout=clearLiClass;
-	
-	//清空所有li的class
-	function clearLiClass(){
-		for(var i=0,len=aLi.length;i<len;i++){
-			aLi[i].className='';
-		}
-	}
-	
-	document.onclick=function(){
-		oUl.style.display='none';
-	}
-}
-</script>
-</head>
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <script src="js/global.js" type="text/javascript"></script>
+    <script src="js/zepto.min.js" type="text/javascript"></script>
+    <title></title>
+    <style>
+        /* global */
+        html,body,ul{margin: 0;padding: 0; position: relative}
+        ul,ol{list-style: none;}
+        html,body{width: 100%;height: 100%;overflow: hidden;-webkit-user-select: none;-moz-user-select: none;-o-user-select: none}
+        body{background: #f5f5f5;font:12px/21px ; color: #33234f;}
+        a{color: #33234f;text-decoration: none;}
+        a,button{-webkit-appearance:none;-moz-appearance:none;}
+        a:hover,button:hover,span:hover,div:hover{-webkit-tap-highlight-color:transparent;}
+        a{ text-decoration:none; color:#157efb; }
+        a::-webkit-focus-inner,button::-webkit-focus-inner,span::-webkit-focus-inner,div::-webkit-focus-inner{ 
+            background-color:rgba(0,0,0,0); -webkit-tap-highlight-color:rgba(0,0,0,0); }
 
+        #music_btn{position: absolute; top:3%; right:7%;z-index: 1;display: block;}
+
+ 
+
+        /* layout */
+        body{display:-webkit-box;display: box;-webkit-box-orient: vertical;box-orient: vertical;}
+        .content{display:-webkit-box;display: box;-webkit-box-orient: vertical;box-orient: vertical;-webkit-box-flex:1;box-flex:1;}
+        .tabs{-webkit-box-flex:1;box-flex:1;width: 100%;}
+        .tips{
+            position: absolute;
+            background: url("images/up.png") no-repeat;
+            background-size: 70% 70%;
+            top: 90%;
+            height: 24px;
+            width: 35px;
+            left: 50%;
+            text-align: center;
+            opacity: 0;
+            margin-left: -14px;
+            -webkit-animation:Topto 1.6s ease-out infinite;
+            -moz-animation:Topto 1.6s ease-out infinite;
+            -o-animation:Topto 1.6s ease-out infinite;
+        }
+
+        /*设置音乐*/
+        .icon_audio{background: url("images/on_off.png") no-repeat; background-size: 100% 100%; width:24px; height:24px; position:absolute; z-index: 999; top:8%; right:6%; }
+
+        .border_anim .icon_audio_anim{
+            display:block;
+            width:8px; height:8px;
+            position:absolute;
+            background:url("images/icon_audio_sign.png") no-repeat;
+            background-size: 100% 100%;
+            -webkit-animation:audio_anim 2s ease-out infinite;
+            -moz-animation:audio_anim 2s ease-out infinite;
+            -o-animation:audio_anim 2s ease-out infinite;
+            opacity:0;
+        }
+         /* tab */
+        .tabs{position: relative;overflow: hidden;}
+        .tabs ul{position: absolute;width: 100%;height: 100%;}
+        .tabs li{ width: 100%; height:100%;position: relative; }
+        .tabs .sprite{position: absolute;top: 0;left: 0%;-webkit-backface-visibility:hidden;}
+        
+        .tabs .tab0
+        {
+            background-color:Red;
+         }
+       
+      
+        .tabs .tab1 .bg{width: 100% ;height: 100% ; background:url("../img/2.png") no-repeat;  }
+        .tabs .tab1 .sprite1 
+        {
+            background-image:url('../img/1.png');
+            width:50px;
+            height:33px;
+            position:relative;
+          
+        }
+         .tabs .tab1  .sprite1.show
+         {  -webkit-animation:sprite1Topto 10s ease-out 1 forwards;
+            -moz-animation:sprite1Topto 10s ease-out 1 forwards;
+            -o-animation:sprite1Topto 10s ease-out 1 forwards;
+             
+             }
+       @-webkit-keyframes sprite1Topto
+        {   0%   {left: 20px;top:20px;       }
+            20%  {left: 50%;top:80px; -webkit-transform: rotate(45deg);}
+            40%  {left: 70%;top:100px; -webkit-transform: rotate(50deg);}
+            60%  {left:80%;top:200px; -webkit-transform: rotate(65deg);}
+            80%  {left: 75%;top:300px;    }
+            100% {left: 60%;top:400px;  }
+       }
+       @-webkit-keyframes sprite1show
+       { 0%   {opacity: 0; }
+        100%   { opacity: 1;  } 
+       }
+       .tabs .tab1 p{opacity: 0; }
+       .tabs .tab1 .p1.show
+       {  -webkit-animation:sprite1show 2s ease-out 1;
+            -moz-animation:sprite1show 2s ease-out 1;
+            -o-animation:sprite1show 2s ease-out 1;
+       }
+       .tabs .tab1 .p2.show
+       {  
+           -webkit-animation:sprite1show 2s 2s ease-out 1;
+            -moz-animation:sprite1show 2s 2s ease-out 1;
+            -o-animation:sprite1show 2s 2s ease-out 1;
+           }
+      .tabs .tab1 .p3.show
+       {  -webkit-animation:sprite1show  2s 4s ease-out 1;
+            -moz-animation:sprite1show  2s 4s ease-out 1;
+            -o-animation:sprite1show  2s 4s ease-out 1;
+           }
+      .tabs .tab1 .p4.show
+       {  -webkit-animation:sprite1show  2s 6s ease-out 1;
+            -moz-animation:sprite1show  2s 6s ease-out 1;
+            -o-animation:sprite1show  2s 6s ease-out 1;
+           }
+      .tabs .tab1 .p5.show
+       {  -webkit-animation:sprite1show  2s  8s ease-out 1;
+            -moz-animation:sprite1show  2s 8s ease-out 1;
+            -o-animation:sprite1show  2s 8s ease-out 1;
+      }.tabs .tab2{background: #ffffff;}
+      .tabs .tab2 .sprite1
+      {
+           background-image:url('../img/3.png');
+            width:130px;
+            height:150px;
+            top:50%;
+            left:50%;
+            margin-left:-75px;
+            margin-top:-75px;
+            position:relative;
+      }  
+      .tabs .tab2 .sprite1.show
+         {  
+            -webkit-animation:sprite2Topto 10s ease-out 1 forwards;
+            -moz-animation:sprite2Topto 10s ease-out 1 forwards;
+            -o-animation:sprite2Topto 10s ease-out 1 forwards;
+             
+        }
+       @-webkit-keyframes sprite2Topto
+        {   0%   {-webkit-transform: rotate(45deg);}
+            30%  {-webkit-transform: rotate(90deg);}
+            50%  {-webkit-transform: rotate(160deg);}
+            70%  {-webkit-transform: rotate(240deg);}
+            100% {-webkit-transform: rotate(270deg);}
+       }
+      .tabs .tab2 .p{opacity: 0; }
+       @-webkit-keyframes sprite2show
+       { 0%   {opacity: 0; }
+        100%   { opacity: 1;  } 
+       }
+       .tabs .tab2 .p1 
+       {
+            background-image: url('../img/4.png'); 
+            background-repeat: no-repeat; 
+            position: relative; 
+            top: 46px;
+            left: 41px;
+            width:150px;
+            height:150px;
+       }
+       .tabs .tab2 .p2 
+       {
+            background-image: url('../img/5.png'); 
+            background-repeat: no-repeat; 
+            position: relative; 
+            top: -100px;
+            left:193px;
+            width:150px;
+            height:150px;
+       }
+       .tabs .tab2 .p3 
+       {
+            background-image: url('../img/6.png'); 
+            background-repeat: no-repeat;
+             position: relative; 
+            width:150px;
+            height:150px;
+            top: -56px;
+            left: 278px;
+       }
+       .tabs .tab2 .p4 
+       {
+            background-image: url('../img/7.png'); 
+            background-repeat: no-repeat;
+             position: relative; 
+          width:150px;
+            height:150px; 
+              top: -95px;
+            left: 169px;
+       }
+        .tabs .tab2 .p5 
+       {
+            background-image: url('../img/8.png'); 
+            background-repeat: no-repeat; 
+            position: relative; 
+            top: -244px;
+            left: 24px;width:150px;
+            height:150px;
+       }
+      .tabs .tab2 .p1.show
+       {    -webkit-animation:sprite2show 2s ease-out 1 forwards;
+            -moz-animation:sprite2show 2s ease-out 1 forwards;
+            -o-animation:sprite2show 2s ease-out 1 forwards;
+       }
+       .tabs .tab2 .p2.show
+       {  
+           -webkit-animation:sprite2show 2s 2s ease-out 1 forwards ;
+            -moz-animation:sprite2show 2s 2s ease-out 1 forwards;
+            -o-animation:sprite2show 2s 2s ease-out 1 forwards;
+           }
+      .tabs .tab2 .p3.show
+       {  -webkit-animation:sprite2show  2s 4s ease-out 1 forwards;
+            -moz-animation:sprite2show  2s 4s ease-out 1 forwards;
+            -o-animation:sprite2show  2s 4s ease-out 1 forwards;
+           }
+      .tabs .tab2 .p4.show
+       {  -webkit-animation:sprite2show  2s 6s ease-out 1 forwards;
+            -moz-animation:sprite2show  2s 6s ease-out 1 forwards;
+            -o-animation:sprite2show  2s 6s ease-out 1 forwards;
+           }
+      .tabs .tab2 .p5.show
+       {  -webkit-animation:sprite2show  2s  8s ease-out 1 forwards;
+            -moz-animation:sprite2show  2s 8s ease-out 1 forwards;
+            -o-animation:sprite2show  2s 8s ease-out 1 forwards;
+      }
+    </style>
+</head>
 <body>
-<div id='search'>
-	<div>
-		<a href="javascript:;" company='google' class="active">Google</a>
-		<a href="javascript:;" company='baidu'>百度搜</a>
-		<a href="javascript:;" company='so360'>360搜</a>
-		<a href="javascript:;" company='sogou'>搜狗</a>
-		<a href="javascript:;" company='xunlei'>迅雷影视</a>
-		<!--<a href="javascript:;" company='wiki'>维基百科</a> -->
-		<input type="text" id="txtKey"  /><input type="button" value="搜&nbsp;索" id="btnSearch" />
-	</div>
-	<ul>
-	
-	</ul>
-</div>
+    <div id="bg">
+        <div id="loading">
+        </div>
+        <span style=""></span>
+    </div>
+    <div class="uparrw" id="uparrw" style="display: none;">
+        <div class="icon_uparrw" id="icon_uparrw">
+        </div>
+        <div class="cur">
+        </div>
+    </div>
+    <div style="height: 0px; overflow: hidden;">
+        <audio src="48.mp3" loop="loop" autoplay></audio>
+    </div>
+    <a href="javascript:playPause();">
+        <div class="icon_audio border_anim">
+            <span class="iconaudio1"><s class="icon_audio_anim"></s></span><span class="iconaudio2">
+                <s class="icon_audio_anim"></s></span><span class="iconaudio3"><s class="icon_audio_anim">
+                </s></span>
+        </div>
+    </a>
+    <div class="content">
+        <div class="tabs" id="scene" style="display: none;">
+            <ul>
+                <li class="tab0"></li>
+                <li class="tab1">
+                    <div class="bg sprite">
+                    </div>
+                    <div class="sprite1 sprite">
+                    </div>
+                    <p class="p1 sprite">
+                        1111111111111111</p>
+                    <p class="p2 sprite">
+                        22222222222222</p>
+                    <p class="p3 sprite">
+                        33333333333333</p>
+                    <p class="p4 sprite">
+                        444444444444444</p>
+                    <p class="p5 sprite">
+                        555555555555555</p>
+                </li>
+                <li class="tab2">
+                    <div class="bg sprite">
+                    </div>
+                    <div class="sprite1 sprite">
+                    </div>
+                    <div class="p p1 sprite">
+                    </div>
+                    <div class="p p2 sprite">
+                    </div>
+                    <div class="p p3 sprite">
+                    </div>
+                    <div class="p p4 sprite">
+                    </div>
+                    <div class="p p5 sprite">
+                    </div>
+                </li>
+                <li class="tab3"></li>
+                <li class="tab4"></li>
+                <li class="tab5"></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        function isWeixin() {
+            var UA = navigator.userAgent;
+            // alert(UA)
+            if (/MicroMessenger/.test(UA)) {
+                return true
+            } else {
+                return false
+            }
+        }
+        function getOSVS() {
+            var UA = navigator.userAgent;
+            var s = UA.indexOf("OS ");
+            if (s == -1) { return false }
+            var vs = UA.substr(s + 3, 5);
+            return vs
+        }
+
+        function playPause() {
+            var myVideo = document.querySelectorAll('audio')[0];
+            var music_btn = document.getElementById('music_btn');
+            if (myVideo.paused) {
+                myVideo.play()
+                $('.icon_audio').addClass('border_anim')
+            }
+            else {
+                myVideo.pause()
+                $('.icon_audio').removeClass('border_anim')
+            }
+        }
+
+        var debugcode = "error:";
+        $(function () {
+            var _bg = document.getElementById('bg'),
+            _uparrw = document.getElementById('uparrw'),
+            _icon_uparrw = document.getElementById('icon_uparrw');
+
+            var isWEIXIN = isWeixin();
+            var os_vs = getOSVS();
+            var domeInitEnd = false;
+            var myVideo = document.querySelector('audio');
+
+            document.addEventListener('WeixinJSBridgeReady', function () {
+                onBridgeReady()
+                // _uparrw.querySelector(".cur").innerHTML = "滑动进入";
+                if (os_vs >= "7_1_1") {
+                    debugcode += "os_vs>=7_1_1,";
+                    // _uparrw.style.display = 'block';
+                    _uparrw.style.display = 'none';
+                    _bg.style.display = 'none';
+                    document.getElementById("scene").style.display = "block";
+                    if (!domeInitEnd) {
+                        initTabDomo()
+                    }
+                }
+            })
+
+            if (!isWEIXIN) {
+                debugcode += "2,";
+                // _bg.querySelector("span").innerHTML = "滑动进入";
+                _uparrw.querySelector(".cur").innerHTML = "滑动进入";
+                _uparrw.style.display = 'block';
+                document.getElementById("loading").style.display = "none";
+            }
+
+            myVideo.addEventListener('canplaythrough', function () {
+                _uparrw.style.display = 'none';
+                _bg.style.display = 'none';
+                document.getElementById("scene").style.display = "block";
+                debugcode += "3,";
+                if (!domeInitEnd) {
+                    initTabDomo()
+                }
+                myVideo.play()
+            }, false)
+
+            $(document).one("touchstart", function (e) {
+                if (!domeInitEnd) {
+                    _uparrw.style.display = 'none';
+                    _bg.style.display = 'none';
+                    document.getElementById("scene").style.display = "block";
+                    // alert(typeof myVideo.play)
+                    initTabDomo()
+                    debugcode += "4,";
+                }
+                myVideo.play()
+            }, false)
+
+            // alert("load ok")
+            function initTabDomo() {
+                domeInitEnd = true;
+                debugcode += "5,";
+                gameTab = new m.Tab({
+                    target: document.querySelectorAll('.tabs li'),
+                    trigger: document.querySelectorAll('.triggers li'),
+                    onchange: function (n) {
+                        debugcode += "7,";
+                        var sprites = this.target[n].querySelectorAll('.sprite');
+                        var peo = this.target[n].querySelectorAll('.peo');
+                        for (var i = 0; i < sprites.length; i++) {
+                            sprites[i].classList.add('show')
+                        }
+                        for (var j = 0; j < peo.length; j++) {
+                            peo[j].classList.add('show')
+                        }
+
+                        if (this.prevPage !== window.undefined) {
+                            var sprites = this.target[this.prevPage].querySelectorAll('.sprite');
+                            for (var i = 0; i < sprites.length; i++) {
+                                sprites[i].classList.remove('show')
+                            }
+                        }
+                    },
+                    touchMove: true
+                });
+                debugcode += "6,";
+            }
+        })
+        // onload function end
+
+
+
+        $(function () {
+            $('#img_b .peo').click(function () {
+                var index = $(this).index();
+                // $(this).addClass('bg_big').siblings('.peo').removeClass('bg_big');
+                $('#title .title').hide().removeClass('titlemove')
+                $('#title .title').eq(index).show().addClass('titlemove')
+            })
+        })
+
+
+
+       
+
+    </script>
 </body>
 </html>
