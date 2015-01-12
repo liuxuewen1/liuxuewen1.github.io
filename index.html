@@ -12,8 +12,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta http-equiv="Expires" content="-1" />
     <meta http-equiv="pragram" content="no-cache" />
-    <script src="js/global.js" type="text/javascript"></script>
-    <script src="js/zepto.min.js" type="text/javascript"></script>
+ 
     <title></title>
     <style>
         /* global */
@@ -89,16 +88,16 @@
        }
         @-webkit-keyframes carsprite
         {   0%   {left: 10%;}
-            10%   {left: 15%;}
-            20%   {left: 20%;}
-            30%   {left: 25%;}
-            40%   {left: 30%;}
-            50%   {left: 40%;}
-            60%   {left: 50%;}
-            70%   {left: 60%;}
-            80%   {left: 70%;}
-            90%   {left: 75%;}
-            100%   {left: 80%;}
+            10%  {left: 15%;}
+            20%  {left: 20%;}
+            30%  {left: 25%;}
+            40%  {left: 30%;}
+            50%  {left: 40%;}
+            60%  {left: 50%;}
+            70%  {left: 60%;}
+            80%  {left: 70%;}
+            90%  {left: 75%;}
+            100% {left: 80%;}
         }
         .tabs .tab0
         {
@@ -293,7 +292,7 @@
         {   0%   {top:95px;left:6px;}
             100% {top:1000px;left:0px;display:none;  }
        }
-        .tabs .tab1 {width: 100% ;height: 116%;  background-color:#e6dfcc; }
+        .tabs .tab1 {width: 100% ;height:100%;  background-color:#e6dfcc; }
         .tabs .tab1 .tab1_bg
         {
             position: absolute;
@@ -305,28 +304,26 @@
         {
             position:absolute;
             background: url('img/bg2_car.png') no-repeat 0 0;
-	        width: 151px;
-        	height: 86px;
-            top: 12%;
-            left: 24%;
+	          width: 151px;
+        	  height: 86px;
+           top: 63%; left: 8%;
             zoom: 0.3;
           
         }
-        .tabs .tab1  .car.show
-         {  
-             -webkit-animation:sprite1Topto 5s ease-in-out 1 forwards;
-            -moz-animation:sprite1Topto 5s ease-in-out 1 forwards;
-            -o-animation:sprite1Topto 5s ease-in-out 1 forwards;
-         }
-       @-webkit-keyframes sprite1Topto
+      .tabs .tab1 .car.show
         {  
-            0%   {top: 12%; left: 24%;}
-            25%  {top: 18%; left: 39%;}
+             -webkit-animation:sprite1Topto 20s ease 1 forwards;
+            -moz-animation:sprite1Topto 20s ease 1 forwards;
+            -o-animation:sprite1Topto 20s ease 1 forwards;
+        }
+       @-webkit-keyframes sprite1Topto
+        {   0% { top: 63%; left: 8%;}
+            20%  { top: 54%; left: 38%;}
             50%  { top: 32%; left: 43%;}
-            75%  { top: 54%; left: 38%;}
-            100% { top: 63%; left: 8%;}
+            80%  {top: 18%; left: 39%;}
+           100%  {top: 12%; left: 24%;}
        }
-       @-webkit-keyframes sprite1show
+       @-webkit-keyframes tab1_sprite
        { 0%   {opacity: 0; }
         100%   { opacity: 1;  } 
        }
@@ -342,7 +339,7 @@
            background: url('img/tab2_img1.png') no-repeat 0 0;
 	        width: 540px;
 	        height: 486px;
-	        zoom: 0.2;
+	         zoom: 0.2;
 	         left: 187px;
 	         position:absolute;
 	         top: 0%; left: 1%;
@@ -354,7 +351,7 @@
 	        height: 426px;
 	        zoom: 0.2;
 	         position:absolute;
-	         top: 9%; left: 61%;
+	         top: 13%; left: 61%;
        }
         .tabs .tab1 .p3
        {  
@@ -363,7 +360,7 @@
 	        height: 377px;
 	        zoom: 0.2;
 	       position:absolute;
-	       top: 27%; left: 66%;
+	       top: 33%; left: 66%;
        }
         .tabs .tab1 .p4
        {  
@@ -372,7 +369,8 @@
 	        height:348px;
 	        zoom: 0.2;
 	        position:absolute;
-	        top: 54%; left: 63%;
+	        top: 56%;
+          left: 60%;
        }
         .tabs .tab1 .p5
        {  
@@ -380,8 +378,8 @@
 	        width: 924px;
 	        height: 360px;
 	        zoom: 0.2;
-	       position:absolute;
-	            top: 69%; left:6%;
+	        position:absolute;
+	        top: 69%; left:6%;
        }  
        .tabs .tab1 .p6
        {  
@@ -394,35 +392,35 @@
        }
         .tabs .tab1 .p1.show
        {  
-           -webkit-animation:sprite1show 1s linear 1 forwards;
-            -moz-animation:sprite1show 1s linear 1 forwards;
-            -o-animation:sprite1show 1s linear 1 forwards;
+           -webkit-animation:flip 0.5s 18s linear 1 forwards;
+            -moz-animation:flip 0.5s 18s linear 1 forwards;
+            -o-animation:flip 0.5s 18s linear 1 forwards;
        }
        .tabs .tab1 .p2.show
        {  
-           -webkit-animation:sprite1show 2s 1s linear 1 forwards;
-            -moz-animation:sprite1show 2s 1s linear 1 forwards;
-            -o-animation:sprite1show 2s 1s linear 1 forwards;
+           -webkit-animation:flip 0.5s 12.2s linear 1 forwards;
+            -moz-animation:flip 0.5s 12.2s linear 1 forwards;
+            -o-animation:flip 0.5s 12.2s linear 1 forwards;
        }
       .tabs .tab1 .p3.show
-       {  -webkit-animation:sprite1show  2s 2.2s linear 1 forwards;
-            -moz-animation:sprite1show  2s 2.2s linear 1 forwards;
-            -o-animation:sprite1show  2s 2.2s linear 1 forwards;
+       {  -webkit-animation:flip  0.5s 8.2s linear 1 forwards;
+            -moz-animation:flip  0.5s 8.2s linear 1 forwards;
+            -o-animation:flip  0.5s 8.2s linear 1 forwards;
            }
       .tabs .tab1 .p4.show
-       {  -webkit-animation:sprite1show  2s 3.2s linear 1 forwards;
-            -moz-animation:sprite1show  2s 3.2s linear 1 forwards;
-            -o-animation:sprite1show  2s 3.2s linear 1 forwards;
+       {  -webkit-animation:flip  0.5s 3.2s linear 1 forwards;
+            -moz-animation:flip  0.5s 3.2s linear 1 forwards;
+            -o-animation:flip  0.5s 3.2s linear 1 forwards;
            }
       .tabs .tab1 .p5.show
-       {  -webkit-animation:sprite1show  2s  4.2s linear 1 forwards;
-            -moz-animation:sprite1show  2s 4.2s linear 1 forwards;
-            -o-animation:sprite1show  2s 4.2s linear 1 forwards;
+       {  -webkit-animation:flip  0.5s linear 1 forwards;
+            -moz-animation:flip  0.5s linear 1 forwards;
+            -o-animation:flip  0.5s linear 1 forwards;
       }
       .tabs .tab1 .p6.show
-       {  -webkit-animation:sprite1show  2s  5s linear 1 forwards;
-            -moz-animation:sprite1show  2s 5s linear 1 forwards;
-            -o-animation:sprite1show  2s 5s linear 1 forwards;
+       {  -webkit-animation:flip  0.5s  20s linear 1 forwards;
+            -moz-animation:flip  0.5s 20s linear 1 forwards;
+            -o-animation:flip  0.5s 20s linear 1 forwards;
       }
       .tabs .tab2{background: #ffffff;}
       .tabs .tab2 .sprite1
@@ -511,28 +509,88 @@
        }
        .tabs .tab2 .p2.show
        {  
-           -webkit-animation:sprite2show 2s 2s linear 1 forwards ;
-            -moz-animation:sprite2show 2s 2s linear 1 forwards;
-            -o-animation:sprite2show 2s 2s linear 1 forwards;
+           -webkit-animation:sprite2show 1s 3s linear 1 forwards ;
+            -moz-animation:sprite2show 1s 3s linear 1 forwards;
+            -o-animation:sprite2show 1s 3s linear 1 forwards;
            }
       .tabs .tab2 .p3.show
-       {  -webkit-animation:sprite2show  2s 4s linear 1 forwards;
-            -moz-animation:sprite2show  2s 4s linear 1 forwards;
-            -o-animation:sprite2show  2s 4s linear 1 forwards;
+       {  -webkit-animation:sprite2show  1s 4s linear 1 forwards;
+            -moz-animation:sprite2show 1s 4s linear 1 forwards;
+            -o-animation:sprite2show  1s 4s linear 1 forwards;
            }
       .tabs .tab2 .p4.show
-       {  -webkit-animation:sprite2show  2s 6s linear 1 forwards;
-            -moz-animation:sprite2show  2s 6s linear 1 forwards;
-            -o-animation:sprite2show  2s 6s linear 1 forwards;
+       {  -webkit-animation:sprite2show  1s 8s linear 1 forwards;
+            -moz-animation:sprite2show  1s 8s linear 1 forwards;
+            -o-animation:sprite2show  1s 8s linear 1 forwards;
            }
       .tabs .tab2 .p5.show
-       {  -webkit-animation:sprite2show  2s  8s linear 1 forwards;
-            -moz-animation:sprite2show  2s 8s linear 1 forwards;
-            -o-animation:sprite2show  2s 8s linear 1 forwards;
+       {  -webkit-animation:sprite2show  1s  12s linear 1 forwards;
+            -moz-animation:sprite2show 1s 12s linear 1 forwards;
+            -o-animation:sprite2show  1s 12s linear 1 forwards;
        }
+      .fontFamily{font-family: 幼圆;
+line-height: 0.1em;
+font-size: 1em;} 
+      .fontColor{color: #EC121A;} 
+      .tabs .tab1 .p5_txt{ 
+          position: absolute; top: 70%; left: 30%;  opacity: 0;  
+      }
+      .tabs .tab1 .p4_txt{
+          position: absolute;  left: 70%; opacity: 0;  
+          top: 45%;
+      }
+       .tabs .tab1 .p3_txt{
+         top: 22%;position: absolute;left: 70%; opacity: 0;  
+      }
+      .tabs .tab1 .p2_txt{
+          top: 1%;position: absolute;left: 55%; opacity: 0;  
+      }
+      .tabs .tab1 .p1_txt{ 
+        top: 16%;position: absolute;left: 5%; opacity: 0;  
+       
+      }
+      .tabs .tab1 .p5_txt.show{ 
+         -webkit-animation:tab1_sprite   0.5s  linear 1 forwards;
+            -moz-animation:tab1_sprite  0.5s  linear 1 forwards;
+            -o-animation:tab1_sprite   0.5s  linear 1 forwards;
+       }
+       .tabs .tab1 .p4_txt.show{ 
+         -webkit-animation:tab1_sprite  1s  4.2s linear 1 forwards;
+            -moz-animation:tab1_sprite  1s 4.2s  linear 1 forwards;
+            -o-animation:tab1_sprite  1s 4.2s   linear 1 forwards;
+       }
+       .tabs .tab1 .p3_txt.show{ 
+         -webkit-animation:tab1_sprite  1s 10.2s  linear 1 forwards;
+            -moz-animation:tab1_sprite  1s 10.2s  linear 1 forwards;
+            -o-animation:tab1_sprite  1s  10.2s linear 1 forwards;
+       }
+       .tabs .tab1 .p2_txt.show{ 
+         -webkit-animation:tab1_sprite  1s 15s  linear 1 forwards;
+            -moz-animation:tab1_sprite  1s 15s  linear 1 forwards;
+            -o-animation:tab1_sprite 15s  linear 1 forwards;
+       }
+      .tabs .tab1 .p1_txt.show{ 
+         -webkit-animation:tab1_sprite  1s 20s  linear 1 forwards;
+            -moz-animation:tab1_sprite  1s 20s  linear 1 forwards;
+            -o-animation:tab1_sprite  1s 20s  linear 1 forwards;
+       }
+      @-webkit-keyframes flip {  
+          0% {   opacity: 1;
+              -webkit-transform: rotateY(0deg) scale(1,1);  
+           }  
+          30% {  opacity: 1;
+             -webkit-transform: rotateY(90deg) scale(1,1);  
+             }  
+          70% {  opacity: 1;
+             -webkit-transform: rotateY(180deg) scale(1,1);  
+             }  
+          100% { opacity: 1;
+              -webkit-transform: rotateY(0deg) scale(1,1);  
+           }  
+}  
     </style>
 </head>
-<body>
+<body >
     <div id="bg">
         <div id="loading">
         </div>
@@ -551,7 +609,7 @@
     <div class="content">
         <div class="tabs" id="scene" style="display: none;">
             <ul>
-                <li class="load">
+                <li class="load" id="load">
                     <img class="bg" src="img/bg_load.png" width="80%" height="10%">
                     </img>
                     <div class="loadcar">
@@ -595,19 +653,43 @@
                     </div>
                     <div class="p p5 sprite">
                     </div>
-                    <div class="p p6 sprite">
+                     <div class="p p6 sprite">
                     </div>
+                    <div class="p1_txt fontFamily sprite">2015年？</div>
+                     <div class="p2_txt fontFamily sprite">
+                     <p>2014年12月，</p>
+                     <p>实现<span class="fontColor">全语音操作</span></p>   
+                     <p >有事您说话</p>
+                    </div>
+                    <div class="p3_txt fontFamily sprite">
+                     <p>2013年6月，</p>
+                     <p>用户破量突破</p>   
+                     <p class="fontColor">1千万！</p>
+                    </div>
+                    <div class="p4_txt fontFamily sprite">
+                     <p>2012年8月，</p>
+                     <p>用户破<p class="fontColor">百万！</p></p>
+                    
+                    </div>
+                    <div class="p5_txt fontFamily sprite">
+                     <p>2012年6月,一部神器诞生，</p>
+                     <p>Byebye拥堵的环路,</p>
+                     <p>byebye曾经的堵友们!</p>
+                     <p class="fontColor">国内首家UGC社交导航</p>
+                    </div>
+
                 </li>
                  
                  
             </ul>
         </div>
     </div>
+    <script src="js/global.js" type="text/javascript"></script>
+    <script src="js/zepto.min.js" type="text/javascript"></script>
  <script type="text/javascript">
-    function resize (e) {
-        e.preventDefault(); 
-    }
-    document.addEventListener('touchmove', resize, false);
+    
+   
+ 
     function isWeixin(){
         var UA = navigator.userAgent;
         // alert(UA)
@@ -672,6 +754,8 @@
                 target: document.querySelectorAll('.tabs li'),
                 trigger: document.querySelectorAll('.triggers li'),
                 onchange: function(n){
+                  this.target=document.querySelectorAll('.tabs li');
+                   this.trigger=document.querySelectorAll('.triggers li');
                     debugcode +="7,"; 
                     var sprites = this.target[n].querySelectorAll('.sprite');
                     var peo = this.target[n].querySelectorAll('.peo');
@@ -681,9 +765,9 @@
                     for(var j = 0; j < peo.length; j++) {
                         peo[j].classList.add('show')
                     }
-
-                    if(this.prevPage !== window.undefined) {
-                        var sprites = this.target[this.prevPage].querySelectorAll('.sprite');
+                  
+                    if(this.prevPage != window.undefined) {
+                       var sprites = this.target[this.prevPage].querySelectorAll('.sprite');
                         for(var i = 0; i < sprites.length; i++) {
                             sprites[i].classList.remove('show')
                         }
@@ -708,10 +792,11 @@
         
         percent=percent+10;    //每次百分比加10
         $(".loadcar").html(percent+"%"); 
-        if (percent<99){                    //percent小于99则继续循环
-            setTimeout("loadPage()",500);        //每500ms进行一次count()
+         if (percent<99){                
+            setTimeout("loadPage()",500);  
         }else{
-            document.removeEventListener('touchmove', resize, false);
+              $(".load").remove();
+
         }  
          
     }
@@ -738,8 +823,8 @@
            };
      },false);
    
+  
 
- 
 </script>
 </body>
 </html>

@@ -1,6 +1,4 @@
-	/**
-	* mini lib by brucewan
-	*/
+ 
 	(function(m){
 		if(m) {
 			return;
@@ -74,17 +72,7 @@
 			// 横竖屏切换时
 			window.addEventListener('resize', self.update.bind(self));
 
-			// 点击图标触发
-//			if(self.trigger) {
-//				var len = self.trigger.length;
-//				for(var i = 0; i < len; i++) {
-//					(function(i){
-//						self.trigger[i].addEventListener('touchend', function(e){
-//							self.playTo(i);
-//						});
-//					})(i);
-//				}
-//			}
+		 
 
 			// 滑动屏幕触发
 			var d = self._data;
@@ -101,6 +89,11 @@
 				});
 			}
 			touchMove = function(e){
+				 if(e.target.id=="load")
+				 {
+				 	e.preventDefault();
+       				 return false;
+				 }
 				d.dis = e.touches[0].pageX - d.pageX;
 				d.disY = e.touches[0].pageY - d.pageY;
 
