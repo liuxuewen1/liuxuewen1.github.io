@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head lang="zh-CN">
     <meta charset="UTF-8">
@@ -19,7 +19,8 @@
         /* global */
         html,body,ul{margin: 0;padding: 0; position: relative}
         ul,ol{list-style: none;}
-        html,body{width: 100%;height: 100%;overflow: hidden;-webkit-user-select: none;-moz-user-select: none;-o-user-select: none}
+        html,body{width: 100%;height: 100%;overflow: hidden;
+          -webkit-user-select: none;-moz-user-select: none;-o-user-select: none}
         body{background: #f5f5f5;font:12px/21px ; color: #33234f;}
         a{color: #33234f;text-decoration: none;}
         a,button{-webkit-appearance:none;-moz-appearance:none;}
@@ -47,94 +48,386 @@
             text-align: center;
             opacity: 0;
             margin-left: -14px;
-            -webkit-animation:Topto 1.6s ease-out infinite;
-            -moz-animation:Topto 1.6s ease-out infinite;
-            -o-animation:Topto 1.6s ease-out infinite;
+            -webkit-animation:Topto 1.6s linear infinite;
+            -moz-animation:Topto 1.6s linear infinite;
+            -o-animation:Topto 1.6s linear infinite;
         }
-
-        /*设置音乐*/
-        .icon_audio{background: url("images/on_off.png") no-repeat; background-size: 100% 100%; width:24px; height:24px; position:absolute; z-index: 999; top:8%; right:6%; }
-
-        .border_anim .icon_audio_anim{
-            display:block;
-            width:8px; height:8px;
-            position:absolute;
-            background:url("images/icon_audio_sign.png") no-repeat;
-            background-size: 100% 100%;
-            -webkit-animation:audio_anim 2s ease-out infinite;
-            -moz-animation:audio_anim 2s ease-out infinite;
-            -o-animation:audio_anim 2s ease-out infinite;
-            opacity:0;
-        }
+        
          /* tab */
         .tabs{position: relative;overflow: hidden;}
         .tabs ul{position: absolute;width: 100%;height: 100%;}
         .tabs li{ width: 100%; height:100%;position: relative; }
-        .tabs .sprite{position: absolute;top: 0;left: 0%;-webkit-backface-visibility:hidden;}
-        
+        .tabs .sprite{position: absolute;top: 0;left: 0%;-webkit-backface-visibility:hidden;
+        }
+        .tabs .load{
+          background-color: #fafafc;
+      
+        }
+        .tabs .load .bg{
+               position: absolute;
+               left: 10%;
+               top:45%;
+        } 
+        .tabs .load .loadcar{
+            position:absolute;
+            background: url('img/bg2_car.png') no-repeat 0 0;
+            width: 151px;
+            height: 86px;
+            top: 38%;
+            left: 10%;
+            zoom: 0.3;
+            padding-top: 3%;
+            padding-left: 5%;
+            color: #ffffff;
+            font-size: 1em;
+
+        }
+       .tabs .load .loadcar.show
+       {  -webkit-animation:carsprite 5s linear 1 forwards;
+            -moz-animation:carsprite 5s linear 1 forwards;
+            -o-animation:carsprite 5s linear forwards;
+       }
+        @-webkit-keyframes carsprite
+        {   0%   {left: 10%;}
+            10%   {left: 15%;}
+            20%   {left: 20%;}
+            30%   {left: 25%;}
+            40%   {left: 30%;}
+            50%   {left: 40%;}
+            60%   {left: 50%;}
+            70%   {left: 60%;}
+            80%   {left: 70%;}
+            90%   {left: 75%;}
+            100%   {left: 80%;}
+        }
         .tabs .tab0
         {
-            background-color:Red;
-         }
-       
-      
-        .tabs .tab1 .bg{width: 100% ;height: 100% ; background:url("../img/2.png") no-repeat;  }
-        .tabs .tab1 .sprite1 
+           
+        }
+          .tabs .tab0 .divbg 
         {
-            background-image:url('../img/1.png');
-            width:50px;
-            height:33px;
-            position:relative;
+           position: relative;
+           top: 70px;
+           left: -7px;
+        }
+        .tabs .tab0 .divbg .div1
+        {
+            background: url('img/img.png') no-repeat -118px -69px;
+            width: 62px;
+            height: 93px;
+            position: absolute;
+            left: 8px;
+            top: 8px;
+        }
+       .tabs .tab0 .divbg .div1.show
+       {  -webkit-animation:tab0sprite1 1.5s linear 1 forwards;
+            -moz-animation:tab0sprite1 1.5s linear 1 forwards;
+            -o-animation:tab0sprite1 1.5s linear forwards;
+       }
+        @-webkit-keyframes tab0sprite1
+        {   0%   {top:8px;}
+            100% {transform: rotate(-30deg);top:-200px;display:none;  }
+       }
+        .tabs .tab0 .divbg .div2
+        {
+            background: url('img/img.png') no-repeat 0 -542px;
+            width: 142px;
+            height: 91px;
+            position: absolute;
+            left: 9px;
+            top: 8px;
+        }
+      .tabs .tab0 .divbg .div2.show
+       {  -webkit-animation:tab0sprite2 1.5s linear 1 forwards;
+            -moz-animation:tab0sprite2 1.5s linear 1 forwards;
+            -o-animation:tab0sprite2 1.5s linear forwards;
+       }
+        @-webkit-keyframes tab0sprite2
+        {   0%   {top:9px;left:10px;}
+            100% {transform: rotate(-30deg);top:-200px;left:50%;display:none;  }
+       }
+        .tabs .tab0 .divbg .div3
+        {
+            position: absolute;
+            background: url('img/img.png') no-repeat 0 -814px;
+            width: 247px;
+            height: 91px;
+            top: 8px;
+            left: 12px;
+        }
+       .tabs .tab0 .divbg .div3.show
+       {  -webkit-animation:tab0sprite3 1.5s linear 1 forwards;
+            -moz-animation:tab0sprite3 1.5s linear 1 forwards;
+            -o-animation:tab0sprite3 1.5s linear forwards;
+       }
+        @-webkit-keyframes tab0sprite3
+        {   0%   {top:8px;left:12px;}
+            
+            100% {transform: rotate(-30deg);top:-200px;left:100%;display:none;  }
+       }
+        .tabs .tab0 .divbg .div4
+        {
+            position: absolute;
+            background: url('img/img.png') no-repeat 0 -1083px;
+            width: 288px;
+            height: 93px;
+            top: 8px;
+            left: 7px;
+        }
+       .tabs .tab0 .divbg .div4.show
+       {  -webkit-animation:tab0sprite4 1.5s linear 1 forwards;
+            -moz-animation:tab0sprite4 1.5s linear 1 forwards;
+            -o-animation:tab0sprite4 1.5s linear forwards;
+       }
+        @-webkit-keyframes tab0sprite4
+        {   0%   {top:8px;left:7px;}
+            
+            100% {transform: rotate(-50deg);top:-200px;left:200%;display:none;  }
+       }
+        .tabs .tab0 .divbg .div5
+        {
+            position: absolute;
+            background: url('img/img.png') no-repeat 0 -1410px;
+            width: 293px;
+            height: 52px;
+            left: 2px;
+            top: 65px;
+        }
+        .tabs .tab0 .divbg .div5.show
+       {  -webkit-animation:tab0sprite5 2s linear 1 forwards;
+            -moz-animation:tab0sprite5 2s linear 1 forwards;
+            -o-animation:tab0sprite5 2s linear forwards;
+       }
+        @-webkit-keyframes tab0sprite5
+        {   0%   {top:65px;left:2px;}
+            
+            100% {transform: rotate(50deg)top:400px;left:500px;display:none;  }
+       }
+        .tabs .tab0 .divbg .div6
+        {
+            position: absolute;
+            background: url('img/img.png') no-repeat 0 -1712px;
+            width: 291px;
+            height: 75px;
+            top: 97px;
+            left: 5px;
+        }
+          .tabs .tab0 .divbg .div6.show
+       {  -webkit-animation:tab0sprite6 2s linear 1 forwards;
+            -moz-animation:tab0sprite6 2s linear 1 forwards;
+            -o-animation:tab0sprite6 2s linear forwards;
+       }
+        @-webkit-keyframes tab0sprite6
+        {   0%   {top:97px;left:5px;}
+            100% {transform: rotate(60deg);top:500px;left:500px;display:none;  }
+       }
+        .tabs .tab0 .divbg .div7
+        {
+            position: absolute;
+            background: url('img/img.png') no-repeat 0 -1890px;
+            width: 293px;
+            height: 220px;
+            top: 4px;
+            left: 3px;
+        }
+           .tabs .tab0 .divbg .div7.show
+       {  -webkit-animation:tab0sprite7 2s linear 1 forwards;
+            -moz-animation:tab0sprite7 2s linear 1 forwards;
+            -o-animation:tab0sprite6 2s linear forwards;
+       }
+        @-webkit-keyframes tab0sprite7
+        {   0%   {top:4px;left:3px;}
+            100% {transform: rotate(70deg);top:500px;left:500px;display:none;  }
+       }
+        .tabs .tab0 .divbg  .div8
+        {
+            position: absolute;
+            background: url('img/img.png') no-repeat -343px -90px;
+            width: 266px;
+            height: 129px;
+            top: 95px;
+            left: 6px;
+        }
+         .tabs .tab0 .divbg .div8.show
+       {  -webkit-animation:tab0sprite8 3s linear 1 forwards;
+            -moz-animation:tab0sprite8 3s linear 1 forwards;
+            -o-animation:tab0sprite8 3s linear forwards;
+       }
+        @-webkit-keyframes tab0sprite8
+        {   0%   {top:95px;left:6px;}
+            100% {transform: rotate(-70deg);top:1000px;left:240px;display:none;  }
+       }
+        .tabs .tab0 .divbg .div9
+        {
+            position: absolute;
+            background: url('img/img.png') no-repeat -345px -362px;
+            width: 167px;
+            height: 128px;
+            top: 95px;
+            left: 6px;  
+        }
+      .tabs .tab0 .divbg .div9.show
+       {  -webkit-animation:tab0sprite9 3s linear 1 forwards;
+            -moz-animation:tab0sprite9 3s linear 1 forwards;
+            -o-animation:tab0sprite9 3s linear forwards;
+       }
+        @-webkit-keyframes tab0sprite9
+        {   0%   {top:95px;left:6px;}
+            100% {transform: rotate(-70deg);top:1000px;left:120px;display:none;  }
+       }
+        .tabs .tab0 .divbg .div10
+        {
+            position: absolute;
+            background: url('img/img.png') no-repeat -1px -361px;
+            width: 66px;
+            height: 129px;
+            top: 95px;
+            left: 6px;
+        }
+      .tabs .tab0 .divbg .div10.show
+       {  -webkit-animation:tab0sprite10 3s linear 1 forwards;
+            -moz-animation:tab0sprite10 3s linear 1 forwards;
+            -o-animation:tab0sprite10 3s linear forwards;
+       }
+        @-webkit-keyframes tab0sprite10
+        {   0%   {top:95px;left:6px;}
+            100% {top:1000px;left:0px;display:none;  }
+       }
+        .tabs .tab1 {width: 100% ;height: 116%;  background-color:#e6dfcc; }
+        .tabs .tab1 .tab1_bg
+        {
+            position: absolute;
+            left: 15%;
+            top: 3%;
+                            
+        }
+        .tabs .tab1 .car 
+        {
+            position:absolute;
+            background: url('img/bg2_car.png') no-repeat 0 0;
+	        width: 151px;
+        	height: 86px;
+            top: 12%;
+            left: 24%;
+            zoom: 0.3;
           
         }
-         .tabs .tab1  .sprite1.show
-         {  -webkit-animation:sprite1Topto 10s ease-out 1 forwards;
-            -moz-animation:sprite1Topto 10s ease-out 1 forwards;
-            -o-animation:sprite1Topto 10s ease-out 1 forwards;
-             
-             }
+        .tabs .tab1  .car.show
+         {  
+             -webkit-animation:sprite1Topto 5s ease-in-out 1 forwards;
+            -moz-animation:sprite1Topto 5s ease-in-out 1 forwards;
+            -o-animation:sprite1Topto 5s ease-in-out 1 forwards;
+         }
        @-webkit-keyframes sprite1Topto
-        {   0%   {left: 20px;top:20px;       }
-            20%  {left: 50%;top:80px; -webkit-transform: rotate(45deg);}
-            40%  {left: 70%;top:100px; -webkit-transform: rotate(50deg);}
-            60%  {left:80%;top:200px; -webkit-transform: rotate(65deg);}
-            80%  {left: 75%;top:300px;    }
-            100% {left: 60%;top:400px;  }
+        {  
+            0%   {top: 12%; left: 24%;}
+            25%  {top: 18%; left: 39%;}
+            50%  { top: 32%; left: 43%;}
+            75%  { top: 54%; left: 38%;}
+            100% { top: 63%; left: 8%;}
        }
        @-webkit-keyframes sprite1show
        { 0%   {opacity: 0; }
         100%   { opacity: 1;  } 
        }
-       .tabs .tab1 p{opacity: 0; }
-       .tabs .tab1 .p1.show
-       {  -webkit-animation:sprite1show 2s ease-out 1;
-            -moz-animation:sprite1show 2s ease-out 1;
-            -o-animation:sprite1show 2s ease-out 1;
+       .tabs .tab1 .p{opacity: 0; }
+        .tabs .tab1 .bg
+        {
+           
+             background:url('img/tab2_img6.png') no-repeat 0 0;
+             zoom：0.3;
+         }
+       .tabs .tab1 .p1
+       {  
+           background: url('img/tab2_img1.png') no-repeat 0 0;
+	        width: 540px;
+	        height: 486px;
+	        zoom: 0.2;
+	         left: 187px;
+	         position:absolute;
+	         top: 0%; left: 1%;
+       }
+        .tabs .tab1 .p2
+       {  
+           background: url('img/tab2_img2.png') no-repeat 0 0;
+	        width: 527px;
+	        height: 426px;
+	        zoom: 0.2;
+	         position:absolute;
+	         top: 9%; left: 61%;
+       }
+        .tabs .tab1 .p3
+       {  
+           background: url('img/tab2_img3.png') no-repeat 0 0;
+	        width: 415px;
+	        height: 377px;
+	        zoom: 0.2;
+	       position:absolute;
+	       top: 27%; left: 66%;
+       }
+        .tabs .tab1 .p4
+       {  
+           background: url('img/tab2_img4.png') no-repeat 0 0;
+	        width: 459px;
+	        height:348px;
+	        zoom: 0.2;
+	        position:absolute;
+	        top: 54%; left: 63%;
+       }
+        .tabs .tab1 .p5
+       {  
+           background: url('img/tab2_img5.png') no-repeat 0 0;
+	        width: 924px;
+	        height: 360px;
+	        zoom: 0.2;
+	       position:absolute;
+	            top: 69%; left:6%;
+       }  
+       .tabs .tab1 .p6
+       {  
+           background: url('img/tab2_img7.png') no-repeat 0 0;
+	        width: 583px;
+	        height: 545px;
+	        zoom: 0.2;
+	       position:absolute;
+	       top: 25%; left:6%;
+       }
+        .tabs .tab1 .p1.show
+       {  
+           -webkit-animation:sprite1show 1s linear 1 forwards;
+            -moz-animation:sprite1show 1s linear 1 forwards;
+            -o-animation:sprite1show 1s linear 1 forwards;
        }
        .tabs .tab1 .p2.show
        {  
-           -webkit-animation:sprite1show 2s 2s ease-out 1;
-            -moz-animation:sprite1show 2s 2s ease-out 1;
-            -o-animation:sprite1show 2s 2s ease-out 1;
-           }
+           -webkit-animation:sprite1show 2s 1s linear 1 forwards;
+            -moz-animation:sprite1show 2s 1s linear 1 forwards;
+            -o-animation:sprite1show 2s 1s linear 1 forwards;
+       }
       .tabs .tab1 .p3.show
-       {  -webkit-animation:sprite1show  2s 4s ease-out 1;
-            -moz-animation:sprite1show  2s 4s ease-out 1;
-            -o-animation:sprite1show  2s 4s ease-out 1;
+       {  -webkit-animation:sprite1show  2s 2.2s linear 1 forwards;
+            -moz-animation:sprite1show  2s 2.2s linear 1 forwards;
+            -o-animation:sprite1show  2s 2.2s linear 1 forwards;
            }
       .tabs .tab1 .p4.show
-       {  -webkit-animation:sprite1show  2s 6s ease-out 1;
-            -moz-animation:sprite1show  2s 6s ease-out 1;
-            -o-animation:sprite1show  2s 6s ease-out 1;
+       {  -webkit-animation:sprite1show  2s 3.2s linear 1 forwards;
+            -moz-animation:sprite1show  2s 3.2s linear 1 forwards;
+            -o-animation:sprite1show  2s 3.2s linear 1 forwards;
            }
       .tabs .tab1 .p5.show
-       {  -webkit-animation:sprite1show  2s  8s ease-out 1;
-            -moz-animation:sprite1show  2s 8s ease-out 1;
-            -o-animation:sprite1show  2s 8s ease-out 1;
-      }.tabs .tab2{background: #ffffff;}
+       {  -webkit-animation:sprite1show  2s  4.2s linear 1 forwards;
+            -moz-animation:sprite1show  2s 4.2s linear 1 forwards;
+            -o-animation:sprite1show  2s 4.2s linear 1 forwards;
+      }
+      .tabs .tab1 .p6.show
+       {  -webkit-animation:sprite1show  2s  5s linear 1 forwards;
+            -moz-animation:sprite1show  2s 5s linear 1 forwards;
+            -o-animation:sprite1show  2s 5s linear 1 forwards;
+      }
+      .tabs .tab2{background: #ffffff;}
       .tabs .tab2 .sprite1
       {
-           background-image:url('../img/3.png');
+           background-image:url('img/3.png');
             width:130px;
             height:150px;
             top:50%;
@@ -145,9 +438,9 @@
       }  
       .tabs .tab2 .sprite1.show
          {  
-            -webkit-animation:sprite2Topto 10s ease-out 1 forwards;
-            -moz-animation:sprite2Topto 10s ease-out 1 forwards;
-            -o-animation:sprite2Topto 10s ease-out 1 forwards;
+            -webkit-animation:sprite2Topto 10s linear 1 forwards;
+            -moz-animation:sprite2Topto 10s linear 1 forwards;
+            -o-animation:sprite2Topto 10s linear 1 forwards;
              
         }
        @-webkit-keyframes sprite2Topto
@@ -164,7 +457,7 @@
        }
        .tabs .tab2 .p1 
        {
-            background-image: url('../img/4.png'); 
+            background-image: url('img/4.png'); 
             background-repeat: no-repeat; 
             position: relative; 
             top: 46px;
@@ -174,7 +467,7 @@
        }
        .tabs .tab2 .p2 
        {
-            background-image: url('../img/5.png'); 
+            background-image: url('img/5.png'); 
             background-repeat: no-repeat; 
             position: relative; 
             top: -100px;
@@ -184,7 +477,7 @@
        }
        .tabs .tab2 .p3 
        {
-            background-image: url('../img/6.png'); 
+            background-image: url('img/6.png'); 
             background-repeat: no-repeat;
              position: relative; 
             width:150px;
@@ -194,7 +487,7 @@
        }
        .tabs .tab2 .p4 
        {
-            background-image: url('../img/7.png'); 
+            background-image: url('img/7.png'); 
             background-repeat: no-repeat;
              position: relative; 
           width:150px;
@@ -204,7 +497,7 @@
        }
         .tabs .tab2 .p5 
        {
-            background-image: url('../img/8.png'); 
+            background-image: url('img/8.png'); 
             background-repeat: no-repeat; 
             position: relative; 
             top: -244px;
@@ -212,31 +505,31 @@
             height:150px;
        }
       .tabs .tab2 .p1.show
-       {    -webkit-animation:sprite2show 2s ease-out 1 forwards;
-            -moz-animation:sprite2show 2s ease-out 1 forwards;
-            -o-animation:sprite2show 2s ease-out 1 forwards;
+       {    -webkit-animation:sprite2show 2s linear 1 forwards;
+            -moz-animation:sprite2show 2s linear 1 forwards;
+            -o-animation:sprite2show 2s linear 1 forwards;
        }
        .tabs .tab2 .p2.show
        {  
-           -webkit-animation:sprite2show 2s 2s ease-out 1 forwards ;
-            -moz-animation:sprite2show 2s 2s ease-out 1 forwards;
-            -o-animation:sprite2show 2s 2s ease-out 1 forwards;
+           -webkit-animation:sprite2show 2s 2s linear 1 forwards ;
+            -moz-animation:sprite2show 2s 2s linear 1 forwards;
+            -o-animation:sprite2show 2s 2s linear 1 forwards;
            }
       .tabs .tab2 .p3.show
-       {  -webkit-animation:sprite2show  2s 4s ease-out 1 forwards;
-            -moz-animation:sprite2show  2s 4s ease-out 1 forwards;
-            -o-animation:sprite2show  2s 4s ease-out 1 forwards;
+       {  -webkit-animation:sprite2show  2s 4s linear 1 forwards;
+            -moz-animation:sprite2show  2s 4s linear 1 forwards;
+            -o-animation:sprite2show  2s 4s linear 1 forwards;
            }
       .tabs .tab2 .p4.show
-       {  -webkit-animation:sprite2show  2s 6s ease-out 1 forwards;
-            -moz-animation:sprite2show  2s 6s ease-out 1 forwards;
-            -o-animation:sprite2show  2s 6s ease-out 1 forwards;
+       {  -webkit-animation:sprite2show  2s 6s linear 1 forwards;
+            -moz-animation:sprite2show  2s 6s linear 1 forwards;
+            -o-animation:sprite2show  2s 6s linear 1 forwards;
            }
       .tabs .tab2 .p5.show
-       {  -webkit-animation:sprite2show  2s  8s ease-out 1 forwards;
-            -moz-animation:sprite2show  2s 8s ease-out 1 forwards;
-            -o-animation:sprite2show  2s 8s ease-out 1 forwards;
-      }
+       {  -webkit-animation:sprite2show  2s  8s linear 1 forwards;
+            -moz-animation:sprite2show  2s 8s linear 1 forwards;
+            -o-animation:sprite2show  2s 8s linear 1 forwards;
+       }
     </style>
 </head>
 <body>
@@ -252,39 +545,45 @@
         </div>
     </div>
     <div style="height: 0px; overflow: hidden;">
-        <audio src="48.mp3" loop="loop" autoplay></audio>
+        <audio   loop="loop"  ></audio>
     </div>
-    <a href="javascript:playPause();">
-        <div class="icon_audio border_anim">
-            <span class="iconaudio1"><s class="icon_audio_anim"></s></span><span class="iconaudio2">
-                <s class="icon_audio_anim"></s></span><span class="iconaudio3"><s class="icon_audio_anim">
-                </s></span>
-        </div>
-    </a>
+    
     <div class="content">
         <div class="tabs" id="scene" style="display: none;">
             <ul>
-                <li class="tab0"></li>
-                <li class="tab1">
-                    <div class="bg sprite">
+                <li class="load">
+                    <img class="bg" src="img/bg_load.png" width="80%" height="10%">
+                    </img>
+                    <div class="loadcar">
                     </div>
-                    <div class="sprite1 sprite">
-                    </div>
-                    <p class="p1 sprite">
-                        1111111111111111</p>
-                    <p class="p2 sprite">
-                        22222222222222</p>
-                    <p class="p3 sprite">
-                        33333333333333</p>
-                    <p class="p4 sprite">
-                        444444444444444</p>
-                    <p class="p5 sprite">
-                        555555555555555</p>
                 </li>
-                <li class="tab2">
-                    <div class="bg sprite">
+                <li class="tab0">
+                    <div class="divbg">
+                        <div class="div1">
+                        </div>
+                        <div class="div2">
+                        </div>
+                        <div class="div3">
+                        </div>
+                        <div class="div4">
+                        </div>
+                        <div class="div5">
+                        </div>
+                        <div class="div6">
+                        </div>
+                        <div class="div7">
+                        </div>
+                        <div class="div8">
+                        </div>
+                        <div class="div9">
+                        </div>
+                        <div class="div10">
+                        </div>
                     </div>
-                    <div class="sprite1 sprite">
+                </li>
+                <li class="tab1">
+                    <img class="tab1_bg" src="img/tab2_img6.png" width="60%" height="80%" />
+                    <div class="car sprite">
                     </div>
                     <div class="p p1 sprite">
                     </div>
@@ -296,149 +595,151 @@
                     </div>
                     <div class="p p5 sprite">
                     </div>
+                    <div class="p p6 sprite">
+                    </div>
                 </li>
-                <li class="tab3"></li>
-                <li class="tab4"></li>
-                <li class="tab5"></li>
+                 
+                 
             </ul>
         </div>
     </div>
-    <script type="text/javascript">
-
-        function isWeixin() {
-            var UA = navigator.userAgent;
-            // alert(UA)
-            if (/MicroMessenger/.test(UA)) {
-                return true
-            } else {
-                return false
-            }
+ <script type="text/javascript">
+    function resize (e) {
+        e.preventDefault(); 
+    }
+    document.addEventListener('touchmove', resize, false);
+    function isWeixin(){
+        var UA = navigator.userAgent;
+        // alert(UA)
+        if (/MicroMessenger/.test(UA)){
+            return true
+        }else{
+            return false
         }
-        function getOSVS() {
-            var UA = navigator.userAgent;
-            var s = UA.indexOf("OS ");
-            if (s == -1) { return false }
-            var vs = UA.substr(s + 3, 5);
-            return vs
-        }
+    }
+    function getOSVS(){
+        var UA = navigator.userAgent;
+        var s = UA.indexOf("OS ");
+        if(s == -1){ return false }
+        var vs = UA.substr(s+3,5);
+        return vs
+    }
 
-        function playPause() {
-            var myVideo = document.querySelectorAll('audio')[0];
-            var music_btn = document.getElementById('music_btn');
-            if (myVideo.paused) {
-                myVideo.play()
-                $('.icon_audio').addClass('border_anim')
-            }
-            else {
-                myVideo.pause()
-                $('.icon_audio').removeClass('border_anim')
-            }
-        }
+     
 
-        var debugcode = "error:";
-        $(function () {
-            var _bg = document.getElementById('bg'),
+    var debugcode = "error:";
+    $(function(){
+        var _bg = document.getElementById('bg'),
             _uparrw = document.getElementById('uparrw'),
             _icon_uparrw = document.getElementById('icon_uparrw');
 
-            var isWEIXIN = isWeixin();
-            var os_vs = getOSVS();
-            var domeInitEnd = false;
-            var myVideo = document.querySelector('audio');
+        var isWEIXIN = isWeixin();
+        var os_vs = getOSVS();
+        var domeInitEnd = false;
+        _uparrw.style.display = 'none';
+        _bg.style.display = 'none';
+        document.getElementById("scene").style.display = "block";
+        initTabDomo()
 
-            document.addEventListener('WeixinJSBridgeReady', function () {
-                onBridgeReady()
-                // _uparrw.querySelector(".cur").innerHTML = "滑动进入";
-                if (os_vs >= "7_1_1") {
-                    debugcode += "os_vs>=7_1_1,";
-                    // _uparrw.style.display = 'block';
-                    _uparrw.style.display = 'none';
-                    _bg.style.display = 'none';
-                    document.getElementById("scene").style.display = "block";
-                    if (!domeInitEnd) {
-                        initTabDomo()
-                    }
-                }
-            })
-
-            if (!isWEIXIN) {
-                debugcode += "2,";
-                // _bg.querySelector("span").innerHTML = "滑动进入";
-                _uparrw.querySelector(".cur").innerHTML = "滑动进入";
-                _uparrw.style.display = 'block';
-                document.getElementById("loading").style.display = "none";
-            }
-
-            myVideo.addEventListener('canplaythrough', function () {
+        document.addEventListener('WeixinJSBridgeReady', function() {
+            onBridgeReady()
+            // _uparrw.querySelector(".cur").innerHTML = "滑动进入";
+            if(os_vs >= "7_1_1"){
+                debugcode +="os_vs>=7_1_1,";
+                // _uparrw.style.display = 'block';
                 _uparrw.style.display = 'none';
                 _bg.style.display = 'none';
                 document.getElementById("scene").style.display = "block";
-                debugcode += "3,";
-                if (!domeInitEnd) {
+                if(!domeInitEnd) {
                     initTabDomo()
                 }
-                myVideo.play()
-            }, false)
-
-            $(document).one("touchstart", function (e) {
-                if (!domeInitEnd) {
-                    _uparrw.style.display = 'none';
-                    _bg.style.display = 'none';
-                    document.getElementById("scene").style.display = "block";
-                    // alert(typeof myVideo.play)
-                    initTabDomo()
-                    debugcode += "4,";
-                }
-                myVideo.play()
-            }, false)
-
-            // alert("load ok")
-            function initTabDomo() {
-                domeInitEnd = true;
-                debugcode += "5,";
-                gameTab = new m.Tab({
-                    target: document.querySelectorAll('.tabs li'),
-                    trigger: document.querySelectorAll('.triggers li'),
-                    onchange: function (n) {
-                        debugcode += "7,";
-                        var sprites = this.target[n].querySelectorAll('.sprite');
-                        var peo = this.target[n].querySelectorAll('.peo');
-                        for (var i = 0; i < sprites.length; i++) {
-                            sprites[i].classList.add('show')
-                        }
-                        for (var j = 0; j < peo.length; j++) {
-                            peo[j].classList.add('show')
-                        }
-
-                        if (this.prevPage !== window.undefined) {
-                            var sprites = this.target[this.prevPage].querySelectorAll('.sprite');
-                            for (var i = 0; i < sprites.length; i++) {
-                                sprites[i].classList.remove('show')
-                            }
-                        }
-                    },
-                    touchMove: true
-                });
-                debugcode += "6,";
             }
         })
-        // onload function end
+        $(document).one("touchstart",function(e){
+            if(!domeInitEnd){
+                _uparrw.style.display = 'none';
+                _bg.style.display = 'none';
+                document.getElementById("scene").style.display = "block";
+                initTabDomo()
+                debugcode +="4,";
+            }
+        },false)
+        
+        function initTabDomo(){
+            domeInitEnd = true;
+            debugcode +="5,"; 
+            gameTab = new m.Tab({
+                target: document.querySelectorAll('.tabs li'),
+                trigger: document.querySelectorAll('.triggers li'),
+                onchange: function(n){
+                    debugcode +="7,"; 
+                    var sprites = this.target[n].querySelectorAll('.sprite');
+                    var peo = this.target[n].querySelectorAll('.peo');
+                    for(var i = 0; i < sprites.length; i++) {
+                        sprites[i].classList.add('show')
+                    }
+                    for(var j = 0; j < peo.length; j++) {
+                        peo[j].classList.add('show')
+                    }
 
+                    if(this.prevPage !== window.undefined) {
+                        var sprites = this.target[this.prevPage].querySelectorAll('.sprite');
+                        for(var i = 0; i < sprites.length; i++) {
+                            sprites[i].classList.remove('show')
+                        }
+                         var divs=$(".divbg").find("div");
+                         for (var i = 0; i < divs.length; i++) {
+                           divs[i].classList.remove('show');
+                         };
+                    }
+                },
+                touchMove: true
+            });
+            debugcode +="6,"; 
+        }
 
+    })
 
-        $(function () {
-            $('#img_b .peo').click(function () {
-                var index = $(this).index();
-                // $(this).addClass('bg_big').siblings('.peo').removeClass('bg_big');
-                $('#title .title').hide().removeClass('titlemove')
-                $('#title .title').eq(index).show().addClass('titlemove')
-            })
-        })
+    
+   
+  
+    var percent=0;
+    function loadPage(){  
+        
+        percent=percent+10;    //每次百分比加10
+        $(".loadcar").html(percent+"%"); 
+        if (percent<99){                    //percent小于99则继续循环
+            setTimeout("loadPage()",500);        //每500ms进行一次count()
+        }else{
+            document.removeEventListener('touchmove', resize, false);
+        }  
+         
+    }
+    loadPage(); 
+      var page = {
+                    x: 0,
+                    y: 0
+                } 
+    $(".loadcar")[0].classList.add('show');
+    $(".tab0")[0].addEventListener("touchstart",function(e){
+              var e = e || window.event;
+              page.x = e.changedTouches[0].pageX;
+              page.y = e.changedTouches[0].pageY;
+     },false);  
+    $(".tab0")[0].addEventListener("touchend",function(e){
+          var e = e || window.event;
+          var pageXa = e.changedTouches[0].pageX - page.x;
+          var pageYa = e.changedTouches[0].pageY - page.y;
+          if (Math.abs(pageXa) <10) {
+                 var divs=$(".divbg").find("div");
+                 for (var i = 0; i < divs.length; i++) {
+                        divs[i].classList.add('show');
+                     }    
+           };
+     },false);
+   
 
-
-
-       
-
-    </script>
+ 
+</script>
 </body>
 </html>
