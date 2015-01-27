@@ -1,830 +1,274 @@
-﻿<!DOCTYPE html>
-<html>
-<head lang="zh-CN">
-    <meta charset="UTF-8">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-    <meta http-equiv="expires" content="0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="apple-touch-fullscreen" content="yes" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta http-equiv="Expires" content="-1" />
-    <meta http-equiv="pragram" content="no-cache" />
- 
-    <title></title>
-    <style>
-        /* global */
-        html,body,ul{margin: 0;padding: 0; position: relative}
-        ul,ol{list-style: none;}
-        html,body{width: 100%;height: 100%;overflow: hidden;
-          -webkit-user-select: none;-moz-user-select: none;-o-user-select: none}
-        body{background: #f5f5f5;font:12px/21px ; color: #33234f;}
-        a{color: #33234f;text-decoration: none;}
-        a,button{-webkit-appearance:none;-moz-appearance:none;}
-        a:hover,button:hover,span:hover,div:hover{-webkit-tap-highlight-color:transparent;}
-        a{ text-decoration:none; color:#157efb; }
-        a::-webkit-focus-inner,button::-webkit-focus-inner,span::-webkit-focus-inner,div::-webkit-focus-inner{ 
-            background-color:rgba(0,0,0,0); -webkit-tap-highlight-color:rgba(0,0,0,0); }
-
-        #music_btn{position: absolute; top:3%; right:7%;z-index: 1;display: block;}
-
- 
-
-        /* layout */
-        body{display:-webkit-box;display: box;-webkit-box-orient: vertical;box-orient: vertical;}
-        .content{display:-webkit-box;display: box;-webkit-box-orient: vertical;box-orient: vertical;-webkit-box-flex:1;box-flex:1;}
-        .tabs{-webkit-box-flex:1;box-flex:1;width: 100%;}
-        .tips{
-            position: absolute;
-            background: url("images/up.png") no-repeat;
-            background-size: 70% 70%;
-            top: 90%;
-            height: 24px;
-            width: 35px;
-            left: 50%;
-            text-align: center;
-            opacity: 0;
-            margin-left: -14px;
-            -webkit-animation:Topto 1.6s linear infinite;
-            -moz-animation:Topto 1.6s linear infinite;
-            -o-animation:Topto 1.6s linear infinite;
-        }
-        
-         /* tab */
-        .tabs{position: relative;overflow: hidden;}
-        .tabs ul{position: absolute;width: 100%;height: 100%;}
-        .tabs li{ width: 100%; height:100%;position: relative; }
-        .tabs .sprite{position: absolute;top: 0;left: 0%;-webkit-backface-visibility:hidden;
-        }
-        .tabs .load{
-          background-color: #fafafc;
-      
-        }
-        .tabs .load .bg{
-               position: absolute;
-               left: 10%;
-               top:45%;
-        } 
-        .tabs .load .loadcar{
-            position:absolute;
-            background: url('img/bg2_car.png') no-repeat 0 0;
-            width: 151px;
-            height: 86px;
-            top: 38%;
-            left: 10%;
-            zoom: 0.3;
-            padding-top: 3%;
-            padding-left: 5%;
-            color: #ffffff;
-            font-size: 1em;
-
-        }
-       .tabs .load .loadcar.show
-       {  -webkit-animation:carsprite 5s linear 1 forwards;
-            -moz-animation:carsprite 5s linear 1 forwards;
-            -o-animation:carsprite 5s linear forwards;
-       }
-        @-webkit-keyframes carsprite
-        {   0%   {left: 10%;}
-            10%  {left: 15%;}
-            20%  {left: 20%;}
-            30%  {left: 25%;}
-            40%  {left: 30%;}
-            50%  {left: 40%;}
-            60%  {left: 50%;}
-            70%  {left: 60%;}
-            80%  {left: 70%;}
-            90%  {left: 75%;}
-            100% {left: 80%;}
-        }
-        .tabs .tab0
-        {
-           
-        }
-          .tabs .tab0 .divbg 
-        {
-           position: relative;
-           top: 70px;
-           left: -7px;
-        }
-        .tabs .tab0 .divbg .div1
-        {
-            background: url('img/img.png') no-repeat -118px -69px;
-            width: 62px;
-            height: 93px;
-            position: absolute;
-            left: 8px;
-            top: 8px;
-        }
-       .tabs .tab0 .divbg .div1.show
-       {  -webkit-animation:tab0sprite1 1.5s linear 1 forwards;
-            -moz-animation:tab0sprite1 1.5s linear 1 forwards;
-            -o-animation:tab0sprite1 1.5s linear forwards;
-       }
-        @-webkit-keyframes tab0sprite1
-        {   0%   {top:8px;}
-            100% {transform: rotate(-30deg);top:-200px;display:none;  }
-       }
-        .tabs .tab0 .divbg .div2
-        {
-            background: url('img/img.png') no-repeat 0 -542px;
-            width: 142px;
-            height: 91px;
-            position: absolute;
-            left: 9px;
-            top: 8px;
-        }
-      .tabs .tab0 .divbg .div2.show
-       {  -webkit-animation:tab0sprite2 1.5s linear 1 forwards;
-            -moz-animation:tab0sprite2 1.5s linear 1 forwards;
-            -o-animation:tab0sprite2 1.5s linear forwards;
-       }
-        @-webkit-keyframes tab0sprite2
-        {   0%   {top:9px;left:10px;}
-            100% {transform: rotate(-30deg);top:-200px;left:50%;display:none;  }
-       }
-        .tabs .tab0 .divbg .div3
-        {
-            position: absolute;
-            background: url('img/img.png') no-repeat 0 -814px;
-            width: 247px;
-            height: 91px;
-            top: 8px;
-            left: 12px;
-        }
-       .tabs .tab0 .divbg .div3.show
-       {  -webkit-animation:tab0sprite3 1.5s linear 1 forwards;
-            -moz-animation:tab0sprite3 1.5s linear 1 forwards;
-            -o-animation:tab0sprite3 1.5s linear forwards;
-       }
-        @-webkit-keyframes tab0sprite3
-        {   0%   {top:8px;left:12px;}
-            
-            100% {transform: rotate(-30deg);top:-200px;left:100%;display:none;  }
-       }
-        .tabs .tab0 .divbg .div4
-        {
-            position: absolute;
-            background: url('img/img.png') no-repeat 0 -1083px;
-            width: 288px;
-            height: 93px;
-            top: 8px;
-            left: 7px;
-        }
-       .tabs .tab0 .divbg .div4.show
-       {  -webkit-animation:tab0sprite4 1.5s linear 1 forwards;
-            -moz-animation:tab0sprite4 1.5s linear 1 forwards;
-            -o-animation:tab0sprite4 1.5s linear forwards;
-       }
-        @-webkit-keyframes tab0sprite4
-        {   0%   {top:8px;left:7px;}
-            
-            100% {transform: rotate(-50deg);top:-200px;left:200%;display:none;  }
-       }
-        .tabs .tab0 .divbg .div5
-        {
-            position: absolute;
-            background: url('img/img.png') no-repeat 0 -1410px;
-            width: 293px;
-            height: 52px;
-            left: 2px;
-            top: 65px;
-        }
-        .tabs .tab0 .divbg .div5.show
-       {  -webkit-animation:tab0sprite5 2s linear 1 forwards;
-            -moz-animation:tab0sprite5 2s linear 1 forwards;
-            -o-animation:tab0sprite5 2s linear forwards;
-       }
-        @-webkit-keyframes tab0sprite5
-        {   0%   {top:65px;left:2px;}
-            
-            100% {transform: rotate(50deg)top:400px;left:500px;display:none;  }
-       }
-        .tabs .tab0 .divbg .div6
-        {
-            position: absolute;
-            background: url('img/img.png') no-repeat 0 -1712px;
-            width: 291px;
-            height: 75px;
-            top: 97px;
-            left: 5px;
-        }
-          .tabs .tab0 .divbg .div6.show
-       {  -webkit-animation:tab0sprite6 2s linear 1 forwards;
-            -moz-animation:tab0sprite6 2s linear 1 forwards;
-            -o-animation:tab0sprite6 2s linear forwards;
-       }
-        @-webkit-keyframes tab0sprite6
-        {   0%   {top:97px;left:5px;}
-            100% {transform: rotate(60deg);top:500px;left:500px;display:none;  }
-       }
-        .tabs .tab0 .divbg .div7
-        {
-            position: absolute;
-            background: url('img/img.png') no-repeat 0 -1890px;
-            width: 293px;
-            height: 220px;
-            top: 4px;
-            left: 3px;
-        }
-           .tabs .tab0 .divbg .div7.show
-       {  -webkit-animation:tab0sprite7 2s linear 1 forwards;
-            -moz-animation:tab0sprite7 2s linear 1 forwards;
-            -o-animation:tab0sprite6 2s linear forwards;
-       }
-        @-webkit-keyframes tab0sprite7
-        {   0%   {top:4px;left:3px;}
-            100% {transform: rotate(70deg);top:500px;left:500px;display:none;  }
-       }
-        .tabs .tab0 .divbg  .div8
-        {
-            position: absolute;
-            background: url('img/img.png') no-repeat -343px -90px;
-            width: 266px;
-            height: 129px;
-            top: 95px;
-            left: 6px;
-        }
-         .tabs .tab0 .divbg .div8.show
-       {  -webkit-animation:tab0sprite8 3s linear 1 forwards;
-            -moz-animation:tab0sprite8 3s linear 1 forwards;
-            -o-animation:tab0sprite8 3s linear forwards;
-       }
-        @-webkit-keyframes tab0sprite8
-        {   0%   {top:95px;left:6px;}
-            100% {transform: rotate(-70deg);top:1000px;left:240px;display:none;  }
-       }
-        .tabs .tab0 .divbg .div9
-        {
-            position: absolute;
-            background: url('img/img.png') no-repeat -345px -362px;
-            width: 167px;
-            height: 128px;
-            top: 95px;
-            left: 6px;  
-        }
-      .tabs .tab0 .divbg .div9.show
-       {  -webkit-animation:tab0sprite9 3s linear 1 forwards;
-            -moz-animation:tab0sprite9 3s linear 1 forwards;
-            -o-animation:tab0sprite9 3s linear forwards;
-       }
-        @-webkit-keyframes tab0sprite9
-        {   0%   {top:95px;left:6px;}
-            100% {transform: rotate(-70deg);top:1000px;left:120px;display:none;  }
-       }
-        .tabs .tab0 .divbg .div10
-        {
-            position: absolute;
-            background: url('img/img.png') no-repeat -1px -361px;
-            width: 66px;
-            height: 129px;
-            top: 95px;
-            left: 6px;
-        }
-      .tabs .tab0 .divbg .div10.show
-       {  -webkit-animation:tab0sprite10 3s linear 1 forwards;
-            -moz-animation:tab0sprite10 3s linear 1 forwards;
-            -o-animation:tab0sprite10 3s linear forwards;
-       }
-        @-webkit-keyframes tab0sprite10
-        {   0%   {top:95px;left:6px;}
-            100% {top:1000px;left:0px;display:none;  }
-       }
-        .tabs .tab1 {width: 100% ;height:100%;  background-color:#e6dfcc; }
-        .tabs .tab1 .tab1_bg
-        {
-            position: absolute;
-            left: 15%;
-            top: 3%;
-                            
-        }
-        .tabs .tab1 .car 
-        {
-            position:absolute;
-            background: url('img/bg2_car.png') no-repeat 0 0;
-	          width: 151px;
-        	  height: 86px;
-           top: 63%; left: 8%;
-            zoom: 0.3;
-          
-        }
-      .tabs .tab1 .car.show
-        {  
-             -webkit-animation:sprite1Topto 20s ease 1 forwards;
-            -moz-animation:sprite1Topto 20s ease 1 forwards;
-            -o-animation:sprite1Topto 20s ease 1 forwards;
-        }
-       @-webkit-keyframes sprite1Topto
-        {   0% { top: 63%; left: 8%;}
-            20%  { top: 54%; left: 38%;}
-            50%  { top: 32%; left: 43%;}
-            80%  {top: 18%; left: 39%;}
-           100%  {top: 12%; left: 24%;}
-       }
-       @-webkit-keyframes tab1_sprite
-       { 0%   {opacity: 0; }
-        100%   { opacity: 1;  } 
-       }
-       .tabs .tab1 .p{opacity: 0; }
-        .tabs .tab1 .bg
-        {
-           
-             background:url('img/tab2_img6.png') no-repeat 0 0;
-             zoom：0.3;
-         }
-       .tabs .tab1 .p1
-       {  
-           background: url('img/tab2_img1.png') no-repeat 0 0;
-	        width: 540px;
-	        height: 486px;
-	         zoom: 0.2;
-	         left: 187px;
-	         position:absolute;
-	         top: 0%; left: 1%;
-       }
-        .tabs .tab1 .p2
-       {  
-           background: url('img/tab2_img2.png') no-repeat 0 0;
-	        width: 527px;
-	        height: 426px;
-	        zoom: 0.2;
-	         position:absolute;
-	         top: 13%; left: 61%;
-       }
-        .tabs .tab1 .p3
-       {  
-           background: url('img/tab2_img3.png') no-repeat 0 0;
-	        width: 415px;
-	        height: 377px;
-	        zoom: 0.2;
-	       position:absolute;
-	       top: 33%; left: 66%;
-       }
-        .tabs .tab1 .p4
-       {  
-           background: url('img/tab2_img4.png') no-repeat 0 0;
-	        width: 459px;
-	        height:348px;
-	        zoom: 0.2;
-	        position:absolute;
-	        top: 56%;
-          left: 60%;
-       }
-        .tabs .tab1 .p5
-       {  
-           background: url('img/tab2_img5.png') no-repeat 0 0;
-	        width: 924px;
-	        height: 360px;
-	        zoom: 0.2;
-	        position:absolute;
-	        top: 69%; left:6%;
-       }  
-       .tabs .tab1 .p6
-       {  
-           background: url('img/tab2_img7.png') no-repeat 0 0;
-	        width: 583px;
-	        height: 545px;
-	        zoom: 0.2;
-	       position:absolute;
-	       top: 25%; left:6%;
-       }
-        .tabs .tab1 .p1.show
-       {  
-           -webkit-animation:flip 0.5s 18s linear 1 forwards;
-            -moz-animation:flip 0.5s 18s linear 1 forwards;
-            -o-animation:flip 0.5s 18s linear 1 forwards;
-       }
-       .tabs .tab1 .p2.show
-       {  
-           -webkit-animation:flip 0.5s 12.2s linear 1 forwards;
-            -moz-animation:flip 0.5s 12.2s linear 1 forwards;
-            -o-animation:flip 0.5s 12.2s linear 1 forwards;
-       }
-      .tabs .tab1 .p3.show
-       {  -webkit-animation:flip  0.5s 8.2s linear 1 forwards;
-            -moz-animation:flip  0.5s 8.2s linear 1 forwards;
-            -o-animation:flip  0.5s 8.2s linear 1 forwards;
-           }
-      .tabs .tab1 .p4.show
-       {  -webkit-animation:flip  0.5s 3.2s linear 1 forwards;
-            -moz-animation:flip  0.5s 3.2s linear 1 forwards;
-            -o-animation:flip  0.5s 3.2s linear 1 forwards;
-           }
-      .tabs .tab1 .p5.show
-       {  -webkit-animation:flip  0.5s linear 1 forwards;
-            -moz-animation:flip  0.5s linear 1 forwards;
-            -o-animation:flip  0.5s linear 1 forwards;
-      }
-      .tabs .tab1 .p6.show
-       {  -webkit-animation:flip  0.5s  20s linear 1 forwards;
-            -moz-animation:flip  0.5s 20s linear 1 forwards;
-            -o-animation:flip  0.5s 20s linear 1 forwards;
-      }
-      .tabs .tab2{background: #ffffff;}
-      .tabs .tab2 .sprite1
-      {
-           background-image:url('img/3.png');
-            width:130px;
-            height:150px;
-            top:50%;
-            left:50%;
-            margin-left:-75px;
-            margin-top:-75px;
-            position:relative;
-      }  
-      .tabs .tab2 .sprite1.show
-         {  
-            -webkit-animation:sprite2Topto 10s linear 1 forwards;
-            -moz-animation:sprite2Topto 10s linear 1 forwards;
-            -o-animation:sprite2Topto 10s linear 1 forwards;
-             
-        }
-       @-webkit-keyframes sprite2Topto
-        {   0%   {-webkit-transform: rotate(45deg);}
-            30%  {-webkit-transform: rotate(90deg);}
-            50%  {-webkit-transform: rotate(160deg);}
-            70%  {-webkit-transform: rotate(240deg);}
-            100% {-webkit-transform: rotate(270deg);}
-       }
-      .tabs .tab2 .p{opacity: 0; }
-       @-webkit-keyframes sprite2show
-       { 0%   {opacity: 0; }
-        100%   { opacity: 1;  } 
-       }
-       .tabs .tab2 .p1 
-       {
-            background-image: url('img/4.png'); 
-            background-repeat: no-repeat; 
-            position: relative; 
-            top: 46px;
-            left: 41px;
-            width:150px;
-            height:150px;
-       }
-       .tabs .tab2 .p2 
-       {
-            background-image: url('img/5.png'); 
-            background-repeat: no-repeat; 
-            position: relative; 
-            top: -100px;
-            left:193px;
-            width:150px;
-            height:150px;
-       }
-       .tabs .tab2 .p3 
-       {
-            background-image: url('img/6.png'); 
-            background-repeat: no-repeat;
-             position: relative; 
-            width:150px;
-            height:150px;
-            top: -56px;
-            left: 278px;
-       }
-       .tabs .tab2 .p4 
-       {
-            background-image: url('img/7.png'); 
-            background-repeat: no-repeat;
-             position: relative; 
-          width:150px;
-            height:150px; 
-              top: -95px;
-            left: 169px;
-       }
-        .tabs .tab2 .p5 
-       {
-            background-image: url('img/8.png'); 
-            background-repeat: no-repeat; 
-            position: relative; 
-            top: -244px;
-            left: 24px;width:150px;
-            height:150px;
-       }
-      .tabs .tab2 .p1.show
-       {    -webkit-animation:sprite2show 2s linear 1 forwards;
-            -moz-animation:sprite2show 2s linear 1 forwards;
-            -o-animation:sprite2show 2s linear 1 forwards;
-       }
-       .tabs .tab2 .p2.show
-       {  
-           -webkit-animation:sprite2show 1s 3s linear 1 forwards ;
-            -moz-animation:sprite2show 1s 3s linear 1 forwards;
-            -o-animation:sprite2show 1s 3s linear 1 forwards;
-           }
-      .tabs .tab2 .p3.show
-       {  -webkit-animation:sprite2show  1s 4s linear 1 forwards;
-            -moz-animation:sprite2show 1s 4s linear 1 forwards;
-            -o-animation:sprite2show  1s 4s linear 1 forwards;
-           }
-      .tabs .tab2 .p4.show
-       {  -webkit-animation:sprite2show  1s 8s linear 1 forwards;
-            -moz-animation:sprite2show  1s 8s linear 1 forwards;
-            -o-animation:sprite2show  1s 8s linear 1 forwards;
-           }
-      .tabs .tab2 .p5.show
-       {  -webkit-animation:sprite2show  1s  12s linear 1 forwards;
-            -moz-animation:sprite2show 1s 12s linear 1 forwards;
-            -o-animation:sprite2show  1s 12s linear 1 forwards;
-       }
-      .fontFamily{font-family: 幼圆;
-line-height: 0.1em;
-font-size: 1em;} 
-      .fontColor{color: #EC121A;} 
-      .tabs .tab1 .p5_txt{ 
-          position: absolute; top: 70%; left: 30%;  opacity: 0;  
-      }
-      .tabs .tab1 .p4_txt{
-          position: absolute;  left: 70%; opacity: 0;  
-          top: 45%;
-      }
-       .tabs .tab1 .p3_txt{
-         top: 22%;position: absolute;left: 70%; opacity: 0;  
-      }
-      .tabs .tab1 .p2_txt{
-          top: 1%;position: absolute;left: 55%; opacity: 0;  
-      }
-      .tabs .tab1 .p1_txt{ 
-        top: 16%;position: absolute;left: 5%; opacity: 0;  
-       
-      }
-      .tabs .tab1 .p5_txt.show{ 
-         -webkit-animation:tab1_sprite   0.5s  linear 1 forwards;
-            -moz-animation:tab1_sprite  0.5s  linear 1 forwards;
-            -o-animation:tab1_sprite   0.5s  linear 1 forwards;
-       }
-       .tabs .tab1 .p4_txt.show{ 
-         -webkit-animation:tab1_sprite  1s  4.2s linear 1 forwards;
-            -moz-animation:tab1_sprite  1s 4.2s  linear 1 forwards;
-            -o-animation:tab1_sprite  1s 4.2s   linear 1 forwards;
-       }
-       .tabs .tab1 .p3_txt.show{ 
-         -webkit-animation:tab1_sprite  1s 10.2s  linear 1 forwards;
-            -moz-animation:tab1_sprite  1s 10.2s  linear 1 forwards;
-            -o-animation:tab1_sprite  1s  10.2s linear 1 forwards;
-       }
-       .tabs .tab1 .p2_txt.show{ 
-         -webkit-animation:tab1_sprite  1s 15s  linear 1 forwards;
-            -moz-animation:tab1_sprite  1s 15s  linear 1 forwards;
-            -o-animation:tab1_sprite 15s  linear 1 forwards;
-       }
-      .tabs .tab1 .p1_txt.show{ 
-         -webkit-animation:tab1_sprite  1s 20s  linear 1 forwards;
-            -moz-animation:tab1_sprite  1s 20s  linear 1 forwards;
-            -o-animation:tab1_sprite  1s 20s  linear 1 forwards;
-       }
-      @-webkit-keyframes flip {  
-          0% {   opacity: 1;
-              -webkit-transform: rotateY(0deg) scale(1,1);  
-           }  
-          30% {  opacity: 1;
-             -webkit-transform: rotateY(90deg) scale(1,1);  
-             }  
-          70% {  opacity: 1;
-             -webkit-transform: rotateY(180deg) scale(1,1);  
-             }  
-          100% { opacity: 1;
-              -webkit-transform: rotateY(0deg) scale(1,1);  
-           }  
-}  
-    </style>
-</head>
-<body >
-    <div id="bg">
-        <div id="loading">
-        </div>
-        <span style=""></span>
-    </div>
-    <div class="uparrw" id="uparrw" style="display: none;">
-        <div class="icon_uparrw" id="icon_uparrw">
-        </div>
-        <div class="cur">
-        </div>
-    </div>
-    <div style="height: 0px; overflow: hidden;">
-        <audio   loop="loop"  ></audio>
-    </div>
-    
-    <div class="content">
-        <div class="tabs" id="scene" style="display: none;">
-            <ul>
-                <li class="load" id="load">
-                    <img class="bg" src="img/bg_load.png" width="80%" height="10%">
-                    </img>
-                    <div class="loadcar">
-                    </div>
-                </li>
-                <li class="tab0">
-                    <div class="divbg">
-                        <div class="div1">
-                        </div>
-                        <div class="div2">
-                        </div>
-                        <div class="div3">
-                        </div>
-                        <div class="div4">
-                        </div>
-                        <div class="div5">
-                        </div>
-                        <div class="div6">
-                        </div>
-                        <div class="div7">
-                        </div>
-                        <div class="div8">
-                        </div>
-                        <div class="div9">
-                        </div>
-                        <div class="div10">
-                        </div>
-                    </div>
-                </li>
-                <li class="tab1">
-                    <img class="tab1_bg" src="img/tab2_img6.png" width="60%" height="80%" />
-                    <div class="car sprite">
-                    </div>
-                    <div class="p p1 sprite">
-                    </div>
-                    <div class="p p2 sprite">
-                    </div>
-                    <div class="p p3 sprite">
-                    </div>
-                    <div class="p p4 sprite">
-                    </div>
-                    <div class="p p5 sprite">
-                    </div>
-                     <div class="p p6 sprite">
-                    </div>
-                    <div class="p1_txt fontFamily sprite">2015年？</div>
-                     <div class="p2_txt fontFamily sprite">
-                     <p>2014年12月，</p>
-                     <p>实现<span class="fontColor">全语音操作</span></p>   
-                     <p >有事您说话</p>
-                    </div>
-                    <div class="p3_txt fontFamily sprite">
-                     <p>2013年6月，</p>
-                     <p>用户破量突破</p>   
-                     <p class="fontColor">1千万！</p>
-                    </div>
-                    <div class="p4_txt fontFamily sprite">
-                     <p>2012年8月，</p>
-                     <p>用户破<p class="fontColor">百万！</p></p>
-                    
-                    </div>
-                    <div class="p5_txt fontFamily sprite">
-                     <p>2012年6月,一部神器诞生，</p>
-                     <p>Byebye拥堵的环路,</p>
-                     <p>byebye曾经的堵友们!</p>
-                     <p class="fontColor">国内首家UGC社交导航</p>
-                    </div>
-
-                </li>
-                 
-                 
-            </ul>
-        </div>
-    </div>
-    <script src="js/global.js" type="text/javascript"></script>
-    <script src="js/zepto.min.js" type="text/javascript"></script>
- <script type="text/javascript">
-    
-   
- 
-    function isWeixin(){
-        var UA = navigator.userAgent;
-        // alert(UA)
-        if (/MicroMessenger/.test(UA)){
-            return true
-        }else{
-            return false
-        }
-    }
-    function getOSVS(){
-        var UA = navigator.userAgent;
-        var s = UA.indexOf("OS ");
-        if(s == -1){ return false }
-        var vs = UA.substr(s+3,5);
-        return vs
-    }
-
-     
-
-    var debugcode = "error:";
-    $(function(){
-        var _bg = document.getElementById('bg'),
-            _uparrw = document.getElementById('uparrw'),
-            _icon_uparrw = document.getElementById('icon_uparrw');
-
-        var isWEIXIN = isWeixin();
-        var os_vs = getOSVS();
-        var domeInitEnd = false;
-        _uparrw.style.display = 'none';
-        _bg.style.display = 'none';
-        document.getElementById("scene").style.display = "block";
-        initTabDomo()
-
-        document.addEventListener('WeixinJSBridgeReady', function() {
-            onBridgeReady()
-            // _uparrw.querySelector(".cur").innerHTML = "滑动进入";
-            if(os_vs >= "7_1_1"){
-                debugcode +="os_vs>=7_1_1,";
-                // _uparrw.style.display = 'block';
-                _uparrw.style.display = 'none';
-                _bg.style.display = 'none';
-                document.getElementById("scene").style.display = "block";
-                if(!domeInitEnd) {
-                    initTabDomo()
-                }
-            }
-        })
-        $(document).one("touchstart",function(e){
-            if(!domeInitEnd){
-                _uparrw.style.display = 'none';
-                _bg.style.display = 'none';
-                document.getElementById("scene").style.display = "block";
-                initTabDomo()
-                debugcode +="4,";
-            }
-        },false)
-        
-        function initTabDomo(){
-            domeInitEnd = true;
-            debugcode +="5,"; 
-            gameTab = new m.Tab({
-                target: document.querySelectorAll('.tabs li'),
-                trigger: document.querySelectorAll('.triggers li'),
-                onchange: function(n){
-                  this.target=document.querySelectorAll('.tabs li');
-                   this.trigger=document.querySelectorAll('.triggers li');
-                    debugcode +="7,"; 
-                    var sprites = this.target[n].querySelectorAll('.sprite');
-                    var peo = this.target[n].querySelectorAll('.peo');
-                    for(var i = 0; i < sprites.length; i++) {
-                        sprites[i].classList.add('show')
-                    }
-                    for(var j = 0; j < peo.length; j++) {
-                        peo[j].classList.add('show')
-                    }
-                  
-                    if(this.prevPage != window.undefined) {
-                       var sprites = this.target[this.prevPage].querySelectorAll('.sprite');
-                        for(var i = 0; i < sprites.length; i++) {
-                            sprites[i].classList.remove('show')
-                        }
-                         var divs=$(".divbg").find("div");
-                         for (var i = 0; i < divs.length; i++) {
-                           divs[i].classList.remove('show');
-                         };
-                    }
-                },
-                touchMove: true
-            });
-            debugcode +="6,"; 
-        }
-
-    })
-
-    
-   
-  
-    var percent=0;
-    function loadPage(){  
-        
-        percent=percent+10;    //每次百分比加10
-        $(".loadcar").html(percent+"%"); 
-         if (percent<99){                
-            setTimeout("loadPage()",500);  
-        }else{
-              $(".load").remove();
-
-        }  
-         
-    }
-    loadPage(); 
-      var page = {
-                    x: 0,
-                    y: 0
-                } 
-    $(".loadcar")[0].classList.add('show');
-    $(".tab0")[0].addEventListener("touchstart",function(e){
-              var e = e || window.event;
-              page.x = e.changedTouches[0].pageX;
-              page.y = e.changedTouches[0].pageY;
-     },false);  
-    $(".tab0")[0].addEventListener("touchend",function(e){
-          var e = e || window.event;
-          var pageXa = e.changedTouches[0].pageX - page.x;
-          var pageYa = e.changedTouches[0].pageY - page.y;
-          if (Math.abs(pageXa) <10) {
-                 var divs=$(".divbg").find("div");
-                 for (var i = 0; i < divs.length; i++) {
-                        divs[i].classList.add('show');
-                     }    
-           };
-     },false);
-   
-  
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>搜索大全-Google、百度、360、搜狗</title>
+<style>
+*{margin:0; padding:0; font-size:14px; font-family:arial;}
+#search{ margin:40px auto; width:460px;}
+#search div{}
+#search div a{ width:60px; height:24px; line-height:30px; margin:10px; text-decoration:none; color:#666;}
+#search div a:hover{cursor:pointer;}
+#search div a.active{color:#FF3333; text-decoration:underline; font-size:16px; font-weight:bold;}
+#search #txtKey{ width:380px; height:24px; line-height:24px; padding:4px; border:1px solid #999; vertical-align:middle;}
+#search #btnSearch{ width:60px; height:34px; border:1px solid #666; border-left:0; background:#f5f5f5;vertical-align:middle;}
+#search #btnSearch{ cursor:pointer;}
+#search ul{ list-style:none; width:388px; border:1px solid #000;border-top:0; display:none;}
+#search ul li{ height:24px; line-height:24px; color:#000; padding:4px;}
+#search ul li.in{ background:#DCDCDC; cursor:pointer;}
+</style>
+<script src="jsonp.js"></script>
+<script id='lxwtest'>
+["a",["A","Android","AKB48","AC\u7c73\u5170","AV\u5973\u512a","Avex trax","Australia","Animax","AC\u5c3c\u5c14\u68ee","AT-X"]]
 </script>
+<script>
+window.onload=function(){
+	var oSearch=document.getElementById('search');
+	var aSo=oSearch.children[0].getElementsByTagName('a');
+	var oKey=document.getElementById('txtKey');
+	var oBtn=document.getElementById('btnSearch');
+	var oUl=oSearch.children[1];
+	var aLi=oUl.children;
+	var company='google';	//默认 Google
+	
+	var obj={
+				google:{url:'http://74.125.110.2/complete/search',key:'q',cbName:'',soUrl:'http://74.125.110.2/webhp#newwindow=1',soKey:'q'},
+				baidu:{url:'http://suggestion.baidu.com/su',key:'wd',cbName:'cb',soUrl:'http://www.baidu.com/s',soKey:'wd'},
+			 	so360:{url:'http://sug.so.360.cn/suggest',key:'word',cbName:'callback',soUrl:'http://www.so.com/s',soKey:'q'},
+				sogou:{url:'http://w.sugg.sogou.com/sugg/ajaj_json.jsp',key:'key',cbName:'',soUrl:'http://www.sogou.com/web',soKey:'query'},
+				xunlei:{url:'http://xl7ac.kankan.xunlei.com/ac.php',key:'k',cbName:'',soUrl:'http://search.kankan.com/search.php',soKey:'keyword'},
+				wiki:{url:'http://zh.wikipedia.org/w/api.php',key:'search',cbName:'',soUrl:'http://zh.wikipedia.org/wiki/',soKey:''}
+	};
+	for(var i=0,len=aSo.length;i<len;i++){
+		//切换搜索类型
+		aSo[i].onclick=(function(i){
+			return function(){ switchSo(i); }
+		})(i);
+	}
+	function switchSo(i){
+		for(var k=0;k<aSo.length;k++){
+			aSo[k].className='';
+		}
+		aSo[i].className='active';
+		company=aSo[i].getAttribute('company');
+		oUl.style.display='none';
+		oUl.innerHTML='';
+		oKey.focus();
+		searchToJsonp();
+	}
+	
+	oBtn.onclick=function(){
+		searchFn(oKey.value);
+	}
+	//搜索
+	function searchFn(value){
+		if(company=='google'){
+			var soUrl=obj[company].soUrl+'&'+obj[company].soKey+'='+encodeURIComponent(value);
+		}else if(company=='wiki'){
+			var soUrl=obj[company].soUrl+encodeURIComponent(value);
+		}else{
+			var soUrl=obj[company].soUrl+'?'+obj[company].soKey+'='+encodeURIComponent(value);
+		}
+		window.open(soUrl);	
+		oUl.style.display='none';
+	}
+	
+	var oldValue='';
+	oKey.onkeyup=function(ev){
+		var oEvent=ev||event;
+		if(oEvent.keyCode==40 || oEvent.keyCode==38){
+			return;
+		}
+		
+		if(oEvent.keyCode==13){			
+			searchFn(oKey.value);
+		}
+		
+		searchToJsonp();
+		
+		iNow=-1;
+		oldValue=oKey.value;			
+	}
+	oKey.onclick=function(ev){
+		var oEvent=ev||event;
+		aLi.length>0 && (oUl.style.display='block');
+		oEvent.cancelBubble=true;
+	}
+	function searchToJsonp(){
+		var reg=/^\s+|\s+$/g;
+		//首尾去空格	
+		if(!oKey.value.replace(reg,'')){
+			oUl.style.display='none';
+			oUl.innerHTML='';
+			return;
+		}
+		
+		if(oKey.value.length>100){
+			oKey.value=oKey.value.substring(0,100);
+		}
+		
+		var json={
+			url:obj[company].url,	//360接口: http://sug.so.360.cn/suggest
+			data:{ },	//encodein：给so360准备的，否则在搜索中文情况下不能出数据；chient、hl：是给google用的; from:web xuelei
+			cbName:obj[company].cbName,						//360接口: callback
+			succFn:function(args){
+				var json=args[0];
+				oUl.style.display='block';
+				oUl.innerHTML='';
+				
+				json.s.length<=0 && (oUl.style.display='none');
+				for(var i=0,len=json.s.length;i<len;i++){
+					createLi(decodeURIComponent(json.s[i]),i);
+				}
+			},
+			timeout:3,
+			timeoutFn:function(){
+				//alert('网络超时');
+			}
+		};
+		json.data[obj[company].key]=encodeURIComponent(oKey.value);
+		//google、搜狗搜索拿到的结果是数组，所以单独处理
+		if(company=='google'){
+			json.data['client']='hp';
+			json.data['hl']='zh-CN';
+			json.jsonpCallback='window.google.ac.h';
+			json.succFn=function(arr){
+				oUl.style.display='block';
+				oUl.innerHTML='';
+				
+				arr[1].length<=0 && (oUl.style.display='none');
+				for(var i=0,len=arr[1].length;i<len;i++){
+					createLi(decodeURIComponent(arr[1][i][0]),i);
+				}
+			}
+		}else if(company=='sogou'){
+			json.jsonpCallback='window.sogou.sug';
+			json.succFn=function(arr){
+				oUl.style.display='block';
+				oUl.innerHTML='';
+				
+				arr[1].length<=0 && (oUl.style.display='none');
+				for(var i=0,len=arr[1].length;i<len;i++){
+					createLi(decodeURIComponent(arr[1][i]),i);
+				}
+			}
+		}else if(company=='xunlei'){
+			json.data['from']='web';
+			json.data['cs']='utf-8';
+			json.jsonpCallback='compResp';
+			json.succFn=function(args){
+				var arr=args[1];
+				oUl.style.display='block';
+				oUl.innerHTML='';
+				
+				arr.length<=0 && (oUl.style.display='none');
+				for(var i=0,len=arr.length;i<len;i++){
+					createLi(decodeURIComponent(arr[i]),i);
+				}
+			}
+		}else if(company=='so360'){
+			json.data['encodein']='utf-8';
+		}else if(company=='wiki'){
+			json.jsonpCallback='wiki';
+			json.data['action']='opensearch';
+			json.succFn=function(arr){
+				oUl.style.display='block';
+				oUl.innerHTML='';
+				console.log(arr);
+				arr[1].length<=0 && (oUl.style.display='none');
+				for(var i=0,len=arr[1].length;i<len;i++){
+					createLi(decodeURIComponent(arr[1][i]),i);
+				}
+			}
+		}
+		jsonp(json);	//调用jsonp获取li数据
+		
+	}
+	
+	//创建li
+	function createLi(value,i){
+		var oLi=document.createElement('li');
+		oLi.innerHTML=value;
+		oUl.appendChild(oLi);
+		oLi.onmouseover=function(){ 
+			liMouse(i); 
+		};
+		oLi.onclick=function(ev){
+			var oEvent=ev||event;
+			searchFn(this.innerHTML);
+			//取消冒泡，否则会触发document的点击事件
+			oEvent.cancelBubble=true;
+		}
+	}
+	
+	//控制键盘上下方向移动选中项
+	var iNow=-1;
+	oKey.onkeydown=function(ev){
+		var oEvent=ev||event;
+		switch(oEvent.keyCode){
+			case 40:
+				clearLiClass();
+				iNow++;
+				if(iNow==aLi.length){
+					iNow=-1;
+					oKey.value=oldValue;
+				}else{
+					aLi[iNow].className='in';
+					oKey.value=aLi[iNow].innerHTML;
+				}
+				break;
+			case 38:
+				clearLiClass();
+				iNow--;
+				if(iNow==-1){
+					oKey.value=oldValue;
+				}else{
+					iNow==-2 && (iNow=aLi.length-1);
+					aLi[iNow].className='in';
+					oKey.value=aLi[iNow].innerHTML;
+				}
+				break;
+		}
+		
+	}
+	
+	//li鼠标放上效果
+	function liMouse(i){ 
+		clearLiClass();
+		iNow=i;
+		aLi[iNow].className='in';
+	}
+	//移除ul删除效果
+	oUl.onmouseout=clearLiClass;
+	
+	//清空所有li的class
+	function clearLiClass(){
+		for(var i=0,len=aLi.length;i<len;i++){
+			aLi[i].className='';
+		}
+	}
+	
+	document.onclick=function(){
+		oUl.style.display='none';
+	}
+}
+</script>
+</head>
+
+<body>
+<div id='search'>
+	<div>
+		<a href="javascript:;" company='google' class="active">Google</a>
+		<a href="javascript:;" company='baidu'>百度搜</a>
+		<a href="javascript:;" company='so360'>360搜</a>
+		<a href="javascript:;" company='sogou'>搜狗</a>
+		<a href="javascript:;" company='xunlei'>迅雷影视</a>
+		<!--<a href="javascript:;" company='wiki'>维基百科</a> -->
+		<input type="text" id="txtKey"  /><input type="button" value="搜&nbsp;索" id="btnSearch" />
+	</div>
+	<ul>
+	
+	</ul>
+</div>
 </body>
 </html>
