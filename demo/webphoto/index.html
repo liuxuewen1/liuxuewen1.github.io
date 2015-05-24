@@ -65,21 +65,24 @@
         var $large = $(".large");
         var iNow = 0;
         function showLarge(){
-            var $img = $large.find("img");
+            var $img = $large.show().find("img");
             $img.css({ width : "auto", height: "auto"});
             $img[0].onload = function(){
                 var $this = $(this);
-                var sc = $this.height() / $this.width();
+                var h = $this.height();
+                var w = $this.width();
+                var sc = h / w;
                 if(sc > 1.2){
-                    $this.css("height", winHeight);
-                    var pW = winHeight * $this.width() / $this.height();
+                    $this.css("height", winHeight + "px");
+                    var pW = winHeight * w / h;
                     $large.css("padding-left", (winWidth - $this.width())/2 + "px");
                 }else{
-                    $this.css("width", winWidth);
-//                    console.log((winHeight - $this.height())/2)
-                    $large.css("padding-top", (winHeight - $this.height())/2 + "px");
+                    var pH = winWidth * h / w;
+                    $this.css("width", winWidth + "px").css("height", pH + "px");
+                    console.log(winHeight +','+ h + ',' +w)
+                    $large.css("padding-top", (winHeight - pH)/2 + "px");
                 }
-                $large.show();
+//                $large.show();
             }
             $img.attr("src", "imgs/" + iNow + ".large.jpg");
         }
