@@ -64,7 +64,7 @@
         $ul.append(liHtml);
         var $large = $(".large");
         var iNow = 0;
-        function showLarge(){
+        function showLarge(succFn){
             var $img = $large.show().find("img");
             $img.css({ width : "auto", height: "auto"});
             $img[0].onload = function(){
@@ -73,16 +73,15 @@
                 var w = $this.width();
                 var sc = h / w;
                 if(sc > 1.2){
-                    $this.css("height", winHeight + "px");
                     var pW = winHeight * w / h;
+                    $this.css("height", winHeight + "px").css("width", pW + "px");
                     $large.css("padding-left", (winWidth - $this.width())/2 + "px");
                 }else{
                     var pH = winWidth * h / w;
                     $this.css("width", winWidth + "px").css("height", pH + "px");
-                    console.log(winHeight +','+ h + ',' +w)
                     $large.css("padding-top", (winHeight - pH)/2 + "px");
                 }
-//                $large.show();
+                succFn && succFn($img);
             }
             $img.attr("src", "imgs/" + iNow + ".large.jpg");
         }
@@ -93,13 +92,24 @@
         $large.on("swipeRight", "img", function(){
             iNow--;
             if(iNow <= 0) iNow = 1;
-            showLarge();
+            showLarge(function($img){
+                setAnimation($img, "bounceInLeft")
+            });
         })
         $large.on("swipeLeft", "img", function(){
             iNow++;
             if(iNow >= total) iNow = total;
-            showLarge();
-        })
+            showLarge(function($img){
+                setAnimation($img, "bounceInRight")
+            });
+        });
+        function setAnimation($img, className){
+            $img.addClass("animated " + className);
+            $img[0].addEventListener("webkitAnimationEnd", function(){
+                $img.removeClass("animated " + className);
+                $img[0].removeEventListener("webkitAnimationEnd");
+            },false);
+        }
         $large.on("tap", function(){
             $(this).hide();
         })
