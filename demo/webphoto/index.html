@@ -76,7 +76,7 @@
                     $large.css("padding-left", (winWidth - $this.width())/2 + "px");
                 }else{
                     $this.css("width", winWidth);
-                    console.log((winHeight - $this.height())/2)
+//                    console.log((winHeight - $this.height())/2)
                     $large.css("padding-top", (winHeight - $this.height())/2 + "px");
                 }
                 $large.show();
@@ -87,13 +87,13 @@
             iNow = $(this).attr("largeId");
             showLarge();
         });
-        $large.on("swipeLeft", "img", function(){
-            iNow -= 1;
+        $large.on("swipeRight", "img", function(){
+            iNow--;
             if(iNow <= 0) iNow = 1;
             showLarge();
         })
-        $large.on("swipeRight", "img", function(){
-            iNow += 1;
+        $large.on("swipeLeft", "img", function(){
+            iNow++;
             if(iNow >= total) iNow = total;
             showLarge();
         })
