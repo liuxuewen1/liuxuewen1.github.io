@@ -1,5 +1,5 @@
 /*头部*/
-header{
+.header{
 	padding: (10/64)*1rem (20/64)*1rem;
 	height: 1rem;
 	.header-logo{
@@ -12,15 +12,15 @@ header{
 	.header-city{
 		float: left;
 		line-height: 1rem;
-		font-size: (20/64)*1rem;
-		color: #333;
-		margin-left: (10/64)*1rem;
+		font-size: (24/64)*1rem;
+		color: #000;
+		margin-left: (16/64)*1rem;
 	}
 	.header-login{
 		float: right;
 		a{
 			line-height: 1rem;
-			font-size: (20/64)*1rem;
+			font-size: (24/64)*1rem;
 			margin-right: (10/64)*1rem;
 		}
 	}
@@ -32,5 +32,62 @@ header{
 			width: 10rem;
 			height: (200/64)*1rem;
 		}
+	}
+}
+.gray-sec{
+	width: 100%;
+	height: (10/64)*1rem;
+	background-color: #d9d9d9;
+}
+/*装修区域*/
+.zx-section{
+	.section-title{
+		padding-left: (20/64)*1rem;
+		border-top: (4/64)*1rem solid #f5c132;
+		height: 1rem;
+		line-height: 1rem;
+		color: #000;
+		font-size: (30/64)*1rem;
+		border-bottom: (2/64)*1rem solid #d9d9d9;
+	}
+	>ul{
+		margin-top: (10/64)*1rem;
+		margin-left: (20/64)*1rem;
+		li{
+			float: left;
+			width: (205/64)*1rem;
+		}
+		&.zx-basetype{
+			li{
+				margin-bottom: (10/64)*1rem;
+				a{
+					display: block;
+					span{
+						display: block;
+						margin-left: (52/64)*1rem;
+						width: (100/64)*1rem;
+						height: (102/64)*1rem;
+						background: url('../images/zx/1.png') no-repeat center center;
+						background-size: cover;
+					}
+					p{
+						margin-top: (10/64)*1rem;
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
+	.zx-base-btn{
+		display: block;
+		width: 100%;
+		height: 1rem;
+		line-height: 1rem;
+		border: (2/64)*1rem solid #d9d9d9;
+		border-left: none;
+		border-right: none;
+		text-align: center;
+		color: #333;
+		font-size: (26/64)*1rem;
 	}
 }

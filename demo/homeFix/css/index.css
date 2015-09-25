@@ -1,32 +1,85 @@
 /*头部*/
-header {
+.header {
   padding: 0.15625rem 0.3125rem;
   height: 1rem;
 }
-header .header-logo {
+.header .header-logo {
   float: left;
   width: 2rem;
   height: 1rem;
   background: url('../images/logo.gif') no-repeat;
   background-size: cover;
 }
-header .header-city {
+.header .header-city {
   float: left;
   line-height: 1rem;
-  font-size: 0.3125rem;
-  color: #333;
-  margin-left: 0.15625rem;
+  font-size: 0.375rem;
+  color: #000;
+  margin-left: 0.25rem;
 }
-header .header-login {
+.header .header-login {
   float: right;
 }
-header .header-login a {
+.header .header-login a {
   line-height: 1rem;
-  font-size: 0.3125rem;
+  font-size: 0.375rem;
   margin-right: 0.15625rem;
 }
 /*轮播*/
 .swiper-container .swiper-slide img {
   width: 10rem;
   height: 3.125rem;
+}
+.gray-sec {
+  width: 100%;
+  height: 0.15625rem;
+  background-color: #d9d9d9;
+}
+/*装修区域*/
+.zx-section .section-title {
+  padding-left: 0.3125rem;
+  border-top: 0.0625rem solid #f5c132;
+  height: 1rem;
+  line-height: 1rem;
+  color: #000;
+  font-size: 0.46875rem;
+  border-bottom: 0.03125rem solid #d9d9d9;
+}
+.zx-section > ul {
+  margin-top: 0.15625rem;
+  margin-left: 0.3125rem;
+}
+.zx-section > ul li {
+  float: left;
+  width: 3.203125rem;
+}
+.zx-section > ul.zx-basetype li {
+  margin-bottom: 0.15625rem;
+}
+.zx-section > ul.zx-basetype li a {
+  display: block;
+}
+.zx-section > ul.zx-basetype li a span {
+  display: block;
+  margin-left: 0.8125rem;
+  width: 1.5625rem;
+  height: 1.59375rem;
+  background: url('../images/zx/1.png') no-repeat center center;
+  background-size: cover;
+}
+.zx-section > ul.zx-basetype li a p {
+  margin-top: 0.15625rem;
+  text-align: center;
+}
+.zx-section .zx-base-btn {
+  display: block;
+  width: 100%;
+  height: 1rem;
+  line-height: 1rem;
+  border: 0.03125rem solid #d9d9d9;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  color: #333;
+  font-size: 0.40625rem;
 }
