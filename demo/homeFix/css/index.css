@@ -1,0 +1,32 @@
+/*头部*/
+header {
+  padding: 0.15625rem 0.3125rem;
+  height: 1rem;
+}
+header .header-logo {
+  float: left;
+  width: 2rem;
+  height: 1rem;
+  background: url('../images/logo.gif') no-repeat;
+  background-size: cover;
+}
+header .header-city {
+  float: left;
+  line-height: 1rem;
+  font-size: 0.21875rem;
+  color: #333;
+  margin-left: 0.15625rem;
+}
+header .header-login {
+  float: right;
+}
+header .header-login a {
+  line-height: 1rem;
+  font-size: 0.21875rem;
+  margin-right: 0.15625rem;
+}
+/*轮播*/
+.swiper-container .swiper-slide img {
+  width: 10rem;
+  height: 3.125rem;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<script src="js/common/zepto.min.js"></script>
+	<script src="js/common/flexible.js"></script>
+	<script src="js/swiper/swiper.min.js"></script>
+	<link rel="stylesheet" href="js/swiper/swiper.min.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<header>
+		<a href="javascript:;" class="header-logo"></a>
+		<a href="javascript:;" class="header-city">北京</a>
+		<div class="header-login">
+			<a href="javascript:;" class="header-login-a">登录</a>
+			<a href="javascript:;" class="header-login-reg">注册</a>
+		</div>
+	</header>
+	<section>
+		<div class="swiper-container">
+		    <div class="swiper-wrapper">
+		        <div class="swiper-slide"><img src="images/swiper-1.jpg" alt=""></div>
+		        <div class="swiper-slide"><img src="images/swiper-2.jpg" alt=""></div>
+		    </div>
+		    <!-- 如果需要分页器 -->
+		    <div class="swiper-pagination"></div>
+		</div>
+	</section>
+	<footer></footer>
+</body>
+<script>
+	  var mySwiper = new Swiper ('.swiper-container', {
+	    direction: 'horizontal',
+	    // loop: true,
+	    // 如果需要分页器
+	    pagination: '.swiper-pagination'
+	  })       
+</script>
+</html>
