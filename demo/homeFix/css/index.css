@@ -57,6 +57,7 @@
 }
 .sec-type li a {
   display: block;
+  color: #333;
 }
 .sec-type li a span {
   display: block;
