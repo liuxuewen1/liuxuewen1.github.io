@@ -1,6 +1,7 @@
+@import "_variables.less";
 /*头部*/
 .header{
-	padding: (10/64)*1rem (20/64)*1rem;
+	padding: @px10 @px20;
 	height: 1rem;
 	.header-logo{
 		float: left;
@@ -12,16 +13,16 @@
 	.header-city{
 		float: left;
 		line-height: 1rem;
-		font-size: (24/64)*1rem;
-		color: #000;
-		margin-left: (16/64)*1rem;
+		font-size: @px24;
+		color: @black;
+		margin-left: @px16;
 	}
 	.header-login{
 		float: right;
 		a{
 			line-height: 1rem;
-			font-size: (24/64)*1rem;
-			margin-right: (10/64)*1rem;
+			font-size: @px24;
+			margin-right: @px10;
 		}
 	}
 }
@@ -36,36 +37,36 @@
 }
 .gray-sec{
 	width: 100%;
-	height: (10/64)*1rem;
+	height: @px10;
 	background-color: #d9d9d9;
 }
 /*装修区域*/
 .section-title{
-	padding: 0 (20/64)*1rem;
+	padding: 0 @px20;
 	/*border-top: (4/64)*1rem solid #f5c132;*/
 	height: 1rem;
 	line-height: 1rem;
 	border-bottom: 1px solid #ccc;
-	background-color: #EAEBEC;
+	background-color: @title-bg;
 	>span{
 		float: left;
 		font-weight: bold;
-		color: #545454;
-		font-size: (28/64)*1rem;
+		color: @title-color;
+		font-size: @px28;
 	}
 	>a{
 		float: right;
 		color: #666;
-		font-size: (24/64)*1rem;
+		font-size: @px24;
 	}
 }
 .sec-type{
-	margin-top: (10/64)*1rem;
-	margin-left: (20/64)*1rem;
+	margin-top: @px10;
+	margin-left: @px20;
 	li{
 		float: left;
 		width: (205/64)*1rem;
-		margin-bottom: (10/64)*1rem;
+		margin-bottom: @px10;
 		a{
 			display: block;
 			color: #333;
@@ -76,9 +77,9 @@
 				height: (102/64)*1rem;
 			}
 			p{
-				margin-top: (10/64)*1rem;
+				margin-top: @px10;
 				text-align: center;
-				font-size: (24/64)*1rem;
+				font-size: @px24;
 			}
 		}
 	}
@@ -114,12 +115,12 @@
 	border-bottom: 1px solid #d9d9d9;
 	text-align: center;
 	color: #333;
-	font-size: (26/64)*1rem;
+	font-size: @px26;
 }
 
 /*建材*/
 .jc-type{
-	padding: 0 (10/64)*1rem;
+	padding: 0 @px10;
 	>div{
 		height: 1rem;
 		line-height: 1rem;
@@ -127,32 +128,57 @@
 		>span{
 			float: left;
 			width: (160/64)*1rem;
-			color: #000;
+			color: @black;
 			font-weight: bold;
-			font-size: (24/64)*1rem;
+			font-size: @px24;
 		}
 		>a{
 			float: left;
 			width: (115/64)*1rem;
 			color: #333;
-			font-size: (24/64)*1rem;
+			font-size: @px24;
 		}
 	}
 }
 /*问答*/
 .faq-content{
-	padding: 0 (10/64)*1rem;
-	border-bottom: (1/64)*1rem solid #d9d9d9;
+	padding: 0 @px10;
+	border-bottom: 1px solid #d9d9d9;
 	p{
-		padding-left: (10/64)*1rem;
+		padding-left: @px10;
 		height: 0.8rem;
 		line-height: 0.8rem;
-		font-size: (24/64)*1rem;
+		font-size: @px24;
 		&:nth-child(1){
 			font-weight: bold;
 		}
 		>span:nth-child(1){
-			color: #000;
+			color: @black;
 		}
 	}
+}
+
+/*页脚*/
+.footer{
+	padding: 8px 20px;
+	background-color: #333;
+	color: #999;
+}
+.footer-link{
+	text-align: center;
+	>a{
+		display: inline-block;
+		border-right: 1px solid #999;
+		width: (135/64)*1rem;
+		color: #999;
+		&.footer-tel{
+			width: (240/64)*1rem;
+			font-size: @px34;
+			border-right: none;
+		}
+	}
+}
+.footer-icp{
+	text-align: center;
+	line-height: 0.8rem;
 }

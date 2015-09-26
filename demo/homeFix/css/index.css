@@ -14,7 +14,7 @@
   float: left;
   line-height: 1rem;
   font-size: 0.375rem;
-  color: #000;
+  color: #000000;
   margin-left: 0.25rem;
 }
 .header .header-login {
@@ -43,7 +43,7 @@
   height: 1rem;
   line-height: 1rem;
   border-bottom: 1px solid #ccc;
-  background-color: #EAEBEC;
+  background-color: #eaebec;
 }
 .section-title > span {
   float: left;
@@ -114,7 +114,7 @@
 .jc-type > div > span {
   float: left;
   width: 2.5rem;
-  color: #000;
+  color: #000000;
   font-weight: bold;
   font-size: 0.375rem;
 }
@@ -127,7 +127,7 @@
 /*问答*/
 .faq-content {
   padding: 0 0.15625rem;
-  border-bottom: 0.015625rem solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
 }
 .faq-content p {
   padding-left: 0.15625rem;
@@ -139,5 +139,29 @@
   font-weight: bold;
 }
 .faq-content p > span:nth-child(1) {
-  color: #000;
+  color: #000000;
+}
+/*页脚*/
+.footer {
+  padding: 8px 20px;
+  background-color: #333;
+  color: #999;
+}
+.footer-link {
+  text-align: center;
+}
+.footer-link > a {
+  display: inline-block;
+  border-right: 1px solid #999;
+  width: 2.109375rem;
+  color: #999;
+}
+.footer-link > a.footer-tel {
+  width: 3.75rem;
+  font-size: 0.53125rem;
+  border-right: none;
+}
+.footer-icp {
+  text-align: center;
+  line-height: 0.8rem;
 }
