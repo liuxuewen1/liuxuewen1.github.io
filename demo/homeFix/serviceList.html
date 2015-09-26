@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>装修服务列表</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<script src="js/common/zepto.min.js"></script>
+	<script src="js/common/flexible.js"></script>
+	<script src="js/swiper/swiper.min.js"></script>
+	<link rel="stylesheet" href="js/swiper/swiper.min.css">
+	<link rel="stylesheet" href="css/page-style.css">
+</head>
+<body>
+	<header class="header">
+		<a href="javascript:;" class="header-logo"></a>
+		<a href="javascript:;" class="header-city">北京</a>
+		<div class="header-login">
+			<a href="javascript:;" class="header-login-a">登录</a>
+			<a href="javascript:;" class="header-login-reg">注册</a>
+		</div>
+	</header>
+	<section class="service">
+		<header class="section-title service-title">装修服务分类</header>
+		<div class="service-nav">
+			<div class="left-nav">
+				<a href="javascript:;" class="current">厨房</a>
+				<a href="javascript:;">卫生间</a>
+				<a href="javascript:;">厅式</a>
+				<a href="javascript:;">水电气</a>
+				<a href="javascript:;">墙面</a>
+				<a href="javascript:;">地面</a>
+			</div>
+			<div class="right-nav"></div>
+		</div>
+	</section>
+	<footer class="footer">
+		<div class="footer-link">
+			<a href="#">关于我们</a>
+			<a href="#">工人加盟</a>
+			<a href="#" class="footer-tel">400-168-168</a>
+		</div>
+		<p class="footer-icp">©2015 5jia168.com 京ICP备14032950号</p>
+	</footer>
+	
+</body>
+<script>
+	$(function(){
+		var $left_nav = $('.left-nav a');
+		var index = 0;
+		$left_nav.on('touchend', function(){
+			$left_nav.eq(index).removeClass('current');
+			$(this).addClass('current');
+			index = $(this).index();
+
+			return false;
+		})
+	})
+</script>
+</html>

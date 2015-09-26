@@ -1,0 +1,51 @@
+/*头部*/
+.header{
+	padding: @px10 @px20;
+	height: 1rem;
+	.header-logo{
+		float: left;
+		width: 2rem;
+		height: 1rem;
+		background: url('../images/logo.gif') no-repeat;
+		background-size: cover;
+	}
+	.header-city{
+		float: left;
+		line-height: 1rem;
+		font-size: @px24;
+		color: @black;
+		margin-left: @px16;
+	}
+	.header-login{
+		float: right;
+		a{
+			line-height: 1rem;
+			font-size: @px24;
+			margin-right: @px10;
+		}
+	}
+}
+/*页脚*/
+.footer{
+	padding: 8px 0px;
+	background-color: #333;
+	color: #999;
+	.footer-link{
+		text-align: center;
+		>a{
+			display: inline-block;
+			border-right: 1px solid #999;
+			width: (135/64)*1rem;
+			color: #999;
+			&.footer-tel{
+				width: (240/64)*1rem;
+				font-size: @px34;
+				border-right: none;
+			}
+		}
+	}
+	.footer-icp{
+		text-align: center;
+		line-height: 1rem;
+	}
+}
