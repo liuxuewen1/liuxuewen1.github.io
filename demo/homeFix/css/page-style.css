@@ -246,9 +246,12 @@ img {
 }
 /*服务列表*/
 .service-title {
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
+
   text-align: center;
-  border-bottom: none;
+  font-size: 0.46875rem;
+  /*border-bottom: none;*/
+
 }
 .service-nav {
   display: -webkit-box;
@@ -266,9 +269,6 @@ img {
   border-bottom: 1px solid #d9d9d9;
   background-color: #f3f4f6;
 }
-.service-nav .left-nav > a:nth-child(1) {
-  border-top: 1px solid #d9d9d9;
-}
 .service-nav .left-nav > a.current {
   background-color: #fff;
   border-right: 1px solid #fff;
@@ -277,5 +277,6 @@ img {
   -webkit-box-flex: 1;
   width: 6.25rem;
   min-height: 50px;
-  border-top: 1px solid #d9d9d9;
+  /*border-top: 1px solid @border-color;*/
+
 }
