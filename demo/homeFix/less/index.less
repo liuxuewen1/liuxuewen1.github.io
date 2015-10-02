@@ -30,10 +30,10 @@
 		line-height: 80px;
 		>a{
 			padding: 14px 30px;
-			font-size: 18px;
+			font-size: 20px;
 			font-weight: bold;
-			background-color: @title-bg;
-			border: 1px solid #ccc;
+			/*background-color: @title-bg;*/
+			/*border: 1px solid #ccc;*/
 			color: @logo-color;
 			box-shadow: 4px 4px 10px #999;
 			border-radius: 8px;
@@ -67,6 +67,22 @@
 		float: right;
 		color: #666;
 		font-size: @px24;
+	}
+	.faq-more{
+		float: right;
+		>a{
+			&:nth-child(1){
+				border-right: 1px solid #ccc;
+				padding-right: 10px; 
+			}
+			color: @logo-color;
+			/*padding: 2px 4px;*/
+			/* border: 1px solid @logo-color;
+			border-radius: 4px; */
+			font-size: @px24;
+			margin-right: @px10;
+			/*line-height: 1rem;*/
+		}
 	}
 }
 .sec-type{
