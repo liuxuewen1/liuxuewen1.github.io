@@ -6,29 +6,42 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<script src="js/common/zepto.min.js"></script>
 	<script src="js/common/flexible.js"></script>
-	<script src="js/swiper/swiper.min.js"></script>
-	<link rel="stylesheet" href="js/swiper/swiper.min.css">
+	<!-- <script src="js/swiper/swiper.min.js"></script>
+	<link rel="stylesheet" href="js/swiper/swiper.min.css"> -->
 	<link rel="stylesheet" href="css/page-style.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
 </head>
 <body>
 	<header class="header">
 		<a href="javascript:;" class="header-logo"></a>
-		<a href="javascript:;" class="header-city">北京</a>
+		<a href="javascript:;" class="header-city">
+			<i class="fa fa-map-marker"></i>
+			北京
+		</a>
 		<div class="header-login">
 			<a href="javascript:;" class="header-login-a">登录</a>
 			<a href="javascript:;" class="header-login-reg">注册</a>
 		</div>
 	</header>
-	<section>
+	<section class="gray-sec"></section>
+	<!-- <section>
 		<div class="swiper-container">
 		    <div class="swiper-wrapper">
 		        <div class="swiper-slide"><img src="images/swiper-2.jpg" alt=""></div>
 		        <div class="swiper-slide"><img src="images/swiper-1.jpg" alt=""></div>
 		    </div>
-		    <!-- 如果需要分页器 -->
 		    <div class="swiper-pagination"></div>
 		</div>
+	</section> -->
+	<section class="nav-content">
+		<div class="nav-zx">
+			<a href="#">装修服务</a>
+		</div>
+		<div class="nav-jc">
+			<a href="#">建材推荐</a>
+		</div>
 	</section>
+	<section class="gray-sec"></section>
 	<section class="faq-section">
 		<header class="section-title"><span>装修知识问答</span></header>
 		<div class="faq-content">
@@ -36,10 +49,10 @@
 			<p><span>答：</span><span>旧墙皮一定要铲除。因为旧墙皮容易粉化。</span></p>
 		</div>
 	</section>
-	<!-- <section class="gray-sec"></section> -->
+	<section class="gray-sec"></section>
 	<section class="zx-section">
 		<header class="section-title">
-			<span>装修服务</span>
+			<span>基本装修服务</span>
 			<a href="serviceList.html">进入装修服务频道&nbsp;&gt;</a>
 		</header>
 		<ul class="sec-type zx-base cf">
@@ -80,6 +93,12 @@
 				</a>
 			</li>
 		</ul>
+	</section>
+	<section class="gray-sec"></section>
+	<section class="zx-section">
+		<header class="section-title">
+			<span>增值装修服务</span>
+		</header>
 		<ul class="sec-type zx-addvalue cf">
 			<li>
 				<a href="#">
@@ -101,9 +120,13 @@
 			</li>
 		</ul>
 	</section>
+	<section class="gray-sec"></section>
 	<section class="jc-section">
 		<header class="section-title"><span>建材品牌推荐</span></header>
 		<section class="jc-type">
+			<a href="#" class="sec-base-btn" style="border-top:none;">
+				<!-- <i class="icon-kitchen"></i> -->进入厨房品牌频道&nbsp;&gt;
+			</a>
 			<div>
 				<span>整体橱柜：</span>
 				<a href="#">科勒</a>
@@ -125,9 +148,11 @@
 				<a href="#">宜家</a>
 				<a href="#">更多&gt;&gt;</a>
 			</div>
-			<a href="#" class="sec-base-btn">进入厨房品牌频道&nbsp;&gt;</a>
 		</section>
 		<section class="jc-type">
+			<a href="#" class="sec-base-btn">
+				<!-- <i class="icon-kitchen"></i> -->进入卫生间品牌频道&nbsp;&gt;
+			</a>
 			<div>
 				<span>面盆马桶：</span>
 				<a href="#">科勒</a>
@@ -149,9 +174,11 @@
 				<a href="#">宜家</a>
 				<a href="#">更多&gt;&gt;</a>
 			</div>
-			<a href="#" class="sec-base-btn">进入卫生间品牌频道&nbsp;&gt;</a>
 		</section>
 		<section class="jc-type">
+			<a href="#" class="sec-base-btn">
+				<!-- <i class="icon-kitchen"></i> -->进入主辅材品牌频道&nbsp;&gt;
+			</a>
 			<div>
 				<span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;板：</span>
 				<a href="#">科勒</a>
@@ -180,26 +207,26 @@
 				<a href="#">宜家</a>
 				<a href="#">更多&gt;&gt;</a>
 			</div>
-			<a href="#" class="sec-base-btn">进入主辅材品牌频道&nbsp;&gt;</a>
 		</section>
 	</section>
 	<footer class="footer">
 		<div class="footer-link">
 			<a href="#">关于我们</a>
 			<a href="#">工人加盟</a>
-			<a href="#" class="footer-tel">400-168-168</a>
 		</div>
 		<p class="footer-icp">©2015 5jia168.com 京ICP备14032950号</p>
+		<div class="footer-tel cf">
+			<p>400-168-168</p>
+			<p><img src="images/qrcode.png" alt="" class="qrcode"></p>
+		</div>
 	</footer>
 </body>
 <script>
-	  var mySwiper = new Swiper ('.swiper-container', {
+	  /*var mySwiper = new Swiper ('.swiper-container', {
 	    direction: 'horizontal',
 	    autoplay: 2100,
 	    speed: 800,
-	    // loop: true,
-	    // 如果需要分页器
 	    pagination: '.swiper-pagination'
-	  })       
+	  });*/    
 </script>
 </html>

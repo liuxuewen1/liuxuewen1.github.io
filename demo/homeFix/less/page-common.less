@@ -1,6 +1,10 @@
+a{
+	border: none;
+}
 /*头部*/
 .header{
 	padding: @px10 @px20;
+	border-bottom: 1px solid #ccc;
 	height: 1rem;
 	.header-logo{
 		float: left;
@@ -12,9 +16,9 @@
 	.header-city{
 		float: left;
 		line-height: 1rem;
-		font-size: @px24;
+		font-size: @px28;
 		color: @black;
-		margin-left: @px16;
+		margin-left: 2rem;
 	}
 	.header-login{
 		float: right;
@@ -30,6 +34,7 @@
 	padding: 8px 0px;
 	background-color: #333;
 	color: #999;
+	font-size: @px24;
 	.footer-link{
 		text-align: center;
 		>a{
@@ -37,15 +42,33 @@
 			border-right: 1px solid #999;
 			width: (135/64)*1rem;
 			color: #999;
-			&.footer-tel{
-				width: (240/64)*1rem;
-				font-size: @px34;
+			&:nth-last-child(1){
 				border-right: none;
 			}
+		}
+	}
+	height: 4rem;
+	.footer-tel{
+		color: #ddd;
+		width: 6.5rem;
+		position: absolute;
+		left: 50%;
+		margin-left: -3.25rem;
+		height: 2rem;
+		>p{
+			float: left;
+			text-align: left;
+			font-size: 18px;
+			line-height: @px100;
+			margin-right: 10px;
 		}
 	}
 	.footer-icp{
 		text-align: center;
 		line-height: 1rem;
 	}
+}
+.qrcode{
+	width: @px150;
+	height: @px150;
 }
