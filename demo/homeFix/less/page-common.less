@@ -1,6 +1,14 @@
 a{
 	border: none;
 }
+input{
+	-webkit-appearance: none;
+	outline: 0;
+}
+.fa-weixin{
+	color: @wechat-color;
+}
+
 /*头部*/
 .header{
 	padding: @px10 @px20;
@@ -32,6 +40,18 @@ a{
 			color: @logo-color;
 		}
 	}
+	.header-user{
+		float: right;
+		>p{
+			line-height: 1rem;
+			font-size: @px24;
+			margin-right: @px10;
+			color: @logo-color;
+			span{
+				color: #333;
+			}
+		}
+	}
 }
 /*页脚*/
 .footer{
@@ -51,13 +71,9 @@ a{
 			}
 		}
 	}
-	height: 4rem;
 	.footer-tel{
 		width: 6.5rem;
-		position: absolute;
-		left: 50%;
-		margin-left: -3.25rem;
-		height: 2rem;
+		margin: 6px auto;
 		>p{
 			color: #ddd;
 			float: left;
