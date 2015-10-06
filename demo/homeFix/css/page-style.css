@@ -78,6 +78,13 @@ img {
 /*页脚、页尾*/
 a {
   border: none;
+  background-image: none;
+}
+a:focus {
+  outline: none;
+}
+button::-moz-focus-inner {
+  border: 0;
 }
 input {
   -webkit-appearance: none;
@@ -169,6 +176,32 @@ input {
   width: 2.34375rem;
   height: 2.34375rem;
 }
+/*导航条样式*/
+.nav-title {
+  height: 1.09375rem;
+  /*background-color: #F2F2F2;*/
+
+  /*border-bottom: 1px solid @border-color;*/
+
+  padding: 0 2%;
+}
+.nav-title a {
+  display: block;
+  float: left;
+  line-height: 1.09375rem;
+  font-size: 0.46875rem;
+  text-align: center;
+  width: 33%;
+  color: #333;
+}
+.nav-title a:nth-child(1) {
+  width: 30%;
+}
+.nav-title a.current {
+  color: #47b1cb;
+  border-bottom: 2px solid #47b1cb;
+  margin-top: -1px;
+}
 /*index首页*/
 /*轮播*/
 .swiper-container .swiper-slide img {
@@ -185,15 +218,8 @@ input {
   color: #47b1cb;
 }
 /*首页导航*/
-.nav-content {
-  display: -moz-box;
-  display: -webkit-box;
-  display: box;
-}
 .nav-content > div {
-  -moz-box-flex: 1;
-  -webkit-box-flex: 1;
-  box-flex: 1;
+  width: 45%;
   text-align: center;
   height: 80px;
   line-height: 80px;
@@ -202,19 +228,17 @@ input {
   padding: 14px 30px;
   font-size: 20px;
   font-weight: bold;
-  /*background-color: @title-bg;*/
-
-  /*border: 1px solid #ccc;*/
-
   color: #47b1cb;
   box-shadow: 4px 4px 10px #999;
   border-radius: 8px;
 }
 .nav-content > div:nth-child(1) {
-  margin-left: 16px;
+  padding-left: 5%;
+  float: left;
 }
 .nav-content > div:nth-child(2) {
-  margin-right: 16px;
+  padding-right: 5%;
+  float: right;
 }
 /*装修区域*/
 .section-title {
@@ -347,50 +371,41 @@ input {
 }
 .faq-content p {
   padding-left: 0.15625rem;
-  height: 0.8rem;
+  /*height: 0.8rem;*/
+
   line-height: 0.8rem;
   font-size: 0.375rem;
 }
 .faq-content p:nth-child(1) {
   font-weight: bold;
 }
-.faq-content p > span:nth-child(1) {
-  color: #000000;
-}
 /*服务列表*/
-.service-title {
-  /*margin-bottom: 10px;*/
-
-  text-align: center;
-  font-size: 0.46875rem;
-  /*border-bottom: none;*/
-
+.zx-nav {
+  border-top: 1px solid #d9d9d9;
 }
-.service-nav {
-  display: -webkit-box;
-}
-.service-nav .left-nav {
-  -webkit-box-flex: 1;
-}
-.service-nav .left-nav > a {
-  text-align: center;
-  color: #333;
-  display: block;
-  height: 49px;
-  line-height: 49px;
-  border-right: 1px solid #d9d9d9;
-  border-bottom: 1px solid #d9d9d9;
-  background-color: #f3f4f6;
-}
-.service-nav .left-nav > a.current {
-  background-color: #fff;
-  border-right: 1px solid #fff;
-}
-.service-nav .right-nav {
-  -webkit-box-flex: 1;
-  width: 6.25rem;
+.zx-nav .right-nav {
+  float: left;
   min-height: 50px;
-  /*border-top: 1px solid @border-color;*/
+}
+.zx-nav .right-nav .zx-list-detail {
+  padding-top: 12px;
+}
+.zx-nav .right-nav .zx-list-detail > a {
+  float: left;
+  display: block;
+  width: 25%;
+  text-align: center;
+  font-size: 12px;
+  color: #333;
+  padding-bottom: 12px;
+}
+.zx-nav .right-nav .zx-list-detail > a img {
+  width: 62px;
+  height: 62px;
+}
+.zx-nav .right-nav .zx-list-detail > a span {
+  display: block;
+  /*padding: 5px 10px;*/
 
 }
 /*注册*/
@@ -435,6 +450,14 @@ input {
   border: none;
   border-radius: 4px;
 }
+.reg-agreement {
+  margin-left: 10px;
+  font-size: 0.4375rem;
+  color: #999;
+}
+.reg-agreement a {
+  font-size: 0.4375rem;
+}
 #sendSms {
   position: absolute;
   right: 0;
@@ -445,7 +468,7 @@ input {
   padding: 0px 12px 0px 12px;
   margin: 8px 0;
   font-size: 0.46875rem;
-  color: #999;
+  color: #666;
 }
 /*登录*/
 .login-wechat {
@@ -470,4 +493,52 @@ input {
 }
 .login-right a:nth-last-child(1) {
   margin-right: 0;
+}
+/*建材列表*/
+.jc-nav {
+  border-top: 1px solid #d9d9d9;
+}
+.jc-nav .left-nav {
+  float: left;
+  width: 28%;
+}
+.jc-nav .left-nav > a {
+  text-align: center;
+  color: #333;
+  display: block;
+  height: 49px;
+  line-height: 49px;
+  border-right: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  background-color: #f3f4f6;
+}
+.jc-nav .left-nav > a.current {
+  background-color: #fff;
+  border-right: 1px solid #fff;
+}
+.jc-nav .right-nav {
+  float: left;
+  width: 72%;
+  min-height: 50px;
+}
+.jc-nav .right-nav .jc-list-detail {
+  padding-top: 12px;
+}
+.jc-nav .right-nav .jc-list-detail > a {
+  float: left;
+  display: block;
+  width: 33.3%;
+  text-align: center;
+  font-size: 12px;
+  color: #333;
+  padding-bottom: 12px;
+}
+.jc-nav .right-nav .jc-list-detail > a img {
+  width: 62px;
+  height: 62px;
+}
+.jc-nav .right-nav .jc-list-detail > a span {
+  display: block;
+  /*padding: 5px 10px;*/
+
 }

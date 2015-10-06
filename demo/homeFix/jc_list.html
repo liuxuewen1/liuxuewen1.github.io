@@ -12,41 +12,29 @@
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 </head>
 <body>
-	<section class="service">
+	<section class="jctj">
 		<section class="gray-sec"></section>
 		<header class="nav-title">
 			<a href="./index.html">首页</a>
-			<a href="#" class="current">装修服务</a>
-			<a href="./jc_list.html">建材推荐</a>
+			<a href="./zx_list.html">装修服务</a>
+			<a href="#" class="current">建材推荐</a>
 		</header>
 		<!-- <section class="gray-sec"></section> -->
-		<div class="zx-nav cf">
+		<div class="jc-nav cf">
+			<div class="left-nav">
+				<a href="javascript:;" class="current">整体橱柜</a>
+				<a href="javascript:;">烟囱</a>
+				<a href="javascript:;">水槽龙头</a>
+				<a href="javascript:;">面盆马桶</a>
+				<a href="javascript:;">龙头花洒</a>
+				<a href="javascript:;">淋浴房</a>
+				<a href="javascript:;">地板</a>
+				<a href="javascript:;">墙漆面</a>
+				<a href="javascript:;">灯具插座</a>
+				<a href="javascript:;">其他</a>
+			</div>
 			<div class="right-nav">
-				<div class="zx-list-detail">
-					<a href="#">
-						<img src="./images/jc/1.jpg" alt="">
-						<span>塑料杯</span>
-					</a>
-					<a href="#">
-						<img src="./images/jc/1.jpg" alt="">
-						<span>塑料杯</span>
-					</a>
-					<a href="#">
-						<img src="./images/jc/1.jpg" alt="">
-						<span>塑料杯</span>
-					</a>
-					<a href="#">
-						<img src="./images/jc/1.jpg" alt="">
-						<span>塑料杯</span>
-					</a>
-					<a href="#">
-						<img src="./images/jc/1.jpg" alt="">
-						<span>塑料杯</span>
-					</a>
-					<a href="#">
-						<img src="./images/jc/1.jpg" alt="">
-						<span>塑料杯</span>
-					</a>
+				<div class="jc-list-detail">
 					<a href="#">
 						<img src="./images/jc/1.jpg" alt="">
 						<span>塑料杯</span>
@@ -76,9 +64,88 @@
 						<span>塑料杯</span>
 					</a>
 				</div>
+				<div class="jc-list-detail" style="display:none;">
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯222</span>
+					</a>
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯222</span>
+					</a>
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯222</span>
+					</a>
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯</span>
+					</a>
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯</span>
+					</a>
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯</span>
+					</a>
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯</span>
+					</a>
+				</div>
+				<div class="jc-list-detail" style="display:none;">
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯333</span>
+					</a>
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯333</span>
+					</a>
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯333</span>
+					</a>
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯</span>
+					</a>
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯</span>
+					</a>
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯</span>
+					</a>
+					<a href="#">
+						<img src="./images/jc/1.jpg" alt="">
+						<span>塑料杯</span>
+					</a>
+				</div>
 			</div>
 		</div>
 	</section>
 </body>
 <script src="js/page-common.js"></script>
+<script>
+	$(function(){
+		var $left_nav = $('.left-nav a'),
+			$right_nav = $('.jc-list-detail');
+		var index = 0;
+		$left_nav.on('touchend', function(){
+			navClick($(this));
+
+			return false;
+		})
+
+		function navClick($left){
+			$left_nav.eq(index).removeClass('current');
+			$left.addClass('current');
+			index = $left.index();
+			$right_nav.hide().eq(index).show();
+		}
+	})
+</script>
 </html>

@@ -1,5 +1,12 @@
 a{
 	border: none;
+	background-image: none;
+}
+a:focus { 
+    outline: none; 
+}
+button::-moz-focus-inner {
+  border: 0;
 }
 input{
 	-webkit-appearance: none;
@@ -91,4 +98,29 @@ input{
 .qrcode{
 	width: @px150;
 	height: @px150;
+}
+
+/*导航条样式*/
+.nav-title{
+	height: @px70;
+	/*background-color: #F2F2F2;*/
+	/*border-bottom: 1px solid @border-color;*/
+	padding: 0 2%;
+	a{
+		display: block;
+		float: left;
+		line-height: @px70;
+		font-size: @px30;
+		text-align: center;
+		width: 33%;
+		color: #333;
+		&:nth-child(1){
+			width: 30%;
+		}
+		&.current{
+			color: @logo-color;
+			border-bottom: 2px solid @logo-color;
+			margin-top: -1px;
+		}
+	}
 }

@@ -18,13 +18,8 @@
 }
 /*首页导航*/
 .nav-content{
-	display: -moz-box;
-	display: -webkit-box;
-	display: box;
 	>div{
-		-moz-box-flex: 1;
-		-webkit-box-flex: 1;
-		box-flex: 1;
+		width: 45%;
 		text-align: center;
 		height: 80px;
 		line-height: 80px;
@@ -32,17 +27,17 @@
 			padding: 14px 30px;
 			font-size: 20px;
 			font-weight: bold;
-			/*background-color: @title-bg;*/
-			/*border: 1px solid #ccc;*/
 			color: @logo-color;
 			box-shadow: 4px 4px 10px #999;
 			border-radius: 8px;
 		}
 		&:nth-child(1){
-			margin-left: 16px;
+			padding-left: 5%;
+			float: left;
 		}
 		&:nth-child(2){
-			margin-right: 16px;
+			padding-right: 5%;
+			float: right;
 		}
 	}
 }
@@ -186,14 +181,11 @@
 	border-bottom: 1px solid @border-color;
 	p{
 		padding-left: @px10;
-		height: 0.8rem;
+		/*height: 0.8rem;*/
 		line-height: 0.8rem;
 		font-size: @px24;
 		&:nth-child(1){
 			font-weight: bold;
-		}
-		>span:nth-child(1){
-			color: @black;
 		}
 	}
 }
