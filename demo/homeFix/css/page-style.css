@@ -504,6 +504,7 @@ input {
 }
 .jc-nav .left-nav > a {
   text-align: center;
+  font-size: 13px;
   color: #333;
   display: block;
   height: 49px;
@@ -524,7 +525,17 @@ input {
 .jc-nav .right-nav .jc-list-detail {
   padding-top: 12px;
 }
-.jc-nav .right-nav .jc-list-detail > a {
+.jc-nav .right-nav .jc-list-detail .jc-list-type {
+  margin-bottom: 2px;
+}
+.jc-nav .right-nav .jc-list-detail .jc-list-type h2 {
+  font-size: 12px;
+  padding: 6px 14px;
+  color: #333;
+  /*font-weight: normal;*/
+
+}
+.jc-nav .right-nav .jc-list-detail .jc-list-type > a {
   float: left;
   display: block;
   width: 33.3%;
@@ -533,11 +544,11 @@ input {
   color: #333;
   padding-bottom: 12px;
 }
-.jc-nav .right-nav .jc-list-detail > a img {
+.jc-nav .right-nav .jc-list-detail .jc-list-type > a img {
   width: 62px;
   height: 62px;
 }
-.jc-nav .right-nav .jc-list-detail > a span {
+.jc-nav .right-nav .jc-list-detail .jc-list-type > a span {
   display: block;
   /*padding: 5px 10px;*/
 
