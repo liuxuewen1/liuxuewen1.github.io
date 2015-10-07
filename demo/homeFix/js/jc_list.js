@@ -3,18 +3,18 @@ var jc_list = [
 		index: '0', 
 		first_name: '厨房', 
 		arr: [ 
-			{ 
-				sec_name: '整体橱柜', arr_pro: [
-					{ pro_name: '玻璃杯', pic: './images/jc/1.jpg', href: '#' },
-					{ pro_name: '玻璃杯', pic: './images/jc/1.jpg', href: '#' }
-				] 
-			}, 
-			{ 
-				sec_name: '面盆马桶', arr_pro: [
-					{ pro_name: '玻璃杯', pic: './images/jc/1.jpg', href: '#' },
-					{ pro_name: '玻璃杯', pic: './images/jc/1.jpg', href: '#' }
-				] 
-			}			
+				{ 
+					sec_name: '整体橱柜', arr_pro: [
+						{ pro_name: '玻璃杯', pic: './images/jc/1.jpg', href: '#' },
+						{ pro_name: '玻璃杯', pic: './images/jc/1.jpg', href: '#' }
+					] 
+				}, 
+				{ 
+					sec_name: '面盆马桶', arr_pro: [
+						{ pro_name: '玻璃杯', pic: './images/jc/1.jpg', href: '#' },
+						{ pro_name: '玻璃杯', pic: './images/jc/1.jpg', href: '#' }
+					] 
+				}			
 		]
 	}
 ];
