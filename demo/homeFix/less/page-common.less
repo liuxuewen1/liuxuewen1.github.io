@@ -15,6 +15,66 @@ input{
 .fa-weixin{
 	color: @wechat-color;
 }
+.fa-mobile{
+	color: @logo-color;
+}
+.fa-home{
+	color: @logo-color;
+}
+i.fa-2x{
+	font-size: 1.5em;
+}
+.fa-user{
+	color: @logo-color;
+}
+/*头部向后导航样式*/
+.guide-title{
+	height: @px60;
+	line-height: @px60;
+	font-size: @px30;
+	border-bottom: 1px solid #bbb;
+
+	i.fa-angle-left{
+		padding:0 6px;
+		font-size: @px60;
+		line-height: @px60;
+		color: #666;
+		vertical-align: bottom;
+	}
+}
+/*成功图标提示*/
+.succ-icon{
+	background: url(../images/true.png) no-repeat center center;
+	background-size: contain;
+	display: inline-block;
+	height: 1.5rem;
+	width: 1.5rem;
+}
+/*失败图标提示*/
+.error-icon{
+	background: url(../images/fail.png) no-repeat center center;
+	background-size: contain;
+	display: inline-block;
+	height: 1.5rem;
+	width: 1.5rem;
+}
+
+/*select样式*/
+select{
+	height: @px50;
+	width: @px140;
+	-webkit-appearance:none;
+	appearance:none;
+	border:1px solid #BBBBBB;
+	outline: 0;
+	font-size: @px24;
+	padding: 4px 2px;
+	background-color: #FFFFFF;
+	color:#333333;
+	border-radius:4px;
+	outline: 0;
+	text-align: center;
+}
 
 /*头部*/
 .header{
@@ -121,6 +181,33 @@ input{
 			color: @logo-color;
 			border-bottom: 2px solid @logo-color;
 			margin-top: -1px;
+		}
+	}
+}
+
+/*提交按钮*/
+.submit{
+	.input-submit{
+		display: block;
+		width: 94%;
+		padding: 10px 0;
+		margin: 10px auto;
+		font-size: @px36;
+		background-color: @logo-color;
+		color: #fff;
+		border: none;
+		border-radius: 4px;
+		&.left-submit{
+			float: left;
+			width: 45%;
+			margin-right: 3.3%;
+			margin-left: 3.3%;
+			background-color: @title-bg;
+			color: #999;
+		}
+		&.right-submit{
+			float: left;
+			width: 45%;
 		}
 	}
 }

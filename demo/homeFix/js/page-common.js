@@ -5,3 +5,7 @@ $.get('header.html', function(data) {
 $.get('footer.html', function(data) {
 	$('body').append(data);
 });
+//向前跳转页面
+$('.fa-angle-left').on('touchend', function(){
+	window.location.href = document.referrer;
+})

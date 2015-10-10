@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>订单结果</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<script src="js/common/zepto.min.js"></script>
+	<script src="js/common/flexible.js"></script>
+	<link rel="stylesheet" href="css/page-style.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+<body>
+	<section class="gray-sec"></section>
+	<section class="order-result">
+		<p class="guide-title">
+			<i class="fa fa-angle-left"></i>
+			<span>填写订单</span>
+		</p>
+		<div class="order-result-right">
+			<i class="succ-icon"></i>
+			<div class="order-res-desc">
+				<p class="order-desc">下单成功，去支付吧</p>
+			</div>
+			<div class="submit">
+				<input type="submit" class="input-submit" value="去支付">
+			</div>
+		</div>
+		<div class="order-result-error" style="display:none;">
+			<i class="error-icon"></i>
+			<div class="order-res-desc">
+				<p class="order-desc">下单失败，请重试</p>
+			</div>
+			<div class="submit">
+				<input type="submit" class="input-submit" value="返回">
+			</div>
+		</div>
+	</section>
+</body>
+<script src="js/page-common.js"></script>
+</html>
