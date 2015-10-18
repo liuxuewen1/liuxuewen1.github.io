@@ -1,0 +1,44 @@
+.detail-service{
+	.cart-list-detail{
+		.cart-detail-left{
+			width: 24%;
+		}
+		.cart-detail-right{
+			width: 52%;
+			p{
+				text-overflow:ellipsis; 
+				overflow:hidden; 
+				white-space:nowrap;
+			}
+		}
+		.cart-image{
+			width: 24%;
+			background: no-repeat url('../images/touxiang.jpg') top center;
+			background-size: @px120 @px150;
+		}
+	}
+}
+
+.order-money{
+	border-top: 1px solid @border-color;
+	padding: 10px 10px 0px 10px;
+	p{
+		font-size: @px28;
+		/*line-height: @px36;*/
+		text-align: right;
+	}
+}
+.detail-options{
+	padding: 5px 10px;
+	border-bottom: 1px solid #bbb;
+	>p{
+		/*padding-left: 10px;*/
+		line-height: @px60;
+		font-size: @px28;
+		font-size: #000;
+		border-bottom: 1px solid @border-color;
+		&:nth-last-child(1){
+			border-bottom: none;
+		}
+	}
+}

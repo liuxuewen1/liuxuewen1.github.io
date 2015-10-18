@@ -1,0 +1,41 @@
+.order-list-sec{
+	margin-bottom: 10px;
+}
+.order-list{
+	padding: 5px 5px;
+	border-bottom: 1px solid @border-color;
+	>div{
+		float: left;
+		>p{
+			line-height: @px50;
+			font-size: @px26;
+			text-overflow:ellipsis; 
+			overflow:hidden; 
+			white-space:nowrap;
+		}
+	}
+	.order-list-left{
+		width: 25%;
+		font-size: @px30;
+		line-height: @px200;
+	}
+	.order-list-center{
+		width: 65%;
+	}
+	.order-list-right{
+		width: 10%;
+		position: relative;
+		height: @px200;
+
+		.order-right{
+			position: absolute;
+			right: 1.2em;
+			top: 50%;
+			margin-top: -0.8em;
+			background: url('../images/right.png') no-repeat;
+			width: 0.8em;
+			height: 1.6em;
+			background-size: 0.8em 1.6em;
+		}
+	}
+}

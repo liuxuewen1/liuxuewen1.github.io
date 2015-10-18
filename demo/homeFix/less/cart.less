@@ -29,7 +29,7 @@
 		
 		float: left;
 		width: 34%;
-		.icon-check{
+		/* .icon-check{
 			float: left;
 			display: block;
 			width: 20px;
@@ -39,7 +39,7 @@
 			&.uncheck{
 				background-position: 0 0;
 			}
-		}
+		} */
 		p{
 			font-size: @px30;
 			padding: 4px;
@@ -82,6 +82,17 @@
 		width: 8%;
 	}
 }
+.icon-check{
+	float: left;
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url("../images/cart-icon.png") no-repeat -25px 0;
+	background-size: 50px 100px;
+	&.uncheck{
+		background-position: 0 0;
+	}
+}
 .cart-submit{
 	text-align: right;
 	margin: 24px;
@@ -90,7 +101,7 @@
 		border-radius: 2px;
 		text-align: center;
 		font-size: @px36;
-		background-color: #f15353;
+		background-color: @red-color;
 		font-weight: bold;
 		color: #fff;
 	}

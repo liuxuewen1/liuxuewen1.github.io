@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/page-style.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 </head>
-<body>
+<body header="0" footer="0">
 	<section class="gray-sec"></section>
 	<section class="order">
 		<p class="guide-title">
@@ -30,16 +30,21 @@
 				</p>
 				<a class="order-right" href="./address.html"></a>
 			</div>
-			<div class="order-paytype">
+			<div class="order-paytype cf">
 				<p>
-					<i class="fa fa-weixin fa-2x"></i>
+					<!-- <i class="fa fa-weixin fa-2x"></i> -->
+					<i class="icon-check" style="margin-top: 4px;"></i>
 					<span>微信支付</span>
+				</p>
+				<p>
+					<i class="icon-check uncheck" style="margin-top: 4px;"></i>
+					<span>支付宝支付</span>
 				</p>
 			</div>
 			<div class="order-cartinfo">
 				<div class="cart-list-detail cf">
 					<div class="cart-detail-left">
-						<i class="icon-check"></i>
+						<!-- <i class="icon-check"></i> -->
 						<p>刷墙服务</p>
 					</div>
 					<div class="cart-detail-right">
@@ -54,7 +59,7 @@
 				</div>
 				<div class="cart-list-detail cf">
 					<div class="cart-detail-left">
-						<i class="icon-check"></i>
+						<!-- <i class="icon-check"></i> -->
 						<p>刷墙服务</p>
 					</div>
 					<div class="cart-detail-right">
@@ -70,7 +75,7 @@
 				</div>
 				<div class="cart-list-detail cf" style="border-bottom: none; ">
 					<div class="cart-detail-left">
-						<i class="icon-check"></i>
+						<!-- <i class="icon-check"></i> -->
 						<p>贴砖服务</p>
 					</div>
 					<div class="cart-detail-right">
@@ -86,6 +91,9 @@
 					</div>
 				</div>
 			</div>
+			<div class="order-money">
+				<p>总金额：<span>3,000.00</span>元</p>
+			</div>
 		</div>
 	</section>
 	<div class="submit">
@@ -93,4 +101,13 @@
 	</div>
 </body>
 <script src="js/page-common.js"></script>
+<script>
+	$(function(){
+		var $pay = $('.order-paytype>p');
+		$pay.on('touchend', function(){
+			// $(this).find('i').toggleClass('uncheck');
+			$pay.find('i').toggleClass('uncheck');
+		})
+	})
+</script>
 </html>

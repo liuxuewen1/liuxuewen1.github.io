@@ -1,0 +1,20 @@
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-size: @px30;
+}
+.rating span.star {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  &.current:before{
+  	  content: "\f005";
+  	  color: #e3cf7a;
+  }
+  &:before {
+	  content: "\f006";
+	  color: #777777;
+	}
+}

@@ -1,0 +1,255 @@
+.fw-con{
+	/*text-indent: 2em;*/
+	font-size: @px26;
+	line-height: @px38;
+	padding: 0.3rem;
+	color: #333;
+	>h3{
+		font-size: @px28;
+	}
+	>p{
+		text-indent: 0.8rem;
+	}
+}
+.fw-cal{
+	padding: 0 0.3rem;
+	font-size: @px28;
+	line-height: @px44;
+	padding-bottom: 2rem;
+	.fw-cal-par{
+		width: 100%;
+		border-top: 1px solid @border-color;
+		/*border-bottom: 1px solid @border-color;*/
+		/* display: -webkit-box; 
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		
+		-webkit-box-align: center; 
+		-moz-box-align: center;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+		
+		-webkit-box-pack: center; 
+		-moz-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center; */
+		
+		>ul{
+			width: 100%;
+			/*border-right: 1px solid @border-color;*/
+
+			li{
+				/*padding: 5px 5px 12px 5px;*/
+				border-bottom: 1px solid @border-color;
+				padding: 0.4rem 0;				
+				text-align: center;
+				position: relative;
+				>p{
+					line-height: @px70;
+					font-size: @px28;
+				}
+				>i.fa-minus-square-o, i.fa-plus-square-o{
+					float: left;
+					width: 10%;
+					font-size: 1rem;
+					position: absolute;
+					right: 0;
+					top:50%;
+					margin-top: -0.4rem;
+				}
+				.fw-checked{
+					height: 1rem;
+					line-height: 1rem;
+					margin-left: 30%;
+					/*margin-bottom: 0rem;*/
+					span{
+						float: left;
+						margin-right: 0.5rem;
+						text-align: left;
+						width: 1rem;
+					}
+					i{
+						margin-top: 0.25rem;
+						margin-right: 0.2rem;
+					}
+				}
+				.fw-floor-checked{
+					margin-left: 15%;
+					height: 2rem;
+					line-height: 0.9rem;
+					margin-bottom: 0rem;
+					span{
+						width: 2.3rem;
+					}
+					i{
+						margin-top: 0.25rem;
+					}
+				}
+				/* &:nth-last-child(1){
+					border-bottom: 0;
+				} */
+				
+			}
+			.fw-diy{
+				>p{
+					.fw-diy-left{
+						display: inline-block;
+						width: 2.2rem;
+					}
+				}
+			}
+			input{
+				height: @px50;
+				border: 1px solid #999;
+				border-radius: 0;
+				font-size: @px28;
+				margin-right: 4px;
+				width: 15%;
+				padding:0 0.1rem;
+				text-align: center;
+			}
+
+		}
+		.fw-adv{
+			padding: 5px 0px 5px 6px;
+			float: left;
+			/*text-indent: 2em;*/
+			font-size: @px26;
+			line-height: @px44;
+			color: #777;
+		}
+		div.fw-cal-right{
+			width: 12%;
+			float: left;
+			padding-top: @px60;
+			text-align: center;
+		}
+	}
+	.fw-tital{
+		height: 1rem;
+		line-height: 1rem;
+		margin-top: 0.4rem;
+		>span{
+			float: left;
+			&:nth-child(1){
+				font-size: @px28;
+			}
+			&:nth-child(2){
+				font-weight:bold;
+				font-size: @px30;
+			}
+		}
+		.fw-btn-fee{
+			float: right;
+			font-size: 0.5rem;
+			margin-top: -6px;
+			padding: 0.1rem 0.4rem;
+		}
+	}
+}
+.fw-cal-hydro{
+	li{
+		span{
+			font-size: @px30;
+			&:nth-child(1){
+				width: 40%;
+			}
+			&:nth-child(2){
+				width: 50%;
+			}
+		}
+	}
+	input{
+		&.fw-input-single{
+			width: 50%;
+		}
+		&.fw-input-multi{
+			width: 24%;
+			margin-right: 4px;
+		}
+	}
+	p{
+		margin-bottom: 0.2rem;
+	}
+}
+.fw-cal-kitchen{
+	li{
+		span{
+			&:nth-child(1){
+				width: 36%;
+			}
+			&:nth-child(2){
+				width: 50%;
+			}
+		}
+	}
+	input{
+		width: 70%;
+	}
+}
+.fw-btn-fee{
+	padding: 4px 5px;
+	border-radius: 4px;
+	background-color: @logo-color;
+	color: #fff;
+}
+.fw-remark{
+	padding: 5px 0;
+	font-size: @px22;
+	line-height: @px36;
+	text-indent: 0.7rem;
+	color: #f40;
+}
+
+.fw-addcart{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 10;
+	text-align: center;
+	height: 50px;
+	width: 100%;
+	a.fw-cart-ico{
+		background-color: rgba(0,0,0,.8);
+		display: block;
+		float: left;
+		width: 50%;
+		height: 50px;
+		line-height: 50px;
+		color: #d4d4d4;
+		font-size: 10px;
+		em{
+			display: block;
+			height: 24px;
+			width: 25px;
+			margin: 0 auto;
+			background-color: #fff;
+			margin-top: 8px;
+			background: url(../images/cart.png) 0 0 no-repeat;
+			background-position: 0 -23px;
+			background-size: 50px 50px;
+		}
+		span{
+			height: 18px;
+			line-height: 13px;
+			display: block;
+			text-align: center;
+		}
+	}
+	a.fw-addcart-in{
+		display: block;
+		float: left;
+		height: 100%;
+		width: 50%;
+		text-align: center;
+		font-size: 16px;
+		line-height: 50px;
+		background-color: @red-color;
+		font-weight: bold;
+		color: #fff;
+	}
+}
