@@ -1,0 +1,79 @@
+/*公用部分*/
+body{
+  font-size:12px;
+  font-family: "\5FAE\8F6F\96C5\9ED1","Microsoft YaHei","Hiragino Sans GB",Verdana,Arial,Helvetica,sans-serif;
+  color:#333;
+}
+body,p,div,ul,li,h1,h2,h3,h4,h5,span,input,table,td,th,textarea,strong,em{
+  margin: 0px;
+  padding: 0px;
+}
+ul li{
+  list-style: none;
+}
+a {
+  text-decoration:none;
+  outline:none;
+  blur:~"expression(this.onFocus=this.blur())";
+  //  color:#4d5479;
+  //color:#0893d4;
+  color:#53a0e3;
+  font-size:12px;
+}
+//a{ text-decoration: none; color:#0893d4;}color:#007bb4;
+a:hover {
+  text-decoration:none;
+  color:#73bdf1;
+}
+img { border:none;vertical-align: middle;}
+.lt{
+  float:left;
+}
+.rt{
+  float:right;
+}
+input{
+  border:none;
+  background-color:transparent;
+}
+label, input,select,img{
+  display:inline-block;
+  vertical-align:middle;
+}
+.clear {
+  width:0px;
+  padding:0px;
+  height:0px;
+  margin:0px;
+  font-size:0px;
+  line-height:0px;
+  clear:both;
+}
+.cf:before, .cf:after {
+  content:" ";
+  display:table;
+}
+.cf:after {
+  clear:both;
+}
+.cf {
+  zoom:1;
+}
+//
+.clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+  zoom:1;
+}
+
+.main-w1170{
+  margin: 0px auto;
+  width:1170px;
+}
+
