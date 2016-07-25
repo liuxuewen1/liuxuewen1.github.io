@@ -10,7 +10,9 @@
 		<div class="i-top">
 			<div class="i-t-cont main-w1170">
 				<div class="i-t-top">
-					<img src="../images/logo.png" alt="" class="i-t-left">
+					<a href="javascript:;">
+						<img src="../images/logo.png" alt="" class="i-t-left">
+					</a>
 					<div class="i-t-right">
 						<ul class="logIn">
 							<li class="l-icon icon"></li>
@@ -266,10 +268,80 @@
 			</div>
 		</div>
 	</div>
+	<div class="footer">
+		<div class="footer-con">
+			<div class="footer-con-detail cf">
+				<ul class="cf">
+					<li class="first">
+						<h3>信任去旅行网</h3>
+						<p>
+							<a href="javascript:;">签证相关问题</a>
+							<a href="javascript:;">旅游保险答</a>
+							<a href="javascript:;">退款解答</a>
+							<a href="javascript:;">旅途中的问题</a>
+						</p>
+					</li>
+					<li>
+						<h3>上门服务和快递</h3>
+						<p>
+							<a href="javascript:;">签证相关问题</a>
+							<a href="javascript:;">旅游保险答</a>
+							<a href="javascript:;">退款解答</a>
+							<a href="javascript:;">旅途中的问题</a>
+						</p>
+					</li>
+					<li>
+						<h3>付款和发票</h3>
+						<p>
+							<a href="javascript:;">签证相关问题</a>
+							<a href="javascript:;">旅游保险答</a>
+							<a href="javascript:;">退款解答</a>
+							<a href="javascript:;">旅途中的问题</a>
+						</p>
+					</li>
+					<li class="last">
+						<h3>联系我们</h3>
+						<span>7*24小时服务热线</span>
+						<p class="tel">
+							4006-776-886
+						</p>
+					</li>
+				</ul>
+				<p>关注去旅行</p>
+				<img src="../images/wechat.jpg" alt="">
+			</div>
+			<div class="footer-btm">
+				<p>24小时客户服务电话(免长途费)：4007-999-999 呼叫中心位于南京来电将统一显示为 025-86859999</p>
+				<p>
+					<a href="javascript:;">关于我们</a>
+					<a href="javascript:;">联系我们</a>
+					<a href="javascript:;">投诉建议</a>
+					<a href="javascript:;">广告服务</a>
+					<a href="javascript:;">旅游券</a>
+					<a href="javascript:;">隐私保护</a>
+					<a href="javascript:;">免责声明</a>
+					<a href="javascript:;">旅游度假资质</a>
+					<a href="javascript:;">供应商合作</a>
+					<a href="javascript:;">用户协议</a>
+				</p>
+				<p class="copy">
+					Copyright &copy; 2006-2014 去旅游网 Qulvxing.com | 营业执照 | ICP证：京20130006  
+				</p>
+			</div>
+		</div>
+	</div>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script>
 $(function(){
+	$(".s-list li").hover(function(){
+		$(this).parent().find('li').removeClass('active');
+		$(this).addClass('active');
+		var arr_tips = ['请输入您要去的国家名称', '请输入您要去的目的地', '请输入你要找的酒店名称'];
+		$('.s-input input').val('').attr('placeholder', arr_tips[$(this).index('.s-list li')])
+	}, function(){
+
+	})
 	$(".hot-list li").hover(function(){
 		$(this).parent().find('li').removeClass('hot-active');
 		$(this).addClass('hot-active');
