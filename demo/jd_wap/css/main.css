@@ -1,0 +1,226 @@
+/*.p2r($px) {
+  left: ($px / @r) * 1rem;
+}
+*/
+@function rem2px ($rem) {
+  @return ($rem * @r) * 1px;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+img {
+  vertical-align: middle;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  outline: 0;
+  overflow: hidden;
+}
+.index {
+  background-color: #f7f7f7;
+  font-family: "微软雅黑";
+}
+.index .i-top {
+  position: relative;
+}
+.index .i-top .logo {
+  position: absolute;
+  left: 0.27777778rem;
+  top: 0.27777778rem;
+  width: 1.80555556rem;
+  z-index: 2;
+}
+.index .i-top .t-img {
+  width: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.index .i-top .t-f {
+  position: absolute;
+  right: 0.41666667rem;
+  top: 0.38888889rem;
+  width: 0.5rem;
+  height: 0.38888889rem;
+  background: url("../images/t_fuction.png") no-repeat;
+  background-size: cover;
+}
+.index .i-swipe {
+  width: 9.16666667rem;
+  border-radius: 6px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin: 0 auto;
+  padding-top: 0.31944444rem;
+  padding-bottom: 0.36111111rem;
+  margin-top: -2.5rem;
+  background-color: rgba(250, 250, 250, 0.5);
+  box-shadow: 0 4px 6px #eee;
+  margin-bottom: 0.97222222rem;
+}
+.index .i-swipe ul {
+  margin-bottom: 0.5rem;
+}
+.index .i-swipe ul li {
+  width: 6.25rem;
+}
+.index .i-swipe ul li h3 {
+  font-size: 0.5rem;
+  height: 0.97222222rem;
+  line-height: 0.97222222rem;
+  text-align: center;
+}
+.index .i-swipe ul li p {
+  width: 6.25rem;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.41666667rem;
+  /*height: (46/@r)*1rem;*/
+  line-height: 0.63888889rem;
+  color: #808080;
+}
+.index .i-swipe .swiper-pagination {
+  /*margin-bottom: 0;*/
+}
+.index .i-cont {
+  margin: 0 0.40277778rem;
+}
+.index .i-cont .i-tit {
+  height: 0.80555556rem;
+  line-height: 1;
+  font-size: 0.41666667rem;
+  color: #4c4c4c;
+}
+.index .i-cont .i-tit span {
+  float: left;
+}
+.index .i-cont .i-tit a {
+  font-size: 0.33333333rem;
+  color: #4c4c4c;
+  float: right;
+  padding-top: 0.09722222rem;
+}
+.index .i-cont .item-list1 {
+  padding-bottom: 0.63888889rem;
+}
+.index .i-cont .item-list1 li {
+  position: relative;
+  height: 4.79166667rem;
+  box-shadow: 0 4px 6px #d5d5d5;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+.index .i-cont .item-list1 img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 6px;
+}
+.index .i-cont .item-list1 .item-text {
+  position: absolute;
+  left: 0.33333333rem;
+  bottom: 0;
+  height: 0.70833333rem;
+  font-size: 0.41666667rem;
+  color: #fff;
+  font-weight: bold;
+}
+.index .i-cont .item-list2 {
+  margin: 0.23611111rem 0.22222222rem 0.76388889rem 0.08333333rem;
+  overflow: hidden;
+}
+.index .i-cont .item-list2 li {
+  padding: 0 0.45833333rem;
+  width: 2.95833333rem;
+  float: left;
+  margin-bottom: 0.27777778rem;
+}
+.index .i-cont .item-list2 .list-tit {
+  font-size: 0.33333333rem;
+  color: #c1aa64;
+  line-height: 0.88888889rem;
+  text-align: center;
+}
+.index .i-cont .item-list2 img {
+  width: 2.04166667rem;
+}
+.index .i-cont .item-list3 {
+  overflow: hidden;
+  padding-bottom: 0.86111111rem;
+}
+.index .i-cont .item-list3 li {
+  margin-right: 0.31944444rem;
+  width: 4.43055556rem;
+  float: left;
+  background-color: #fff;
+  box-shadow: 0 4px 6px #d5d5d5;
+  height: 6.73611111rem;
+  border-radius: 6px;
+  padding-bottom: 0.43055556rem;
+}
+.index .i-cont .item-list3 li.m-none {
+  margin-right: 0;
+}
+.index .i-cont .item-list3 .list3-img {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+}
+.index .i-cont .item-list3 .user-img {
+  margin: 0 auto;
+  width: 1.38888889rem;
+  margin-top: -0.73611111rem;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.index .i-cont .item-list3 .user-img img {
+  width: 1.27777778rem;
+  border-radius: 50%;
+  margin-top: 0.05555556rem;
+}
+.index .i-cont .item-list3 .list3-tit {
+  font-size: 0.41666667rem;
+  line-height: 0.69444444rem;
+  color: #333;
+  text-align: center;
+}
+.index .i-cont .item-list3 .list3-text {
+  line-height: 0.55555556rem;
+  font-size: 0.33333333rem;
+  color: #808080;
+  text-align: center;
+}
+.index .i-bottom {
+  background: #353641;
+  padding-bottom: 0.38888889rem;
+}
+.index .i-bottom .bottom-list a {
+  display: inline-block;
+  width: 32.5%;
+  text-align: center;
+  color: #a9aab7;
+  font-size: 0.41666667rem;
+  padding: 0.66666667rem 0;
+}
+.index .i-bottom p {
+  font-size: 0.25rem;
+  color: #676876;
+  text-align: center;
+  line-height: 0.47222222rem;
+}
