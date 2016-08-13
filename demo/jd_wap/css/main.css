@@ -21,8 +21,23 @@ li {
 a {
   text-decoration: none;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
 img {
   vertical-align: middle;
+}
+input {
+  outline: none;
+  border: none;
+}
+::-webkit-clear-button {
+  -webkit-appearance: none;
 }
 body {
   -webkit-font-smoothing: antialiased;
@@ -30,6 +45,67 @@ body {
   -webkit-user-select: none;
   outline: 0;
   overflow: hidden;
+  background-color: #f2f2f2;
+}
+.baseTit {
+  position: relative;
+  height: 1.25rem;
+  line-height: 1.25rem;
+  text-align: center;
+  background-color: #26a367;
+  font-size: 0.5rem;
+  color: #fff;
+}
+.baseTit .t-f {
+  position: absolute;
+  right: 0.41666667rem;
+  top: 0.38888889rem;
+  width: 0.5rem;
+  height: 0.38888889rem;
+  background: url("../images/t_fuction.png") no-repeat;
+  background-size: 100%;
+}
+.baseTit .return {
+  position: absolute;
+  left: 0.41666667rem;
+  top: 0.30555556rem;
+  width: 0.61111111rem;
+  height: 0.61111111rem;
+  background: url("../images/return.png") no-repeat;
+  background-size: 100%;
+}
+.preNext {
+  text-align: center;
+  margin-top: 0.65277778rem;
+}
+.preNext a {
+  width: 3.69444444rem;
+  height: 1.06944444rem;
+  display: inline-block;
+  text-align: center;
+  line-height: 1.06944444rem;
+  color: #5ad191;
+  border: 2px solid #5ad191;
+  border-radius: 0.52777778rem;
+  font-size: 0.41666667rem;
+}
+.preNext .next {
+  background-color: #5ad191;
+  color: #fff;
+  margin-left: 0.41666667rem;
+}
+/*//右侧选中的对勾*/
+.t-right {
+  position: absolute;
+  right: 0;
+  top: 0.44444444rem;
+  width: 0.55555556rem;
+  height: 0.55555556rem;
+  background: url("../images/select.png") no-repeat;
+  background-size: cover;
+}
+.selected .t-right {
+  background-image: url("../images/selected.png");
 }
 .index {
   background-color: #f7f7f7;
@@ -50,15 +126,6 @@ body {
   position: relative;
   left: 0;
   top: 0;
-}
-.index .i-top .t-f {
-  position: absolute;
-  right: 0.41666667rem;
-  top: 0.38888889rem;
-  width: 0.5rem;
-  height: 0.38888889rem;
-  background: url("../images/t_fuction.png") no-repeat;
-  background-size: cover;
 }
 .index .i-swipe {
   width: 9.16666667rem;
@@ -223,4 +290,86 @@ body {
   color: #676876;
   text-align: center;
   line-height: 0.47222222rem;
+}
+.travel .tra-list {
+  background-color: #fff;
+  margin-top: 0.40277778rem;
+  padding: 0 0.40277778rem;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+}
+.travel .tra-list li {
+  height: 1.41666667rem;
+  line-height: 1.41666667rem;
+  font-size: 0.41666667rem;
+  color: #474747;
+  border-bottom: 1px solid #e6e6e6;
+  position: relative;
+}
+.travel .tra-list li input {
+  width: 70%;
+  float: right;
+  height: 100%;
+  text-align: right;
+  font-size: 0.41666667rem;
+}
+.travel .tra-list li:last-child {
+  border-bottom: none;
+}
+.travel .tra-list .t-left {
+  width: 80%;
+  overflow: hidden;
+  float: left;
+}
+.travel .tra-list .c-left {
+  color: #999;
+  width: 26%;
+  float: left;
+}
+.travel .tra-list .c-left.c-left {
+  color: #474747;
+}
+.travel .a-item {
+  margin-top: 0.63888889rem;
+}
+.travel .a-item .tra-list {
+  margin-bottom: 0.36111111rem;
+}
+.travel .a-tit {
+  padding: 0 0.40277778rem;
+  height: 0.91666667rem;
+  line-height: 0.91666667rem;
+}
+.travel .a-tit .a-tit-l {
+  font-size: 0.5rem;
+  color: #26a367;
+  font-weight: bold;
+  float: left;
+}
+.travel .a-tit .a-tit-r {
+  float: right;
+  font-size: 0.41666667rem;
+  color: #999;
+}
+.travel .add-people {
+  color: #26a367;
+  height: 1.36111111rem;
+  background-color: #fff;
+  text-align: center;
+  font-size: 0.41666667rem;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+}
+.travel .add-people span {
+  vertical-align: middle;
+  display: inline-block;
+  height: 0.69444444rem;
+  line-height: 0.69444444rem;
+  margin-top: 0.30555556rem;
+}
+.travel .add-people .add-l {
+  width: 0.69444444rem;
+  background: url("../images/add.png") no-repeat;
+  margin-right: 0.27777778rem;
+  background-size: cover;
 }

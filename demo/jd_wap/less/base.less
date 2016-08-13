@@ -6,6 +6,9 @@
 
 /// function to calculate px to rem
 @r:72;
+@colorG:#26a367;
+@baseC:#f2f2f2;
+@textC:#474747;
 /*.p2r($px) {
   left: ($px / @r) * 1rem;
 }
@@ -14,7 +17,7 @@
 @function rem2px ($rem) {
   @return ($rem * @r) * 1px;
 }
-
+@titHeight:(90/@r)*1rem;
 *{
   padding:0;
   margin:0;
@@ -30,8 +33,16 @@ ul,li{
 a{
   text-decoration: none;
 }
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
 img{
   vertical-align: middle;
+}
+input{
+  outline: none;
+  border:none;
+}
+::-webkit-clear-button {
+     -webkit-appearance: none; 
 }
 body{
   -webkit-font-smoothing: antialiased;
@@ -39,5 +50,72 @@ body{
   -webkit-user-select: none;
   outline: 0;
   overflow: hidden;
+  background-color:@baseC;
   
+}
+
+//顶部title
+.baseTit{
+  position: relative;
+  height:@titHeight;
+  line-height: @titHeight;
+  text-align: center;
+  background-color: @colorG;
+  font-size: (36/@r)*1rem;
+  color: #fff;
+  .t-f{
+    position: absolute;
+    right: (30/@r)*1rem;
+    top: (28/@r)*1rem;
+    width:(36/@r)*1rem;
+    height:(28/@r)*1rem;
+    background: url("../images/t_fuction.png") no-repeat;
+    background-size: 100%;
+  }
+  .return{
+    position: absolute;
+    left: (30/@r)*1rem;
+    top: (22/@r)*1rem;
+    width:(44/@r)*1rem;
+    height:(44/@r)*1rem;
+    background: url("../images/return.png") no-repeat;
+    background-size: 100%;
+  }
+}
+
+//上一步下一步
+.preNext{
+  text-align: center;
+  margin-top: (47/@r)*1rem;
+  a{
+    width:(266/@r)*1rem;
+    height: (77/@r)*1rem;
+    display: inline-block;
+    text-align: center;
+    line-height: (77/@r)*1rem;
+    color: #5ad191;
+    border: 2px solid #5ad191;
+    border-radius:(38/@r)*1rem;
+    font-size: (30/@r)*1rem;
+  }
+  .next{
+    background-color: #5ad191;
+    color: #fff;
+    margin-left:(30/@r)*1rem;
+  }
+}
+/*//右侧选中的对勾*/
+.t-right{
+  position: absolute;
+  right: 0;
+  top:(32/@r)*1rem;
+  width: (40/@r)*1rem;
+  height: (40/@r)*1rem;
+  background: url("../images/select.png") no-repeat;
+  background-size: cover;
+}
+.selected{
+  .t-right{
+    background-image: url("../images/selected.png");
+  }
 }
