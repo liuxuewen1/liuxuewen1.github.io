@@ -63,24 +63,24 @@ body{
   background-color: @colorG;
   font-size: (36/@r)*1rem;
   color: #fff;
-  .t-f{
-    position: absolute;
-    right: (30/@r)*1rem;
-    top: (28/@r)*1rem;
-    width:(36/@r)*1rem;
-    height:(28/@r)*1rem;
-    background: url("../images/t_fuction.png") no-repeat;
-    background-size: 100%;
-  }
-  .return{
-    position: absolute;
-    left: (30/@r)*1rem;
-    top: (22/@r)*1rem;
-    width:(44/@r)*1rem;
-    height:(44/@r)*1rem;
-    background: url("../images/return.png") no-repeat;
-    background-size: 100%;
-  }
+}
+.t-f{
+  position: absolute;
+  right: (30/@r)*1rem;
+  top: (28/@r)*1rem;
+  width:(36/@r)*1rem;
+  height:(28/@r)*1rem;
+  background: url("../images/t_fuction.png") no-repeat;
+  background-size: 100%;
+}
+.return{
+  position: absolute;
+  left: (30/@r)*1rem;
+  top: (22/@r)*1rem;
+  width:(44/@r)*1rem;
+  height:(44/@r)*1rem;
+  background: url("../images/return.png") no-repeat;
+  background-size: cover;
 }
 
 //上一步下一步
@@ -118,4 +118,33 @@ body{
   .t-right{
     background-image: url("../images/selected.png");
   }
+}
+
+/*公共底部*/
+.green-line{
+  height:(9/@r)*1rem; 
+  background-color: #26a367;
+}
+.i-bottom{
+  background: #353641;
+  padding-bottom: (28/@r)*1rem;
+  .bottom-list{
+    a{
+      display: inline-block;
+      width: 32.5%;
+      text-align: center;
+      color: #a9aab7;
+      font-size: (30/@r)*1rem;
+      padding: (48/@r)*1rem 0;
+    }
+  }
+  p{
+    font-size: (18/@r)*1rem;
+    color: #676876;
+    text-align: center;
+    line-height: (34/@r)*1rem;
+  }
+}
+.hide{
+  display: none;
 }
