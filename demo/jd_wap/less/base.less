@@ -40,6 +40,7 @@ img{
 input{
   outline: none;
   border:none;
+  background-color: transparent;
 }
 ::-webkit-clear-button {
      -webkit-appearance: none; 
@@ -124,6 +125,7 @@ body{
 .green-line{
   height:(9/@r)*1rem; 
   background-color: #26a367;
+  margin-top:(32/@r)*1rem;
 }
 .i-bottom{
   background: #353641;
@@ -144,6 +146,59 @@ body{
     text-align: center;
     line-height: (34/@r)*1rem;
   }
+}
+/*搜索公共*/
+.serch{
+  height: (124/@r)*1rem;
+  background-color: #26a367;
+  padding:0 (30/@r)*1rem;
+  p{
+    width: 100%;
+    background-color: #08693b;
+    height: (67/@r)*1rem;
+    .serch-icon{
+      width:(33/@r)*1rem; 
+      height: (33/@r)*1rem;
+      float: left;
+      margin-left:(20/@r)*1rem; 
+      margin-top: (18/@r)*1rem;
+      background: url('../images/serch.png') no-repeat;
+      background-size: cover;
+    }
+    input{
+      float: left;
+      width: 84%;
+      margin-left:(20/@r)*1rem;
+      height: 100%;
+      line-height: 100%;
+      color: #92e8bf; 
+    }
+    ::-webkit-input-placeholder{
+      color: #92e8bf; 
+    }
+  }
+}
+/*更多*/
+.hot-tit{
+  height:(80/@r)*1rem;
+  line-height: (80/@r)*1rem; 
+  text-align: center;
+  font-size: (30/@r)*1rem;  
+  font-weight: bold;
+  color: #42b3f4;
+  position: relative;
+  &.hot-offer{
+    color: #ff6333;
+  }
+}
+.more{
+  position: absolute;
+  width:(40/@r)*1rem; 
+  height: (40/@r)*1rem;
+  background: url("../images/more.png") no-repeat;
+  background-size: cover;
+  right:0;
+  top:(20/@r)*1rem;;
 }
 .hide{
   display: none;
