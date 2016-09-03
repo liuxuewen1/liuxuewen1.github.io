@@ -1,0 +1,84 @@
+.visa-list{
+	.sort{
+		overflow: hidden;
+		border-bottom: 1px solid #e6e6e6;
+		background-color: #fff;
+		li{
+			float: left;
+			width: 33%;
+			text-align: center;
+			padding: (20/@r)*1rem 0 (17/@r)*1rem 0;
+			a{
+				display: block;
+				border-right: 1px solid #e6e6e6;
+				font-size: (24/@r)*1rem;
+				height: (35/@r)*1rem;
+				line-height: (35/@r)*1rem;
+				color: #999;
+				&.active{
+					color: #26a367;
+				}
+			}
+			
+			
+		}
+
+	}
+	.list{
+		border-bottom: 1px solid #e6e6e6;
+		border-top: 1px solid #e6e6e6;
+		background: #f2f2f2;
+		margin-top: (25/@r)*1rem;
+		ul{
+			overflow: hidden;
+			padding: 0 (29/@r)*1rem;
+			background-color: #fff;	
+			li{
+				padding-top: (34/@r)*1rem;
+				padding-bottom: (40/@r)*1rem;
+				border-top: 1px solid #e6e6e6;
+				a{
+					display: block;
+					overflow: hidden;
+					img{
+						float: left;
+						width: (180/@r)*1rem;
+						height: (114/@r)*1rem;
+					}
+					.detail{
+						float: left;
+						margin-left: (30/@r)*1rem;
+						h3{
+							font-size: (30/@r)*1rem;
+							color: #474747;
+							height: (32/@r)*1rem;
+							line-height: (32/@r)*1rem;
+						}
+						.desc{
+							color: #999;
+							font-size: (20/@r)*1rem;
+							height: (50/@r)*1rem;
+							line-height: (50/@r)*1rem;	
+						}
+						.price{
+							color: #ff6333;
+							font-weight: bold;
+							span:first-child{
+								font-size: (20/@r)*1rem;
+							}
+							span:last-child{
+								font-size: (30/@r)*1rem;
+							}
+						}
+					}
+				}
+			}
+			li:first-child{
+				border-top:none;
+			}
+		}
+		
+	}
+	
+	
+}
