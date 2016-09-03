@@ -457,22 +457,6 @@ body {
 .travel .a-item .tra-list {
   margin-bottom: 0.36111111rem;
 }
-.travel .a-tit {
-  padding: 0 0.40277778rem;
-  height: 0.91666667rem;
-  line-height: 0.91666667rem;
-}
-.travel .a-tit .a-tit-l {
-  font-size: 0.5rem;
-  color: #26a367;
-  font-weight: bold;
-  float: left;
-}
-.travel .a-tit .a-tit-r {
-  float: right;
-  font-size: 0.41666667rem;
-  color: #999;
-}
 .travel .add-people {
   color: #26a367;
   height: 1.36111111rem;
@@ -494,6 +478,22 @@ body {
   background: url("../images/add.png") no-repeat;
   margin-right: 0.27777778rem;
   background-size: cover;
+}
+.travel .a-tit {
+  padding: 0 0.40277778rem;
+  height: 0.91666667rem;
+  line-height: 0.91666667rem;
+}
+.travel .a-tit .a-tit-l {
+  font-size: 0.5rem;
+  color: #26a367;
+  font-weight: bold;
+  float: left;
+}
+.travel .a-tit .a-tit-r {
+  float: right;
+  font-size: 0.41666667rem;
+  color: #999;
 }
 .travel .total {
   margin-top: 0.41666667rem;
