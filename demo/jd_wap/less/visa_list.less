@@ -1,6 +1,8 @@
 .visa-list{
 	.sort{
 		overflow: hidden;
+		border-bottom: 1px solid #e6e6e6;
+		background-color: #fff;
 		li{
 			float: left;
 			width: 33%;
@@ -17,16 +19,20 @@
 					color: #26a367;
 				}
 			}
+			
+			
 		}
+
 	}
 	.list{
 		border-bottom: 1px solid #e6e6e6;
 		border-top: 1px solid #e6e6e6;
 		background: #f2f2f2;
-		padding-top: (25/@r)*1rem;
+		margin-top: (25/@r)*1rem;
 		ul{
 			overflow: hidden;
 			padding: 0 (29/@r)*1rem;
+			background-color: #fff;	
 			li{
 				padding-top: (34/@r)*1rem;
 				padding-bottom: (40/@r)*1rem;
@@ -56,6 +62,7 @@
 						}
 						.price{
 							color: #ff6333;
+							font-weight: bold;
 							span:first-child{
 								font-size: (20/@r)*1rem;
 							}
@@ -66,6 +73,12 @@
 					}
 				}
 			}
+			li:first-child{
+				border-top:none;
+			}
 		}
+		
 	}
+	
+	
 }

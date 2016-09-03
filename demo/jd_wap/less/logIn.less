@@ -46,12 +46,12 @@
 			margin-bottom:(144/@r)*1rem; 
 		}
 		.logIn-list{
-			font-size: (30/@r)*1rem;
 			margin-bottom: (27/@r)*1rem;
 			li{
 				padding-top:(39/@r)*1rem;
 				height: (119/@r)*1rem;
 				line-height: (80/@r)*1rem; 
+				font-size: (30/@r)*1rem;
 				border-bottom: 1px solid #d9d9d9;
 				span{
 					float: left;
@@ -70,8 +70,8 @@
 				.codeInput{
 					width: 52%;
 				}
-				.send-code{
-					width:(163/@r)*1rem;
+				.send-code,.send-number{
+					width:35%;
 					height:(60/@r)*1rem;
 					text-align: center;
 					line-height:(60/@r)*1rem; 
@@ -86,6 +86,21 @@
 				.send-code:active{
 					background-color: #f9bb62;
 				}
+				.send-number{
+					background-color: transparent;
+					border-left: 1px solid #d9d9d9;
+					font-size: (26/@r)*1rem;
+
+					span{
+						margin: 0;
+						margin-left:(20/@r)*1rem;
+						color: #ccc;
+					}
+					a{
+						color: #5ad191;
+					}
+				}
+				
 			}
 			.userName{
 				width: (32/@r)*1rem;
@@ -93,18 +108,18 @@
 			}
 			.passWord{
 				width: (27/@r)*1rem;
-				height: (35/@r)*1rem;
+				height: (36/@r)*1rem;
 				margin-left: (4/@r)*1rem;
 				background-image: url("../images/password.png");
 			}
 			.phone{
-				width: (23/@r)*1rem;
-				height: (35/@r)*1rem;
+				width: (24/@r)*1rem;
+				height: (36/@r)*1rem;
 				background-image: url("../images/iphone.png");
 			}
 			.code{
 				width: (29/@r)*1rem;
-				height: (34/@r)*1rem;
+				height: (35/@r)*1rem;
 				background-image: url("../images/code.png");
 			}
 		}
