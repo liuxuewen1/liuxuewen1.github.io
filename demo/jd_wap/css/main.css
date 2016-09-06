@@ -1334,3 +1334,72 @@ body {
   padding-bottom: 0.19444444rem;
   border-bottom: 3px solid #26a367;
 }
+/*线路相关*/
+.line-list .list {
+  border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
+  background: #f2f2f2;
+  margin-top: 0.34722222rem;
+}
+.line-list .list ul {
+  overflow: hidden;
+  padding: 0 0.40277778rem;
+  background-color: #fff;
+}
+.line-list .list ul li {
+  padding-top: 0.47222222rem;
+  padding-bottom: 0.55555556rem;
+  border-top: 1px solid #e6e6e6;
+}
+.line-list .list ul li a {
+  display: block;
+  overflow: hidden;
+}
+.line-list .list ul li a img {
+  float: left;
+  width: 2.5rem;
+  height: 1.58333333rem;
+}
+.line-list .list ul li a .detail {
+  float: left;
+  margin-left: 0.41666667rem;
+}
+.line-list .list ul li a .detail h3 {
+  font-size: 0.41666667rem;
+  color: #474747;
+  height: 0.75rem;
+  line-height: 0.75rem;
+}
+.line-list .list ul li a .detail > div {
+  margin: 0.11111111rem 0 0.27777778rem 0;
+  overflow: hidden;
+}
+.line-list .list ul li a .detail > div .mark {
+  display: block;
+  float: left;
+  /*width: (100/@r)*1rem;*/
+  padding: 0 0.27777778rem;
+  border: 1px solid #5ad191;
+  border-radius: 0.22222222rem;
+  text-align: center;
+  color: #5ad191;
+  height: 0.41666667rem;
+  line-height: 0.41666667rem;
+  margin-right: 0.27777778rem;
+  font-size: 0.25rem;
+}
+.line-list .list ul li a .detail > div .price {
+  color: #ff6333;
+  font-weight: bold;
+  float: left;
+  height: 0.44444444rem;
+}
+.line-list .list ul li a .detail > div .price span:first-child {
+  font-size: 0.27777778rem;
+}
+.line-list .list ul li a .detail > div .price span:last-child {
+  font-size: 0.41666667rem;
+}
+.line-list .list ul li:first-child {
+  border-top: none;
+}
