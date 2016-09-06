@@ -1,0 +1,126 @@
+.time{
+	.time-cont{
+		background-color: #fff;
+		margin-top:(29/@r)*1rem;
+		border-top:1px solid #e6e6e6;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.time-tit{
+		text-align: center;
+		font-size:(30/@r)*1rem; 
+		color: #474747;
+		padding-top: (25/@r)*1rem;
+		span{
+			position: relative;
+			display: inline-block;
+			height: (40/@r)*1rem;
+			line-height: (40/@r)*1rem;
+		}
+		strong{
+			font-style: normal;
+		}
+		em{
+			position: absolute;
+			top:0;
+			width:(40/@r)*1rem; 
+			height:(40/@r)*1rem;
+			background-position: 0 0;
+			background-repeat: no-repeat; 
+			background-size: cover;
+		}
+		.left{
+			background-image: url("../images/more_left.png");
+			left: -(60/@r)*1rem;
+		}
+		.right{
+			background-image: url("../images/more.png");
+			right: -(60/@r)*1rem;
+		}
+	}
+	.week{
+		height:(82/@r)*1rem; 
+		line-height: (82/@r)*1rem;
+		font-weight:bold;
+		li{
+			width:14.28%;
+			text-align: center; 
+			float: left;
+			font-size: (30/@r)*1rem;
+			color: #474747;
+		}
+		li:first-child{
+			color: #26a367;
+		}
+		li:last-child{
+			color: #26a367;
+		}
+	}
+	.list-day{
+		overflow: hidden;
+		.clearfix();
+		border-top:1px solid #e6e6e6;
+		border-left:1px solid #e6e6e6;
+		li{
+			width: 14.554%;
+			text-align: center;
+			float: left;
+			height:(108/@r)*1rem; 
+			font-size: (24/@r)*1rem;
+			color: #999;
+			border:1px solid #e6e6e6;
+			margin-top: -1px;
+			margin-left: -1px;
+			position: relative;
+			font-size:(24/@r)*1rem;
+			span{
+				display: inline-block;
+				padding-top: (10/@r)*1rem; 
+				color: #999;
+				padding-bottom:(5/@r)*1rem; 
+			}
+			em{
+				font-style:normal;
+			}
+			strong{
+				color: #ff6333;
+				 font-style: normal;
+			}
+			p{
+				width: 100%;
+				height: (26/@r)*1rem;
+				line-height: (30/@r)*1rem;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				font-size: (18/@r)*1rem;
+				background-color: #a6a6a6;
+				color: #fff;
+			}
+			.active{
+				height: (106.5/@r)*1rem;
+				border:3px solid #26a367;
+				border-bottom: none;
+				position: absolute;
+				left: -1px;
+				top:-1px;
+				right: -1px;
+				bottom: 0;
+				p{
+					background-color: #26a367;
+					color: #fff;
+					bottom: 0;
+				}
+			}
+			
+		}
+	}
+}
+@media screen and(min-width:410px){
+	.time{
+		.list-day{
+			li{
+				width:14.4%;
+			}
+		}
+	}
+}
