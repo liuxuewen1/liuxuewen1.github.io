@@ -57,10 +57,74 @@
 			font-size: (30/@r)*1rem;
 			color: #26a367;
 		}
+		.order-tit{
+			font-weight: bold;
+			margin-bottom:(26/@r)*1rem; 
+
+		}
 	}
 	.tra-list{
 		margin-top: 0;
 		border:0;
 		padding:0;
+	}
+	.order-status{
+		padding-left:(43/@r)*1rem;
+		.order-dian{
+			width: (19/@r)*1rem;
+			height: (19/@r)*1rem;
+			position: absolute;
+			left:-(11/@r)*1rem;
+			top:0;
+			background-color: #d9d9d9;
+			border-radius: 50%;
+
+		} 
+		.order-s-t{
+			font-size: (24/@r)*1rem;
+			color: #999;
+			height: (32/@r)*1rem;
+			line-height:1;
+		} 
+		.status-text{
+			height:(56/@r)*1rem; 
+			line-height:(56/@r)*1rem;
+			font-size:(30/@r)*1rem; 
+			color:#474747;
+		}
+		li{
+			border-left: (4/@r)*1rem solid #d9d9d9;
+			padding-left: (44/@r)*1rem;
+			padding-bottom: (32/@r)*1rem; 
+			position: relative;
+		}
+		li:first-child{
+			.order-dian{
+				width:(32/@r)*1rem;
+				height:(32/@r)*1rem;
+				left: -(18/@r)*1rem;
+				background-color: #2ea269;
+			}
+			.status-text{
+				color: #2ea269;
+				font-weight: bold;
+			}
+		}
+		li:last-child{
+			border-left: none;
+			margin-left:(4/@r)*1rem;  
+		}
+		
+		
+	}
+	.order-bottom{
+		margin-top:(27/@r)*1rem;
+		padding-left:(29/@r)*1rem;
+		p{
+			color: #999;
+			font-size:(30/@r)*1rem;
+			height: (60/@r)*1rem;
+			line-height: (60/@r)*1rem; 
+		}    
 	}
 }
