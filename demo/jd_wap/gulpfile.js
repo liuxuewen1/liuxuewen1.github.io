@@ -9,7 +9,7 @@ gulp.task('less', function(){
 });
 
 gulp.task('watch', function(){
-	gulp.watch('./less/*.less', ['less']);
+	gulp.watch(['./less/*.less', './html/*.html'], ['less', 'html']);
 });
 
 gulp.task('connect', function(){
@@ -17,6 +17,11 @@ gulp.task('connect', function(){
 		// root: 'jd_wap',
 		livereload: true
 	})
+});
+
+gulp.task('html', function(){
+	gulp.src('./html/*.html')
+		.pipe(connect.reload());
 });
 
 gulp.task('default', ['less', 'connect', 'watch']);
