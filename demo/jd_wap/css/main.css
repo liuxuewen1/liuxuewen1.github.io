@@ -1505,12 +1505,18 @@ body {
 .line-list .list ul li:first-child {
   border-top: none;
 }
+.line-index .green-line {
+  margin-top: 0;
+}
 .line-index .bg img {
   width: 10rem;
   height: 4.01388889rem;
 }
 .line-index .index-t {
   margin-bottom: 0.06944444rem;
+}
+.line-index .index-t:last-child {
+  margin-bottom: 0;
 }
 .line-index .index-t .title {
   position: relative;
@@ -1520,6 +1526,15 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
+}
+.line-index .index-t .title a {
+  position: absolute;
+  background: url('../images/line_more.png') no-repeat;
+  right: 0.27777778rem;
+  width: 0.55555556rem;
+  height: 0.55555556rem;
+  background-size: contain;
+  top: 30%;
 }
 .line-index .index-t.t1 {
   background: #fed03f;
@@ -1565,9 +1580,33 @@ body {
   padding: 0 0.27777778rem;
   padding-bottom: 0.29166667rem;
 }
-.line-index .index-t .con-1 > img {
+.line-index .index-t .con-1 .con-img {
+  position: relative;
+}
+.line-index .index-t .con-1 .con-img img {
   width: 9.44444444rem;
   height: 4.40277778rem;
+}
+.line-index .index-t .con-1 .con-img .con-img-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+.line-index .index-t .con-1 .con-img .con-img-title span {
+  font-size: 0.41666667rem;
+  display: block;
+  float: left;
+  height: 0.72222222rem;
+  line-height: 0.72222222rem;
+  color: #fff;
+  padding: 0 0.33333333rem;
+}
+.line-index .index-t .con-1 .con-img .con-img-title span:first-child {
+  background: rgba(0, 0, 0, 0.5);
+}
+.line-index .index-t .con-1 .con-img .con-img-title span:last-child {
+  background: #ff6333;
 }
 .line-index .index-t .con-1 .desc {
   color: #474747;
@@ -1593,6 +1632,30 @@ body {
   width: 4.63888889rem;
   height: 3.02777778rem;
 }
+.line-index .index-t .con-bottom .con-left .con-title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid #ff6333;
+  background: #ff6333;
+  overflow: hidden;
+}
+.line-index .index-t .con-bottom .con-left .con-title span {
+  padding: 0 0.25rem;
+  display: block;
+  float: left;
+  font-size: 0.25rem;
+  height: 0.47222222rem;
+  line-height: 0.47222222rem;
+}
+.line-index .index-t .con-bottom .con-left .con-title span:first-child {
+  background: #ff6333;
+  color: #fff;
+}
+.line-index .index-t .con-bottom .con-left .con-title span:last-child {
+  background: #fff;
+  color: #ff6333;
+}
 .line-index .index-t .con-bottom .con-left .left-desc {
   background: #fff;
   padding: 0 0.30555556rem;
@@ -1600,7 +1663,7 @@ body {
   font-size: 0.41666667rem;
   color: #474747;
 }
-.line-index .index-t .con-bottom .con-left > p {
+.line-index .index-t .con-bottom .con-left .desc-small {
   padding-left: 0.27777778rem;
   padding-bottom: 0.11111111rem;
   font-size: 0.27777778rem;

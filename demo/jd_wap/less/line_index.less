@@ -1,4 +1,7 @@
 .line-index{
+	.green-line{
+		margin-top: 0;
+	}
 	.bg{
 		img{
 			width: 10rem;
@@ -7,6 +10,9 @@
 	}
 	.index-t{
 		margin-bottom: (5/@r)*1rem;
+		&:last-child{
+			margin-bottom: 0;
+		}
 		.title{
 			position: relative;
 			height: (131/@r)*1rem;
@@ -14,6 +20,15 @@
 				position: absolute;
 				left: 50%;
 				top: 50%;
+			}
+			a{
+				position: absolute;
+				background: url('../images/line_more.png') no-repeat;
+				right: (20/@r)*1rem;
+				width: (40/@r)*1rem;
+				height: (40/@r)*1rem;
+				background-size: contain;
+				top: 30%;
 			}
 		}
 		&.t1{
@@ -67,9 +82,33 @@
 		.con-1{
 			padding: 0 (20/@r)*1rem;
 			padding-bottom: (21/@r)*1rem;
-			>img{
-				width: (680/@r)*1rem;			
-				height: (317/@r)*1rem;
+			.con-img{
+				position: relative;
+				img{
+					width: (680/@r)*1rem;			
+					height: (317/@r)*1rem;
+				}
+				.con-img-title{
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					overflow: hidden;
+					span{
+						font-size: (30/@r)*1rem;
+						display: block;
+						float: left;
+						height: (52/@r)*1rem;
+						line-height: (52/@r)*1rem;
+						color: #fff;
+						padding: 0 (24/@r)*1rem;
+						&:first-child{
+							background: rgba(0,0,0,0.5);
+						}
+						&:last-child{
+							background:#ff6333;
+						}
+					}
+				}
 			}
 			.desc{
 				color: #474747;
@@ -94,6 +133,30 @@
 					width: (334/@r)*1rem;
 					height: (218/@r)*1rem;
 				}
+				.con-title{
+					position: absolute;
+					left: 0;
+					top: 0;
+					border: 1px solid #ff6333;
+					background: #ff6333;
+					overflow: hidden;
+					span{
+						padding: 0 (18/@r)*1rem;
+						display: block;
+						float: left;
+						font-size: (18/@r)*1rem;
+						height: (34/@r)*1rem;
+						line-height: (34/@r)*1rem;
+						&:first-child{
+							background: #ff6333;
+							color: #fff;
+						}
+						&:last-child{
+							background: #fff;
+							color: #ff6333;
+						}
+					}
+				}
 				.left-desc{
 					background: #fff;
 					padding: 0 (22/@r)*1rem;
@@ -101,7 +164,7 @@
 					font-size: (30/@r)*1rem;
 					color: #474747;
 				}
-				>p{
+				.desc-small{
 					padding-left:(20/@r)*1rem;
 					padding-bottom: (8/@r)*1rem;
 					font-size: (20/@r)*1rem;
