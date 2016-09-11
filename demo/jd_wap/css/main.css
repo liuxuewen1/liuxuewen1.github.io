@@ -5,6 +5,39 @@
 @function rem2px ($rem) {
   @return ($rem * @r) * 1px;
 }
+.fz30 {
+  font-size: 0.41666667rem;
+}
+.fz32 {
+  font-size: 0.44444444rem;
+}
+.fz34 {
+  font-size: 0.47222222rem;
+}
+.fz36 {
+  font-size: 0.5rem;
+}
+.fz38 {
+  font-size: 0.52777778rem;
+}
+.fz40 {
+  font-size: 0.55555556rem;
+}
+.fz42 {
+  font-size: 0.58333333rem;
+}
+.fz44 {
+  font-size: 0.61111111rem;
+}
+.fz46 {
+  font-size: 0.63888889rem;
+}
+.fz48 {
+  font-size: 0.66666667rem;
+}
+.fz50 {
+  font-size: 0.69444444rem;
+}
 * {
   padding: 0;
   margin: 0;
@@ -1455,6 +1488,122 @@ body {
 }
 .line-list .list ul li:first-child {
   border-top: none;
+}
+.line-index .bg img {
+  width: 10rem;
+  height: 4.01388889rem;
+}
+.line-index .index-t {
+  margin-bottom: 0.06944444rem;
+}
+.line-index .index-t .title {
+  position: relative;
+  height: 1.81944444rem;
+}
+.line-index .index-t .title img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.line-index .index-t.t1 {
+  background: #fed03f;
+  padding-bottom: 0.5rem;
+}
+.line-index .index-t.t1 .title img {
+  width: 5.58333333rem;
+  height: 0.83333333rem;
+  margin-left: -2.79166667rem;
+  margin-top: -0.41666667rem;
+}
+.line-index .index-t.t2 {
+  background: #a1d859;
+  padding-bottom: 0.5rem;
+}
+.line-index .index-t.t2 .title img {
+  width: 3.77777778rem;
+  height: 0.83333333rem;
+  margin-left: -1.88888889rem;
+  margin-top: -0.41666667rem;
+}
+.line-index .index-t.t3 {
+  background: #66bdf3;
+  padding-bottom: 0.5rem;
+}
+.line-index .index-t.t3 .title img {
+  width: 4.52777778rem;
+  height: 0.83333333rem;
+  margin-left: -2.26388889rem;
+  margin-top: -0.41666667rem;
+}
+.line-index .index-t.t4 {
+  background: #af60b3;
+  padding-bottom: 0.5rem;
+}
+.line-index .index-t.t4 .title img {
+  width: 5.77777778rem;
+  height: 0.83333333rem;
+  margin-left: -2.88888889rem;
+  margin-top: -0.41666667rem;
+}
+.line-index .index-t .con-1 {
+  padding: 0 0.27777778rem;
+  padding-bottom: 0.29166667rem;
+}
+.line-index .index-t .con-1 > img {
+  width: 9.44444444rem;
+  height: 4.40277778rem;
+}
+.line-index .index-t .con-1 .desc {
+  color: #474747;
+  font-size: 0.41666667rem;
+  background: #fff;
+  height: 1.18055556rem;
+  line-height: 1.18055556rem;
+  padding: 0 0.30555556rem;
+}
+.line-index .index-t .con-bottom {
+  overflow: hidden;
+  padding: 0 0.27777778rem;
+}
+.line-index .index-t .con-bottom .con-left {
+  position: relative;
+  float: left;
+  margin-right: 0.16666667rem;
+}
+.line-index .index-t .con-bottom .con-left:last-child {
+  margin-right: 0;
+}
+.line-index .index-t .con-bottom .con-left > img {
+  width: 4.63888889rem;
+  height: 3.02777778rem;
+}
+.line-index .index-t .con-bottom .con-left .left-desc {
+  background: #fff;
+  padding: 0 0.30555556rem;
+  padding-top: 0.30555556rem;
+  font-size: 0.41666667rem;
+  color: #474747;
+}
+.line-index .index-t .con-bottom .con-left > p {
+  padding-left: 0.27777778rem;
+  padding-bottom: 0.11111111rem;
+  font-size: 0.27777778rem;
+  background: #fff;
+  height: 0.72222222rem;
+  line-height: 0.72222222rem;
+  color: #999;
+}
+.jd-money {
+  float: right;
+  color: #ff8334;
+  font-weight: bold;
+  /*font-size: (42/@r)*1rem;*/
+}
+.jd-money span:first-child {
+  font-size: 0.5em;
+}
+.jd-money span:last-child {
+  font-size: 1em;
 }
 /*出行时间*/
 .time .time-cont {
