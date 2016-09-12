@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<title>特价路线</title>
-	<link rel="stylesheet" href="../css/main.css">
-	<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
-	<script src="../js/flexible.js"></script>
-</head>
-<body>
+@@include("./_header.html", {"title": "线路列表"})
 	<div class="line-list">
 		<h3 class="baseTit">
 			<span class="return"></span>
@@ -73,17 +63,7 @@
 				</li>
 			</ul>
 		</div>
-		<div class="bottom-g">
-			<div class="green-line"></div>
-			<div class="i-bottom">
-				<div class="bottom-list">
-					<a href="#">手机版</a>				<a href="#">电脑版</a><a href="#">联系我们</a>
-				</div>
-				<p>
-					Copyright &copy; 2015-2016 去旅游网 Qulvxing.com
-				</p>
-			</div>
-		</div>
+	@@include("./_footer_nav.html")
 	</div>
-</body>
-</html>
+@@include("./_nav.html")
+@@include("./_footer.html")

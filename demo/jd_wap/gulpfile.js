@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
 	less = require('gulp-less'),
-	connect = require('gulp-connect');
+	connect = require('gulp-connect'),
+	include = require('gulp-file-include');
 
 gulp.task('less', function(){
 	gulp.src('./less/main.less')
@@ -14,17 +15,19 @@ gulp.task('watch', function(){
 
 gulp.task('connect', function(){
 	connect.server({
-		// root: 'jd_wap',
+		// root: 'dest',
 		livereload: true
 	})
 });
 
 gulp.task('html', function(){
 	gulp.src('./html/*.html')
+		.pipe(include({ prefix: '@@', basepath: '@file' }))
+		.pipe(gulp.dest('./dest/'))
 		.pipe(connect.reload());
 });
 
-gulp.task('default', ['less', 'connect', 'watch']);
+gulp.task('default', ['less', 'connect', 'html', 'watch']);
 
 
 

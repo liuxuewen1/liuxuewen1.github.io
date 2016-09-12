@@ -11,6 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "gulp-connect": "^5.0.0",
+    "gulp-file-include": "^0.14.0",
     "gulp-less": "^3.1.0"
   }
 }
