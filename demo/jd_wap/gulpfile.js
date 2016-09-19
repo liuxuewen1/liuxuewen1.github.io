@@ -10,7 +10,7 @@ gulp.task('less', function(){
 });
 
 gulp.task('watch', function(){
-	gulp.watch(['./less/*.less', './html/*.html'], ['less', 'html']);
+	gulp.watch(['./less/*.less', './html/*.html', './js/*.js'], ['less', 'html', 'html']);
 });
 
 gulp.task('connect', function(){
