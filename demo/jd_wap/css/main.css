@@ -112,7 +112,8 @@ body {
   text-align: center;
   margin-top: 0.65277778rem;
 }
-.preNext a {
+.preNext a,
+.preNext input {
   width: 3.69444444rem;
   height: 1.06944444rem;
   display: inline-block;
@@ -127,6 +128,7 @@ body {
   background-color: #5ad191;
   color: #fff;
   margin-left: 0.41666667rem;
+  cursor: pointer;
 }
 /*//右侧选中的对勾*/
 .t-right {
