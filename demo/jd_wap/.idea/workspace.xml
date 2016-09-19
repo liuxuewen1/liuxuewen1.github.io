@@ -45,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.less" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/less/base.less">
+      <file leaf-file-name="3配送方式.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/html/3配送方式.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="164" column="19" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="19" />
+            <state relative-caret-position="525">
+              <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -72,6 +72,7 @@
         <option value="$PROJECT_DIR$/js/time.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/less/base.less" />
+        <option value="$PROJECT_DIR$/html/3配送方式.html" />
       </list>
     </option>
   </component>
@@ -149,21 +150,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="less" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jd_wap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jd_wap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="html" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -240,12 +227,12 @@
       <option name="presentableId" value="Default" />
       <updated>1471078550195</updated>
       <workItem from="1471078552697" duration="78000" />
-      <workItem from="1474205245614" duration="7994000" />
+      <workItem from="1474205245614" duration="8697000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8072000" />
+    <option name="totallyTimeSpent" value="8775000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="728" extended-state="6" />
@@ -327,6 +314,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/less/base.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="164" column="19" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/time.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -337,10 +340,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/less/base.less">
+    <entry file="file://$PROJECT_DIR$/html/3配送方式.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="164" column="19" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="19" />
+        <state relative-caret-position="525">
+          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
           <folding />
         </state>
       </provider>

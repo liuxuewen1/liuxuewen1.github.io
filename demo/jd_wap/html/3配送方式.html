@@ -25,3 +25,13 @@
 </div>
 @@include("./_nav.html")
 @@include("./_footer.html")
+<script>
+	$(function(){
+		// 点击下一步按钮操作
+		$(".next").on('click', function () {
+			var _arrid = [1, 2, 3];
+			var _selectid = _arrid[$('li.selected').index()];
+			// 拿到_selectid 做下一步操作
+		})
+	})
+</script>
