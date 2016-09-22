@@ -38,6 +38,12 @@
 .fz50 {
   font-size: 0.69444444rem;
 }
+body .left {
+  float: left;
+}
+body .right {
+  float: right;
+}
 * {
   padding: 0;
   margin: 0;
@@ -1683,8 +1689,12 @@ body {
 .jd-money span:first-child {
   font-size: 0.5em;
 }
-.jd-money span:last-child {
+.jd-money span:nth-child(2) {
   font-size: 1em;
+}
+.jd-money span:nth-child(3) {
+  font-weight: normal;
+  font-size: 0.8em;
 }
 /*出行时间*/
 .time .time-cont {
