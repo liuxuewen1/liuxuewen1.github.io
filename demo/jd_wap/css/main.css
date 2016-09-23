@@ -2049,6 +2049,9 @@ body {
   font-size: 0.33333333rem;
   color: #999;
 }
+.l-details .line-item .line-list2 li p img {
+  max-width: 100%;
+}
 .l-details .line-item .line-list2 li span {
   width: 0.38888889rem;
   height: 0.38888889rem;
