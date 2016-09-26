@@ -12,7 +12,7 @@ function Calender(options) {
     this.$month = options.$month || $('.month');
     this.sLi = {
         '0': '<li><div><span>s%</span></div></li>',
-        '1': '<li data-type="choose"><div><span>s%</span><div><strong>￥m%</strong><p>剩余：<em>l%</em></p></div></div></li>'
+        '1': '<li data-type="choose"><div stroke="d%"><span>s%</span><div><strong>￥m%</strong><p>剩余：<em>l%</em></p></div></div></li>'
     };
     this.data = options.data || {
         "1": {
@@ -20,8 +20,9 @@ function Calender(options) {
         },
         "2": {
             "status": true,
-                "last": 8,
-                "money": 5155
+            "last": 8,
+            "money": 5155,
+            "stroke": 12534
         }
     };
 
@@ -57,7 +58,7 @@ Calender.prototype.fnInit = function (){
         _this.fnPrev();
     });
     this.$parent.on('click', '[data-type=choose]', function () {
-        _this.$parent.find('li div').eq(0).removeClass('active');
+        _this.$parent.find('li div').removeClass('active').removeAttr('stroke');
         $(this).find('div').eq(0).toggleClass('active');
     })
 };
@@ -78,7 +79,8 @@ Calender.prototype.fnShow = function () {
             if(_this.data[_date] && _this.data[_date].status == true){
                 _str = _this.sLi[1].replace('s%', i + 1)
                     .replace('m%',  _this.data[_date].money)
-                    .replace('l%',  _this.data[_date].last);
+                    .replace('l%',  _this.data[_date].last)
+                    .replace('d%',  _this.data[_date].stroke);
             }
             _arrLi.push(_str);
 

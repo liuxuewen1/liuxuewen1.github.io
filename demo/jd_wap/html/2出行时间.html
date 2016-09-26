@@ -60,3 +60,14 @@
 @@include("./_nav.html")
 @@include("./_footer.html")
 <script src="../js/time.js"></script>
+<script>
+	//点击下一步触发
+	$(".next").on('click', function () {
+		var _stroke = $('.list-day').find('li div.active').attr('stroke');
+		if(!_stroke){
+			alert('请选择出行时间！');
+		}else{
+			//下一步继续
+		}
+	})
+</script>
