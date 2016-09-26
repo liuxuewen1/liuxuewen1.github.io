@@ -12,7 +12,8 @@ function Calender(options) {
     this.$month = options.$month || $('.month');
     this.sLi = {
         '0': '<li><div><span>s%</span></div></li>',
-        '1': '<li data-type="choose"><div stroke="d%"><span>s%</span><div><strong>￥m%</strong><p>剩余：<em>l%</em></p></div></div></li>'
+        '1': '<li data-type="choose"><div stroke="d%"><span>s%</span><div><strong>￥m%</strong><p style="background: #26a367;">剩余：<em>l%</em></p></div></div></li>',
+        '2': '<li><div class=""><span>s%</span><div class=""><p>t%</p></div></div></li>'
     };
     this.data = options.data || {
         "1": {
@@ -76,11 +77,16 @@ Calender.prototype.fnShow = function () {
             var _year = _this.now.getFullYear(),
                 _month = _this.now.getMonth() + 1,
                 _date = i + 1;
-            if(_this.data[_date] && _this.data[_date].status == true){
-                _str = _this.sLi[1].replace('s%', i + 1)
-                    .replace('m%',  _this.data[_date].money)
-                    .replace('l%',  _this.data[_date].last)
-                    .replace('d%',  _this.data[_date].stroke);
+            if(_this.data[_date]){
+                if(_this.data[_date].status == true){
+                    _str = _this.sLi[1].replace('s%', i + 1)
+                        .replace('m%',  _this.data[_date].money)
+                        .replace('l%',  _this.data[_date].last)
+                        .replace('d%',  _this.data[_date].stroke);
+                }else{
+                    _str = _this.sLi[2].replace('s%', i + 1)
+                        .replace('t%',  _this.data[_date].type == "0"? "已结束": "已售罄");
+                }
             }
             _arrLi.push(_str);
 
