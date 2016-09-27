@@ -629,6 +629,24 @@ body {
   font-size: 0.41666667rem;
   border-radius: 1.11111111rem;
 }
+.car .tra-list li {
+  zoom: 1;
+  padding: 0.5rem 0 0.625rem;
+  height: 2.04166667rem;
+  line-height: 1;
+}
+.car .tra-list li:before,
+.car .tra-list li:after {
+  content: " ";
+  display: table;
+}
+.car .tra-list li:after {
+  clear: both;
+}
+.car .tra-list li img {
+  width: 29%;
+  height: auto;
+}
 /*登陆和快捷登陆*/
 .logIn {
   position: absolute;

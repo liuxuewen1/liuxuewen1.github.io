@@ -1,0 +1,48 @@
+@@include("./_header.html", {"title": "8选择车型"})
+<div class="car">
+		<h3 class="baseTit">
+			<span class="return"></span>
+			<span class="t-f"></span>
+			<span class="b-center">选择车型</span>
+		</h3>
+		<ul class="tra-list">
+			<li class="selected">
+				<div class="t-left">
+					<img src="../images/car.jpg" alt="">
+					<div class="car-right">
+						<h3 class="car-tit">商务舒适五座车</h3>
+						<p class="car-text">
+							<span class="car-icon"></span>
+							最大乘坐 *5人
+						</p>
+						<p class="car-text">
+							<span class="car-icon"></span>
+							可带行李 *5件
+						</p>
+					</div>
+				</div>
+				<span class="t-right"></span>
+			</li>
+			<li>
+				<div class="t-left">
+					
+				</div>
+				<span class="t-right"></span>
+			</li>
+		</ul>
+		<div class="preNext">
+			<a href="javascript:;" class="pre">上一步</a><a href="javascript:;" class="next">下一步</a>
+		</div>
+</div>
+@@include("./_nav.html")
+@@include("./_footer.html")
+<script>
+	$(function(){
+		// 点击下一步按钮操作
+		$(".next").on('click', function () {
+			var _arrid = [1, 2, 3];
+			var _selectid = _arrid[$('li.selected').index()];
+			// 拿到_selectid 做下一步操作
+		})
+	})
+</script>
