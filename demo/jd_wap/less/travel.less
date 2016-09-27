@@ -141,16 +141,86 @@
 	}
 }
 .car{
+	padding-bottom: 1rem;
+	.car-desc{
+		background: #fff;
+		padding-bottom: (30/@r)*1rem;
+	}
 	.tra-list{
 		li{
+			.t-left{
+				width: 90%;
+			}
 			.clearfix();
 			padding:(36/@r)*1rem 0 (45/@r)*1rem;
-			height: (147/@r)*1rem;
+			/*height: (147/@r)*1rem;*/
 			line-height: 1;
+			height: auto;
 			img{
 				width: 29%;
 				height: auto;
 			}
+			.t-right{
+				top: 50%;
+				margin-top: -(20/@r)*1rem;
+			}
+			.car-right{
+				width: 65%;
+				float: right;
+				.car-tit{
+					font-size: (30/@r)*1rem;
+					color: #000;
+					font-weight: bold;
+					line-height: (62/@r)*1rem;
+				}
+				.car-text{
+					font-size: (20/@r)*1rem;
+					padding: (6/@r)*1rem 0;
+					line-height: (32/@r)*1rem;
+					color: #999;
+					.car-icon{
+						float:left;
+						width: (35/@r)*1rem;
+						height: (25/@r)*1rem;
+						background: url(../images/travel_people.jpg);
+						background-size: cover;
+						margin-right: (10/@r)*1rem;
+					}
+					&:last-child{
+						.car-icon{
+							float:left;
+							width: (26/@r)*1rem;
+							height: (25/@r)*1rem;
+							background: url(../images/travel_bag.jpg);
+							background-size: cover;
+							margin-right: (15/@r)*1rem;
+						}
+					}
+				}
+			}
+		}
+		border-bottom: none;
+	}
+	.tra-list-desc{
+		background: #f5f5f5;
+		margin: 0 (30/@r)*1rem;
+		padding: (18/@r)*1rem 0 0 (34/@r)*1rem;
+		h3{
+			font-size: (30/@r)*1rem;
+			color: #26a367;
+			line-height: (78/@r)*1rem;
+		}
+		ul{
+			li{
+				color: #999;
+				line-height: (58/@r)*1rem;
+				font-size: (24/@r)*1rem;
+			}
+		}
+		p{
+			color: #999;
+			line-height: (58/@r)*1rem;
+			font-size: (24/@r)*1rem;
 		}
 	}
 	

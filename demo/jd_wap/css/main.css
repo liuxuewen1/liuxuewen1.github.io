@@ -629,11 +629,25 @@ body {
   font-size: 0.41666667rem;
   border-radius: 1.11111111rem;
 }
+.car {
+  padding-bottom: 1rem;
+}
+.car .car-desc {
+  background: #fff;
+  padding-bottom: 0.41666667rem;
+}
+.car .tra-list {
+  border-bottom: none;
+}
 .car .tra-list li {
   zoom: 1;
   padding: 0.5rem 0 0.625rem;
-  height: 2.04166667rem;
+  /*height: (147/@r)*1rem;*/
   line-height: 1;
+  height: auto;
+}
+.car .tra-list li .t-left {
+  width: 90%;
 }
 .car .tra-list li:before,
 .car .tra-list li:after {
@@ -646,6 +660,62 @@ body {
 .car .tra-list li img {
   width: 29%;
   height: auto;
+}
+.car .tra-list li .t-right {
+  top: 50%;
+  margin-top: -0.27777778rem;
+}
+.car .tra-list li .car-right {
+  width: 65%;
+  float: right;
+}
+.car .tra-list li .car-right .car-tit {
+  font-size: 0.41666667rem;
+  color: #000;
+  font-weight: bold;
+  line-height: 0.86111111rem;
+}
+.car .tra-list li .car-right .car-text {
+  font-size: 0.27777778rem;
+  padding: 0.08333333rem 0;
+  line-height: 0.44444444rem;
+  color: #999;
+}
+.car .tra-list li .car-right .car-text .car-icon {
+  float: left;
+  width: 0.48611111rem;
+  height: 0.34722222rem;
+  background: url(../images/travel_people.jpg);
+  background-size: cover;
+  margin-right: 0.13888889rem;
+}
+.car .tra-list li .car-right .car-text:last-child .car-icon {
+  float: left;
+  width: 0.36111111rem;
+  height: 0.34722222rem;
+  background: url(../images/travel_bag.jpg);
+  background-size: cover;
+  margin-right: 0.20833333rem;
+}
+.car .tra-list-desc {
+  background: #f5f5f5;
+  margin: 0 0.41666667rem;
+  padding: 0.25rem 0 0 0.47222222rem;
+}
+.car .tra-list-desc h3 {
+  font-size: 0.41666667rem;
+  color: #26a367;
+  line-height: 1.08333333rem;
+}
+.car .tra-list-desc ul li {
+  color: #999;
+  line-height: 0.80555556rem;
+  font-size: 0.33333333rem;
+}
+.car .tra-list-desc p {
+  color: #999;
+  line-height: 0.80555556rem;
+  font-size: 0.33333333rem;
 }
 /*登陆和快捷登陆*/
 .logIn {
