@@ -1,4 +1,14 @@
-
+.line-list{
+	position: relative;
+	.baseTit{
+		position: relative;
+		z-index: 2;
+	}
+}
+.sort-c{
+	position: relative;
+	z-index: 2;
+}
 .sort{
 	overflow: hidden;
 	border-bottom: 1px solid #e6e6e6;
@@ -19,12 +29,76 @@
 				color: #26a367;
 			}
 		}
-
-
+	}
+	li:last-child{
+		a{
+			border-right: none;
+		}
 	}
 
 }
-
+.mask{
+	position: absolute;
+	left: 0;
+	top:0;
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 100%;
+}
+.sort-mask{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top:(70/@r)*1rem;
+	background-color: #fff;
+	.sort-list{
+		overflow: hidden;
+		border-top:1px solid #e6e6e6;
+		border-bottom: 1px solid #e6e6e6;
+		padding:(54/@r)*1rem (30/@r)*1rem (36/@r)*1rem;
+		li{
+			float: left;
+			width: 33.33%;
+			text-align: center;
+			margin-bottom:(32/@r)*1rem; 
+			img{
+				width: (90/@r)*1rem;
+				margin-bottom:(28/@r)*1rem; 
+			}
+			.item-p-text{
+				font-size:(24/@r)*1rem;
+				color: #999;
+				height: (30/@r)*1rem;
+			}
+		}
+	}
+	.sort-list2,.sort-l-c{
+		overflow: hidden;
+		border-top:1px solid #e6e6e6;
+		border-bottom: 1px solid #e6e6e6;
+		padding:(54/@r)*1rem (30/@r)*1rem (36/@r)*1rem;
+		li{
+			float: left;
+			width: 33.33%;
+			margin-bottom: (27/@r)*1rem;
+			span{
+				float: left;
+				width:85%;
+				height:(50/@r)*1rem;
+				line-height:(50/@r)*1rem;
+				border:2px solid #e6e6e6;
+				text-align: center;
+				border-radius: 5px;
+				font-size:(24/@r)*1rem;
+				color: #999; 
+				margin-left: 8%;
+			}
+		}
+	}
+	.sort-l-c{
+		border-top: 0;
+	}
+}
 .visa-list{
 	.list{
 		border-bottom: 1px solid #e6e6e6;
