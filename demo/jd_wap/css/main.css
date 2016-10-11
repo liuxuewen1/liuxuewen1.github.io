@@ -544,8 +544,38 @@ body {
   width: 1.38888889rem;
   font-size: 0.55555556rem;
 }
+.tra-list .number input.w240 {
+  width: 3.33333333rem;
+}
+.t-show-price {
+  width: 100%;
+  line-height: 0.6rem;
+  padding: 0.2rem 0.3rem;
+  background: #fff;
+  overflow: hidden;
+}
+.t-show-price > div:nth-child(2) {
+  margin-right: 0.2rem;
+}
+.t-show-price em {
+  color: #333;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.38888889rem;
+  float: left;
+}
 .travel {
   /*支付方式*/
+}
+.travel .travel-error {
+  color: red;
+  font-size: 12px;
+  padding: 10px;
+}
+.travel .room-span {
+  color: #666;
+  font-size: 12px;
+  padding: 10px;
 }
 .travel .a-item {
   margin-top: 0.63888889rem;
@@ -660,6 +690,7 @@ body {
 .car .tra-list li img {
   width: 29%;
   height: auto;
+  margin-top: 0.3rem;
 }
 .car .tra-list li .t-right {
   top: 50%;

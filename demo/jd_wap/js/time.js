@@ -44,7 +44,7 @@ Calender.prototype.getData = function (succ) {
     var _key = $("#travel_key").val();
     var _id = $("#travel_id").val();
     var _date = this.getNowDate();
-    $.post('/travel/tmpApi', {key: _key, travel: _id, date: _date.year+_date.month}, function (data) {
+    $.post('/travel/tmpApi', {key: _key, travel: _id, date: ''+_date.year+_date.month}, function (data) {
         _this.data = data;
         succ && succ();
     }, 'json');

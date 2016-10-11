@@ -1,5 +1,5 @@
 @@include("./_header.html", {"title": "3出行人数"})
-	<div class="travel" max-count="5">
+	<div class="travel" max-count="5" data-room="3" data-price="120" is-pre-pay="0" pay-percent="0.12" show-type="3" type1-msg="（请联系客服）">
 		<h3 class="baseTit">
 			<span class="return"></span>
 			<span class="t-f"></span>
@@ -8,16 +8,31 @@
 		<ul class="tra-list">
 			<li class="selected">
 				<span class="c-left colorGy">成人</span>
-				<div class="number" data-type="1">
+				<div class="number" data-type="1" big-price="1200">
 					<span class="num-l">+</span><input class="num-c" type="text" placeholder="0" value="0"><span class="num-r">-</span>
 
 				</div>
 			</li>
 			<li class="selected">
 				<span class="c-left colorGy">儿童</span>
-				<div class="number" data-type="2">
+				<div class="number" data-type="2" sml-price="800">
 					<span class="num-l">+</span><input class="num-c" type="text" placeholder="0" value="0"><span class="num-r">-</span>
 
+				</div>
+			</li>
+			<li>
+				<span class="c-left colorGy">总房间数</span>
+				<div class="number">
+					<input class="num-c w240" type="text" placeholder="0" value="0" disabled="disabled">
+				</div>
+			</li>
+			<li>
+				<div class="t-show-price" style="padding:0.2rem 0;">
+					<em>总价：</em>
+					<div class="jd-money fz40 left">
+						<span>¥</span><span id="total_price">0</span>
+						<em style="float: right;" id="span_price"></em>
+					</div>
 				</div>
 			</li>
 		</ul>
@@ -30,16 +45,62 @@
 @@include("./_footer.html")
 <script>
 	$(function(){
+		var $travel = $(".travel");
+		var isPrePay = $travel.attr('is-pre-pay');	// 是否为预付定金订单 0：否；1：是；
+		var payPercent = $travel.attr('pay-percent');	// 如果是预付定金，比例是多少 0.1
+		var showType = $travel.attr('show-type');	// 如果不是预付定金，显示总价的类型,1- 显示提示；2-空床位乘以单房差单价；3-单房差价格为固定价格，不进行计算
+		var type1Msg = $travel.attr('type1-msg');	// 如果是类型1，则显示msg的提示
+		var roomNum = $travel.attr('data-room') || 2;	// 一间几人
+		var spanPrice = $travel.attr('data-price') || 100; 	// 差价多少钱
+		var $totalPrice = $("#total_price");
+		var $spanPrice = $('#span_price');
 		var $number = $(".number");
-		var max = $(".travel").attr('max-count') || 1000;
+		var max = $travel.attr('max-count') || 1000;
 		var $big = $number.eq(0).find('.num-c');
 		var $sml = $number.eq(1).find('.num-c');
+		var big_price = $number.eq(0).attr('big-price');
+		var sml_price = $number.eq(1).attr('sml-price');
+		var $total = $number.eq(2).find('.num-c');
 		var $err = $(".travel-error");
 		var msg = {
 			all: "所选车型乘坐人数已达上限！",
 			child: "儿童人数不能大于成人人数！",
 			child_ath: "成人人数不能小于儿童人数！"
 		};
+		// 计算总房间数和差价
+		function addTotal(){
+			var _big = +$big.val();
+			var _sml = +$sml.val();
+			var _total = _big + _sml;
+			var count = Math.ceil(_total/roomNum);
+			var _totalprice = _big * big_price + _sml * sml_price;
+			$total.val(count+'间');
+			$totalPrice.html(_totalprice);
+
+			if(isPrePay == "1"){
+				$spanPrice.html('（预付款' + Math.floor(payPercent * _totalprice) + '元）');
+				return;
+			}
+
+			var spanNum = count * roomNum - _total;
+			switch(showType){
+				case "1": $spanPrice.html(type1Msg);
+					break;
+				case "2": if(spanNum != 0){		//spanNum * spanPrice
+										$spanPrice.html('（已含'+spanNum * spanPrice+'元单房差）');
+									}else{
+										$spanPrice.html('');
+									}
+					break;
+				case "3": if(spanNum != 0){		//spanNum * spanPrice
+										$spanPrice.html('（已含' + spanPrice + '元单房差）');
+									}else{
+										$spanPrice.html('');
+									}
+					break;
+			}
+			
+		}
 		function del() {
 			var $number = this;  // number
 			var $input = $number.find('.num-c');
@@ -62,6 +123,7 @@
 					}
 					break;
 			}
+			addTotal();
 		}
 		function add() {
 			var $number = this;  // number
@@ -91,6 +153,7 @@
 					}
 					break;
 			}
+			addTotal();
 		}
 		function fnError(msg){
 			$err.html(msg);
