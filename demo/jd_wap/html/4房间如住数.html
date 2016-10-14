@@ -8,24 +8,43 @@
 		<ul class="tra-list">
 			<li class="selected">
 				<span class="t-left">一间1人</span>
-				<span class="t-right"></span>
+				<span class="t-right" data-big="1200" data-small="1000"></span>
 			</li>
 			<li>
 				<span class="t-left">一间2人</span>
-				<span class="t-right"></span>
+				<span class="t-right" data-big="1300" data-small="1000"></span>
 			</li>
 			<li>
 				<span class="t-left">一间3人</span>
-				<span class="t-right"></span>
+				<span class="t-right" data-big="1400" data-small="1000"></span>
 			</li>
 			<li>
 				<span class="t-left">一间4人</span>
-				<span class="t-right"></span>
+				<span class="t-right" data-big="1500" data-small="1000"></span>
 			</li>
 		</ul>
+		<div class="t-show-price">
+			<em>成人：</em><div class="jd-money fz40 left">
+				<span>¥</span><span>1800</span>
+			</div>
+			<em>儿童：</em><div class="jd-money fz40 left">
+                <span>¥</span><span>1800</span>
+			</div>
+		</div>
 		<div class="preNext">
 			<a href="javascript:;" class="pre">上一步</a><a href="javascript:;" class="next">下一步</a>
 		</div>
 	</div>
 @@include("./_nav.html")
 @@include("./_footer.html")
+<script>
+	setMoney.call($('.t-right').eq(0));
+	$('.t-right').on('click', function(){
+		setMoney.call(this);
+	});
+	function  setMoney() {
+		var _money = $(".t-show-price").find('.jd-money');
+		_money.eq(0).find('span').eq(1).html($(this).attr('data-big'));
+		_money.eq(1).find('span').eq(1).html($(this).attr('data-small'));
+	}
+</script>

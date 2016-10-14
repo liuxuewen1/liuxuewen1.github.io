@@ -52,10 +52,40 @@
 		input{
 			width:(100/@r)*1rem; 
 			font-size: (40/@r)*1rem;
+			&.w240{
+				width:(240/@r)*1rem; 
+			}
 		}
 	}
 }
+.t-show-price{
+	width: 100%;
+	line-height: 0.6rem;
+	padding: 0.2rem 0.3rem;
+    background: #fff;
+	overflow: hidden;
+	>div:nth-child(2){
+		margin-right: 0.2rem;
+	}
+	em{
+		color: #333;
+		font-style: normal;
+        font-weight: normal;
+		font-size: (28/@r)*1rem;
+		float: left;
+	}
+}
 .travel{
+	.travel-error{
+		color: red;
+		font-size: 12px;
+		padding: 10px;
+	}
+	.room-span{
+		color: #666;
+		font-size: 12px;
+		padding: 10px;
+	}
 	.a-item{
 		margin-top:(46/@r)*1rem; 
 		.tra-list{
@@ -159,6 +189,7 @@
 			img{
 				width: 29%;
 				height: auto;
+				margin-top: 0.3rem;
 			}
 			.t-right{
 				top: 50%;
