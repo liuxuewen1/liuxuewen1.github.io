@@ -395,6 +395,30 @@ body {
   color: #808080;
   text-align: center;
 }
+.index .i-cont .i-t-list {
+  position: relative;
+  height: 2.20833333rem;
+  margin-bottom: 0.97222222rem;
+}
+.index .i-cont .item-list {
+  height: 2.20833333rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-right: -3.59722222rem;
+  padding-bottom: 0;
+}
+.index .i-cont .item-list li {
+  float: left;
+  width: 3.59722222rem;
+  height: 100%;
+  margin-right: 0.26388889rem;
+  margin-bottom: 0;
+}
+.index .i-cont .item-list .item-text {
+  left: 0.22222222rem;
+  bottom: 0;
+}
 /*导航效果*/
 .nav {
   position: absolute;
