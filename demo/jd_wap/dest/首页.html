@@ -49,6 +49,18 @@
 							<img src="../images/visa1.jpg" alt="">
 							<p class="item-text">印度</p>
 						</li>
+						<li>
+							<img src="../images/visa1.jpg" alt="">
+							<p class="item-text">印度</p>
+						</li>
+						<li>
+							<img src="../images/visa1.jpg" alt="">
+							<p class="item-text">印度</p>
+						</li>
+						<li>
+							<img src="../images/visa1.jpg" alt="">
+							<p class="item-text">印度</p>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -177,4 +189,9 @@
         spaceBetween: 30,
         loop: true
     });
+    $(function(){
+    	var $ul = $(".item-list");
+    	var len = $ul.find('li').length;
+    	$ul.css('width', (100 * len / 2.3) + '%');
+    })
 </script>
