@@ -1,0 +1,556 @@
+/*公用部分*/
+body {
+  font-size: 12px;
+  font-family: "\5FAE\8F6F\96C5\9ED1", "Microsoft YaHei", "Hiragino Sans GB", Verdana, Arial, Helvetica, sans-serif;
+  color: #333;
+}
+body,
+p,
+div,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+span,
+input,
+table,
+td,
+th,
+textarea,
+strong,
+em {
+  margin: 0px;
+  padding: 0px;
+}
+ul li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  outline: none;
+  blur: expression(this.onFocus=this.blur());
+  color: #53a0e3;
+  font-size: 12px;
+}
+a:hover {
+  text-decoration: none;
+  color: #73bdf1;
+}
+img {
+  border: none;
+  vertical-align: middle;
+}
+.lt {
+  float: left;
+}
+.rt {
+  float: right;
+}
+input {
+  border: none;
+  background-color: transparent;
+}
+label,
+input,
+select,
+img {
+  display: inline-block;
+  vertical-align: middle;
+}
+.clear {
+  width: 0px;
+  padding: 0px;
+  height: 0px;
+  margin: 0px;
+  font-size: 0px;
+  line-height: 0px;
+  clear: both;
+}
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
+.cf {
+  zoom: 1;
+}
+.main-w1170 {
+  margin: 0px auto;
+  width: 1170px;
+}
+.i-t-top {
+  height: 96px;
+  margin-bottom: 112px;
+  border-bottom: 1px solid #fff;
+}
+.i-t-left {
+  float: left;
+  margin-top: 28px;
+}
+.i-t-right {
+  float: right;
+  margin-top: 22px;
+}
+.logIn {
+  float: right;
+  line-height: 16px;
+  height: 16px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  font-size: 12px;
+}
+.logIn li {
+  float: left;
+  margin-left: 10px;
+}
+.logIn a {
+  color: #e5e5e5;
+}
+.logIn .l-icon {
+  width: 16px;
+  height: 16px;
+  background-position: 0 0;
+}
+.banner-list {
+  float: right;
+  height: 16px;
+  overflow: hidden;
+  line-height: 1;
+}
+.banner-list li {
+  float: left;
+  margin-left: 24px;
+}
+.banner-list a {
+  color: #f5f5f5;
+  font-size: 16px;
+  font-weight: bold;
+}
+.footer {
+  background-color: #262626;
+}
+.footer .footer-con {
+  width: 1170px;
+  margin: 0 auto;
+  padding-top: 36px;
+}
+.footer .footer-con .footer-con-detail {
+  padding-bottom: 26px;
+  border-bottom: 1px solid #4d4d4d;
+}
+.footer .footer-con .footer-con-detail ul {
+  float: left;
+}
+.footer .footer-con .footer-con-detail ul li {
+  float: left;
+  border-right: 1px solid #484848;
+  padding-left: 18px;
+}
+.footer .footer-con .footer-con-detail ul li.first {
+  padding-left: 0;
+}
+.footer .footer-con .footer-con-detail ul li.last {
+  border-right: 0;
+}
+.footer .footer-con .footer-con-detail ul li.last span {
+  color: #999;
+  margin: 15px 0 6px 0;
+}
+.footer .footer-con .footer-con-detail ul li.last .tel {
+  color: #26a367;
+  font-size: 24px;
+  line-height: 30px;
+}
+.footer .footer-con .footer-con-detail ul li h3 {
+  font-size: 14px;
+  color: #ccc;
+  height: 26px;
+  line-height: 26px;
+  margin-bottom: 12px;
+}
+.footer .footer-con .footer-con-detail ul li p {
+  width: 238px;
+  line-height: 24px;
+}
+.footer .footer-con .footer-con-detail ul li p a {
+  font-size: 12px;
+  color: #999;
+  margin-right: 12px;
+}
+.footer .footer-con .footer-con-detail > img {
+  float: right;
+  width: 86px;
+  height: 86px;
+}
+.footer .footer-con .footer-con-detail > p {
+  float: right;
+  width: 12px;
+  padding-top: 7px;
+  font-size: 12px;
+  color: #979797;
+  line-height: 14px;
+  margin-left: 8px;
+}
+.footer .footer-con .footer-btm {
+  padding-top: 15px;
+  padding-bottom: 40px;
+}
+.footer .footer-con .footer-btm p {
+  font-size: 12px;
+  line-height: 24px;
+  height: 24px;
+  color: #999;
+}
+.footer .footer-con .footer-btm p a {
+  color: #999;
+  margin-right: 21px;
+}
+.footer .footer-con .footer-btm p a:hover {
+  text-decoration: underline;
+}
+input {
+  outline: 0;
+}
+.travels {
+  background-color: #f7f7f7;
+}
+.travels .i-top {
+  height: 468px;
+  background: url("../images/t_top.jpg") center no-repeat;
+}
+.travels .i-top2 {
+  background: url("../images/t_top2.jpg") center no-repeat;
+}
+.travels .i-top2 .i-t-top {
+  border: none;
+}
+.travels .i-t-cont {
+  height: 100%;
+  position: relative;
+}
+.travels .i-t-cont .top-tit {
+  text-align: center;
+}
+.travels .i-t-cont .send {
+  position: absolute;
+  left: 50%;
+  margin-left: -111px;
+  bottom: 60px;
+}
+.travels .i-t-top {
+  margin-bottom: 0;
+}
+.travels .t-t-text {
+  color: #fff;
+  font-size: 14px;
+  line-height: 40px;
+  height: 40px;
+  margin-bottom: 188px;
+}
+.travels .t-t-user {
+  height: 120px;
+}
+.travels .user-l {
+  float: left;
+  width: 120px;
+}
+.travels .user-l img {
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+.travels .user-right {
+  margin-left: 145px;
+}
+.travels .user-right .user-tit {
+  font-size: 36px;
+  color: #fff;
+  font-style: weight;
+  height: 82px;
+  line-height: 82px;
+}
+.travels .user-cont {
+  height: 38px;
+  line-height: 1;
+  color: #fff;
+}
+.travels .user-cont li {
+  float: left;
+  margin-right: 26px;
+  font-size: 16px;
+}
+.travels .user-cont .address {
+  width: 13px;
+  height: 16px;
+  float: left;
+  background-position: 0 -19px;
+  margin-right: 5px;
+}
+.travels .user-cont .date {
+  width: 17px;
+  height: 17px;
+  float: left;
+  background-position: -19px -19px;
+  margin-right: 5px;
+}
+.travels .t-center {
+  margin-top: 40px;
+}
+.travels .t-c-left {
+  float: left;
+  width: 840px;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  padding: 0 30px 30px;
+}
+.travels .t-l-item {
+  padding-top: 30px;
+  line-height: 36px;
+  color: #333;
+  padding-bottom: 25px;
+}
+.travels .t-l-item .t-l-tit {
+  font-size: 20px;
+}
+.travels .t-l-item .t-l-cont {
+  font-size: 16px;
+}
+.travels .t-l-item img {
+  margin-top: 43px;
+}
+.travels .t-c-right {
+  float: right;
+  width: 234px;
+  color: #808080;
+  padding-top: 20px;
+}
+.travels .t-c-right .t-r-tit {
+  font-size: 18px;
+  height: 47px;
+}
+.travels .t-c-right .t-r-list {
+  font-size: 12px;
+}
+.travels .t-c-right .t-r-list li {
+  height: 40px;
+  line-height: 1;
+  padding-left: 17px;
+  position: relative;
+  border-left: 2px solid #e6e6e6;
+}
+.travels .t-c-right .t-r-list span {
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  left: -4px;
+  top: 0;
+  background-color: #bfbfbf;
+  border-radius: 50%;
+}
+.travels .t-c-right .t-r-list .t-r-now {
+  color: #333;
+}
+.travels .t-c-right .t-r-list .t-r-now span {
+  width: 10px;
+  height: 10px;
+  background-color: #3ebd62;
+  left: -6px;
+}
+.travels .t-c-right .t-r-list .last {
+  border: none;
+}
+.travels .t-c-right .t-r-list .last span {
+  left: -2px;
+}
+.travels .t-c-right .t-r-list .last.t-r-now span {
+  left: -3px;
+}
+.travels .t-more {
+  background-color: #f5f5f5;
+  padding: 72px 0 84px;
+}
+.travels .t-more .t-m-tit {
+  text-align: center;
+  height: 60px;
+  line-height: 1;
+}
+.travels .t-more .t-m-tit a {
+  font-size: 30px;
+  color: #4c4c4c;
+  font-weight: normal;
+}
+.travels .t-m-list {
+  margin-right: -60px;
+}
+.travels .t-m-list li {
+  float: left;
+  background-color: #fff;
+  width: 372px;
+  margin-right: 27px;
+  padding-bottom: 26px;
+}
+.travels .t-m-list .list-top {
+  width: 100%;
+  height: 197px;
+  position: relative;
+  margin-bottom: 30px;
+}
+.travels .t-m-list .list-bottom {
+  width: 100%;
+  height: 157px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 40px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.travels .t-m-list .list-bottom img {
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+.travels .t-m-list .list-bottom .list-name {
+  font-size: 16px;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+}
+.travels .t-m-list .list-tit {
+  font-size: 20px;
+  height: 34px;
+  line-height: 1;
+  color: #333;
+  text-align: center;
+}
+.travels .t-m-list .user-cont {
+  color: #808080;
+  line-height: 16px;
+  padding-left: 90px;
+}
+.travels .t-m-list .user-cont li {
+  width: auto;
+  margin-right: 20px;
+  font-size: 14px;
+}
+.travels .t-m-list .user-cont .address {
+  background-position: 0 -41px;
+}
+.travels .t-m-list .user-cont .date {
+  background-position: -19px -41px;
+}
+.travels .t-m-list .list-text {
+  text-align: center;
+}
+.travels .t-m-list .list-text a {
+  width: 107px;
+  height: 28px;
+  line-height: 28px;
+  display: inline-block;
+  border: 1px solid #dadada;
+  border-radius: 28px;
+  font-size: 14px;
+  color: #999;
+}
+.travels .t-more2 {
+  width: 970px;
+  padding: 0 100px;
+  margin: 0 auto;
+  padding-bottom: 148px;
+  background-color: transparent;
+}
+.travels .t-more2 .t-m-list li {
+  width: 472px;
+  background-color: transparent;
+  padding-bottom: 38px;
+}
+.travels .t-more2 .t-m-list li .list-top {
+  height: 266px;
+  margin-bottom: 0;
+}
+.travels .t-more2 .t-m-list li .list-bottom {
+  height: 203px;
+  padding-top: 63px;
+}
+.travels .t-more2 .t-m-list .img_bottom {
+  width: 445px;
+  margin-left: 13px;
+  margin-top: -24px;
+  background-color: #fff;
+  padding-top: 32px;
+  z-index: 3;
+  position: relative;
+}
+.travels .t-more2 .t-m-list .user-cont {
+  padding-left: 130px;
+}
+.travels .t-more2 .t-m-list .user-cont li {
+  width: auto;
+}
+.travels .t-more2 .t-m-type {
+  margin-top: 65px;
+  height: 27px;
+  line-height: 1;
+  margin-bottom: 64px;
+  text-align: center;
+  font-size: 16px;
+  color: #808080;
+}
+.travels .t-more2 .type-l {
+  padding-bottom: 6px;
+  color: #3ebd62;
+  border-bottom: 3px solid #3ebd62;
+  font-weight: bold;
+  margin-right: 36px;
+}
+.travels .t-more2 .type-c,
+.travels .t-more2 .type-r {
+  padding-right: 14px;
+  margin-right: 27px;
+  position: relative;
+  line-height: 1;
+}
+.travels .t-more2 .type-c i,
+.travels .t-more2 .type-r i {
+  width: 8px;
+  height: 4px;
+  position: absolute;
+  right: 0;
+  top: 9px;
+  background: url("../images/icon.png") 0 -68px no-repeat;
+}
+.travels .t-more2 .t-type-bottom {
+  height: 22px;
+  text-align: center;
+  color: #333;
+}
+.travels .t-more2 .t-type-bottom span {
+  display: inline-block;
+  height: 22px;
+  line-height: 22px;
+  padding: 0 10px;
+}
+.travels .t-more2 .t-type-bottom span.active {
+  background-color: #bfbfbf;
+  color: #fff;
+}
+.travels .t-more2 .t-type-bottom a {
+  color: #333;
+}
+.travels .t-more2 .t-type-bottom a.end {
+  color: #bfbfbf;
+}
+.travels .t-more2 .t-type-bottom .pre {
+  margin-right: 17px;
+}
+.travels .t-more2 .t-type-bottom .next {
+  margin-left: 17px;
+}
+.travels .icon {
+  background-image: url("../images/icon.png");
+  background-repeat: no-repeat;
+}
