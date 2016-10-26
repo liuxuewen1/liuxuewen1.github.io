@@ -9,72 +9,44 @@
 		<div class="sort-c">
 			<ul class="sort">
 				<li>
-					<a href="#" class="active">
-						全部类型
+					<a href="javascript:;" class="active" @click="clickType()">
+						{{cur_type!=-1? arrType[cur_type].text : '全部类型'}}
 						<!-- fa-angle-down 向下 fa-angle-up向上-->
-						<i class="fa fa-angle-down" aria-hidden="true"></i>
+						<i class="fa" :class=" all_type.isHide? 'fa-angle-up': 'fa-angle-down'" aria-hidden="true"></i>
 					</a>
 				</li>
 				<li>
-					<a href="#">
-						目的地
-						<i class="fa fa-angle-down" aria-hidden="true"></i>
+					<a href="javascript:;" @click="clickDest()">
+						{{cur!=-1? county[cur].county.name : '目的地'}}
+						<i class="fa" :class=" dest.isHide? 'fa-angle-up': 'fa-angle-down'" aria-hidden="true"></i>
 					</a>
 				</li>
-				<li>
+				<!-- <li>
 					<a href="#">
-						价格
+						全部
 					</a>
-				</li>
+				</li> -->
 			</ul>
-			<div class="sort-mask hide">
+			<div class="sort-mask" :class="{'hide': all_type.isHide}">
 				<ul class="sort-list">
-					<li>
-						<img src="../images/item_p1.png" alt="">
-						<p class="item-p-text">落地散拼</p>
-					</li>
-					<li>
-						<img src="../images/item_p2.png" alt="">
-						<p class="item-p-text">当地游</p>
-					</li>
-					<li>
-						<img src="../images/item_p3.png" alt="">
-						<p class="item-p-text">自驾游</p>
-					</li>
-					<li>
-						<img src="../images/item_p4.png" alt="">
-						<p class="item-p-text">机票+酒店</p>
-					</li>
-					<li>
-						<img src="../images/item_p5.png" alt="">
-						<p class="item-p-text">包车游</p>
-					</li>
-					<li>
-						<img src="../images/item_p6.png" alt="">
-						<p class="item-p-text">机场接送</p>
+					<li v-for="item in arrType" track-by="$index">
+						<a href="javascript:;" @click="typeClick(item.id)">
+							<img :src="'../images/'+item.image" alt="">
+							<p class="item-p-text" v-text="item.text"></p>
+						</a>
 					</li>
 				</ul>
 			</div>
-			<div class="sort-mask">
+			<div class="sort-mask" :class="{'hide': dest.isHide }">
 				<ul class="sort-list2">
-					<li><span>亚洲</span></li>
-					<li><span>欧洲</span></li>
-					<li><span>美洲</span></li>
-					<li><span>非洲</span></li>
-					<li><span>南美</span></li>
-					<li><span>澳大利亚</span></li>
+					<li v-for="(key, item) in county" track-by="$index">
+						<span @click="changeCounty(key)" :class="{'active': key == cur}">{{item.county.name}}</span>
+					</li>
 				</ul>
-				<ul class="sort-l-c">
-					<li><span>美国</span></li>
-					<li><span>美国</span></li>
-					<li><span>美国</span></li>
-					<li><span>美国</span></li>
-					<li><span>美国</span></li>
-					<li><span>美国</span></li>
-				</ul>
+				<city :data="county[cur]" @click-city="getCity"></city>
 			</div>
 		</div>
-		<div class="mask"></div>
+		<div class="mask" :class="{'hide': isMaskHide }"></div>
 		<div class="list">
 			<ul>
 				<li>
@@ -134,3 +106,167 @@
 	</div>
 @@include("./_nav.html")
 @@include("./_footer.html")
+
+<template id="city">
+	<ul class="sort-l-c">
+		<li v-for="(key, item) in data.city" track-by="$index"><span v-for="(id, val) in item" v-text="val" @click="clickCity(item)"></span></li>
+	</ul>
+</template>
+<script src="./../js/vue.min.js"></script>
+<script>
+	/*当前选中类型、国家、城市*/
+	var curActive = {
+		type: 3,  //类型
+		county: 300,  //国家编号
+		city: 30001   //城市编号
+	};
+	/*国家和城市对应的列表*/
+	var county = [
+		{
+			county: {
+				id: '100',
+				name: '美国'
+			},
+			city: [
+				{ '10001': '休斯敦' },
+				{ '10002': '华盛顿'}
+			]
+		},
+		{
+			county: {
+				id: '300',
+				name : '英国'
+			}, 
+			city: [
+				{ '30001': '伦敦' }
+			]
+		},
+		{
+			county: {
+				id: '400',
+				name: '澳大利亚'
+			}, 
+			city: [
+				{ '40001': '悉尼' }
+			]
+		},
+		{
+			county: {
+				id: '500',
+				name: '巴西'
+			},  
+			city: [
+				{ '50001': '里约热内卢' }
+			]
+		}
+	];
+	/*获取当前国家*/
+	var _cur = -1;
+	for(var i = 0; i < county.length; i++){
+		if(curActive['county'] == county[i].county.id){
+			_cur = i;
+			break;
+		}
+	}
+	/*类型*/
+	var arrType = [
+		{
+			id: 1,
+			image: 'item_p1.png',
+			text: '落地散拼'
+		},
+		{
+			id: 2,
+			image: 'item_p2.png',
+			text: '当地游'
+		},
+		{
+			id: 3,
+			image: 'item_p3.png',
+			text: '自驾游'
+		},
+		{
+			id: 4,
+			image: 'item_p4.png',
+			text: '机票+酒店'
+		},
+		{
+			id: 5,
+			image: 'item_p5.png',
+			text: '包车游'
+		},
+		{
+			id: 6,
+			image: 'item_p6.png',
+			text: '机场接送'
+		}
+	];
+	/*获取当前类型*/
+	var _cur_type = -1;
+	for(var i = 0; i < arrType.length; i++){
+		if(curActive['type'] == arrType[i].id){
+			_cur_type = i;
+			break;
+		}
+	}
+
+	var vm = new Vue({
+		el: '.line-list',
+		data: {
+			county: county,
+			arrType: arrType,
+			cur_type: _cur_type,
+			cur: _cur,
+			curActive: curActive,
+			all_type: {
+				isHide: true
+			},
+			dest: {
+				isHide: true
+			}
+		},
+		computed: {
+			isMaskHide(){
+				return this.all_type.isHide && this.dest.isHide;
+			}
+		},
+		methods: {
+			clickType(){
+				this.all_type.isHide = !this.all_type.isHide;
+				this.dest.isHide = true;
+			},
+			clickDest(){
+				this.dest.isHide = !this.dest.isHide;
+				this.all_type.isHide = true;
+			},
+			changeCounty(val){
+				this.cur = val;
+			},
+			getCity(city){
+				//选中城市触发
+				var _city = city;
+				for(key in city){
+					_city = key;
+				}
+				this.curActive.county = this.county[this.cur].county.id;
+				this.curActive.city = _city;
+				location.href = '/travel/travel_list/city/'+this.curActive.city+'/country/'+this.curActive.county+'/type/'+this.curActive.type+'.html';
+			},
+			typeClick(typeID){
+				this.curActive.type = typeID;
+				location.href = '/travel/travel_list/city/'+this.curActive.city+'/country/'+this.curActive.county+'/type/'+this.curActive.type+'.html';
+			}
+		},
+		components: {
+			city: {
+				template: '#city',
+				props: ['data'],
+				methods: {
+					clickCity(val){
+						this.$emit('click-city', val);
+					}
+				}
+			}
+		}
+	})
+</script>
