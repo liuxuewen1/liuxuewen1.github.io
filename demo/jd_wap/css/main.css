@@ -2395,24 +2395,23 @@ body {
 .luntan .con .top img {
   width: 100%;
 }
-.luntan .con .top .headimg {
+.headimg {
   position: relative;
-  top: -0.69444444rem;
+  top: -1.66666667rem;
   height: 1.38888889rem;
 }
-.luntan .con .top .headimg h3.name {
+.headimg h3.name {
   text-align: center;
   font-size: 0.41666667rem;
   line-height: 0.55555556rem;
   color: #fff;
   font-weight: bold;
 }
-.luntan .con .top .headimg .pre-border {
-  position: absolute;
+.headimg .pre-border {
+  position: relative;
   left: 50%;
-  top: 50%;
+  top: 0.13888889rem;
   margin-left: -1.08333333rem;
-  margin-top: -0.88888889rem;
   display: inline-block;
   width: 2.16666667rem;
   height: 2.16666667rem;
@@ -2421,8 +2420,59 @@ body {
   text-align: center;
   padding-top: 0.11111111rem;
 }
-.luntan .con .top .headimg .pre-border img {
+.headimg .pre-border img {
   width: 1.94444444rem;
   height: 1.94444444rem;
   border-radius: 50%;
+}
+.luntan2 {
+  background-color: #fff;
+}
+.luntan2 h3.title {
+  font-size: 0.41666667rem;
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+}
+.luntan2 .info {
+  color: #808080;
+  font-size: 0.27777778rem;
+  line-height: 1.11111111rem;
+  text-align: center;
+}
+.luntan2 .travel_notes {
+  border-top: 1px solid #e6e6e6;
+  margin: 0 0.41666667rem 0;
+  padding-top: 0.75rem;
+}
+.luntan2 .travel_notes .notes_item {
+  margin-bottom: 1.02777778rem;
+}
+.luntan2 .travel_notes .notes_tit {
+  font-size: 0.41666667rem;
+  height: 0.65277778rem;
+  color: #3ebd62;
+  font-weight: bold;
+}
+.luntan2 .travel_notes .notes_text {
+  line-height: 0.91666667rem;
+  font-size: 0.41666667rem;
+  color: #333;
+  margin-bottom: 0.55555556rem;
+}
+.luntan2 .travel_notes img {
+  width: 100%;
+}
+.luntan2 .headimg {
+  top: -1.38888889rem;
+  margin-bottom: -0.41666667rem;
+}
+.luntan2 .pre-border {
+  width: 1.38888889rem;
+  height: 1.38888889rem;
+  margin-left: -0.69444444rem;
+}
+.luntan2 .pre-border img {
+  width: 1.27777778rem;
+  height: 1.27777778rem;
 }
