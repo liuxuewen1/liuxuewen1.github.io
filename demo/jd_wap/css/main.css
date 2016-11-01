@@ -1271,12 +1271,15 @@ body {
   width: 85%;
   height: 0.69444444rem;
   line-height: 0.69444444rem;
-  border: 2px solid #e6e6e6;
+  border: 1px solid #e6e6e6;
   text-align: center;
   border-radius: 5px;
   font-size: 0.33333333rem;
   color: #999;
   margin-left: 8%;
+}
+.sort-mask .sort-list2 li span.active {
+  border-color: #26a367;
 }
 .sort-mask .sort-l-c {
   border-top: 0;
